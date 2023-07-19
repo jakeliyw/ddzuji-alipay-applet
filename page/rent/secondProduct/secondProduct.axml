@@ -1,0 +1,26 @@
+<view class="layout">
+  <view>
+    <image mode="scaleToFill" src="/image/goodsdetail/second_phone_header.png" lazy-load={{true}} class="second_phone_header">
+  </view>
+  <view class="img_center">
+    <image mode="scaleToFill" src="/image/goodsdetail/equity_one.png" lazy-load={{true}} class="equity_one">
+  </view>
+  <view class="img_center">
+    <image mode="scaleToFill" src="/image/goodsdetail/equity_two.png" lazy-load={{true}} class="equity_two">
+  </view>
+  <view class="img_center">
+    <image mode="scaleToFill" src="/image/goodsdetail/equity_three.png" lazy-load={{true}} class="equity_three">
+  </view>
+  <view class="img_center">
+    <image mode="scaleToFill" src="/image/goodsdetail/equity_two.png" lazy-load={{true}} class="equity_two">
+  </view>
+  <view class="img_center">
+    <image mode="scaleToFill" src="/image/goodsdetail/color_guide.png" lazy-load={{true}} class="color_guide">
+  </view>
+  <view class="img_center">
+    <image mode="scaleToFill" src="/image/goodsdetail/exchange_goods_step.png" lazy-load={{true}} class="exchange_goods_step">
+  </view>
+  <view class="img_center">
+    <image mode="scaleToFill" src="/image/goodsdetail/product_tips_bottom.png" lazy-load={{true}} class="product_tips_bottom_img"/>
+  </view>
+</view>

@@ -1,0 +1,42 @@
+<view class="tab-content">
+  <view class="order-item">
+    <view class="goods-des" data-goods_id="{{goodsInfo.goods_id}}"  onTap="toGoodsDetail">
+      <view class="goods-img">
+        <image class="pic" src="{{imgUrl+goodsInfo.goods_order_thumbnail}}"  mode="aspectFit" />
+      </view>
+      <view class="content">
+        <view class="goods-name">{{goodsInfo.goods_name}}</view>
+        <view class="other-pay">规格：{{goodsInfo.goods_order_attr}}</view>
+        <view class="total-price">
+          <text class="total-pay-name">总租金：</text>
+          <text class="rmb">￥</text>
+          <text class="total-pay-value numStyle">{{goodsInfo.order_gross_rent}}</text>
+        </view>
+        <image class="zhima" src="/image/zhima-mind.png" mode="scaleToFill" />
+      </view>
+    </view>
+  </view>
+  <view class="renewalDay">
+    <view class="titleText">续租天数</view>
+    <view class="border_view">
+      <view a:for="{{goodsInfo.goods}}" key="goods{{index}}" data-day="{{item.lease_period}}" data-value="{{item.goods_rent}}" data-index="{{index}}" onTap="onclickDay" class="border {{index==selectDayindex?'borderactive':''}} ">{{item.lease_period}}天</view>
+      <view class="clear">
+        
+      </view>
+    </view>
+  </view>
+</view>
+<view class="bottom">
+  <view class="line"></view>
+  <view class="wrapper">
+    <view class="bottom_text">
+      <text class="moneyUnit">￥</text>
+      <text class="money">{{money.split('.')[0]}}</text>
+      <text class="money00">.{{money.split('.')[1]}}</text>
+      <text class="day">共{{day}}天</text>
+    </view>
+    <form report-submit="{{true}}" data-id="panelClose" onSubmit="keepOnRent">
+      <button formType="submit" class="red" type="defatlt">确定续租</button>
+    </form>
+  </view>
+</view>

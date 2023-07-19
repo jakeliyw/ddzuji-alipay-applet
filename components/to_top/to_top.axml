@@ -1,0 +1,6 @@
+<view>
+	<!-- 返回顶部按钮 -->
+	<!-- <view class="to_top_btn" onTap="bindTap" a:if="{{showBtn}}">
+		<image src="/image/toTop.png" mode="aspectFit" />
+	</view> -->
+</view>

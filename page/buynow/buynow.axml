@@ -1,0 +1,127 @@
+<view a:if="{{!noData}}">
+  <!-- 通告栏 -->
+  <notice className="buynow-notice" marqueeProps="{{{loop: true, leading: 500, trailing: 800, fps: 40 }}}" enableMarquee="{{true}}" show="{{notice}}" type="normal" mode="closable" onClick="actionClick">
+  {{notice_content}}
+  </notice>
+  <!-- 轮播 -->
+  <view class="swiper-top">
+    <swiper class="banner" onChange="bannerIndex" indicator-dots="{{false}}" indicator-color="rgb(119,119,119)" indicator-active-color="rgb(255,255,255)" interval="3000" autoplay="{{true}}" circular="{{true}}">
+      <block a:for="{{banner}}">
+        <swiper-item class="item">
+          <image src="{{(item!=''&&item)?imgUrl + item:''}}" mode="scaleToFill"></image>
+        </swiper-item>
+      </block>
+    </swiper>
+    <label a:if="{{banner.length>1}}" class="swiper-top-label">
+      <text>{{current}}</text>
+      /{{banner.length}}
+    </label>
+  </view>
+  <!-- 产品概览信息 -->
+  <view class="goods-introduce">
+    <view class="buynow-main-infomation">
+      <view a:if="{{type !== 2&&(entry == 1 || entry == 2)}}" class="price-before">券后价：</view>
+      <view a:if="{{type === 2}}" class="price-before">最高得888元话费</view>
+      <block a:if="{{type !== 2}}">
+        <view class="price-before">￥</view>
+        <view class="price">{{entry==3?pro_origin_price.split('.')[0]:pro_price.split('.')[0]}}</view>
+        <view class="price-dot">
+        .{{entry==3?pro_origin_price.split('.')[1]:pro_price.split('.')[1]}}
+        </view>
+        <view a:if="{{entry == 1 || entry == 2}}" class="original-price">¥{{pro_origin_price}}</view>
+        <view class="post-arrow ml10" a:if="{{ type == 1 }}">
+          <view class="triangle"></view>
+        {{ free_post == 1 ? '包邮' : `运费 ${pay_post}` }}
+        </view>
+      </block>
+    </view>
+    <view class="buynow-sub-infomation">
+      <text number-of-lines="2">{{good_infomation}}</text>
+    </view>
+  </view>
+  <!-- 产品型号选择 -->
+  <list className="model-list" a:if="{{ type == 1 }}">
+    <list-item arrow="{{true}}" onClick="productModelShow">已选
+      <view slot="extra">
+     {{pro_select_name}}
+      </view></list-item>
+  </list>
+  <!-- 商品详情 -->
+  <view class="buynow-pro-title {{ type == 1 ? '' : 'mt20' }}">
+    商品详情
+  </view>
+  <view class="intro-wrap">
+    <image mode="widthFix" a:for="{{ detail_img }}" key="detail{{index}}" src="{{ imgUrl+item }}"/>
+  </view>
+  <!-- 底部 -->
+  <view class="bottom">
+    <view class="left">
+      <view class="innerLeft">
+        <view class="toHome" onTap="goHome">
+          <view class="img por">
+            <image src="/image/cheng.png" mode="aspectFit"></image>
+          </view>
+          <view class="text">首页</view>
+        </view>
+        <view class="toService">
+          <contact-button tnt-inst-id="{{appInfo.globalData.goodDetail.kf.tntInstId}}" scene="{{appInfo.globalData.goodDetail.kf.scene}}" color="#fff" size="48"></contact-button>
+          <view class="img por">
+            <image src="/image/goodsdetail_service.png" mode="aspectFit"></image>
+          </view>
+          <view class="text">客服</view>
+        </view>
+      </view>
+    </view>
+    <view class="right">
+      <button onTap="goOrder" hover-class="none">立即抢购</button>
+    </view>
+  </view>
+  <!-- 返回顶部按钮 -->
+  <!-- 父组件传值给子组件，子组件调用父组件中的方法 -->
+  <to-top showBtn="{{show_toTop_btn}}" onTopBtn="toTop"></to-top>
+</view>
+<!-- 型号选择弹框 -->
+<popup zIndex="999" className="product-pop" show="{{product_model}}" position="bottom" disableScroll="{{true}}" onClose="productModelClose">
+  <view class="model-wrap">
+    <view class="model-top">
+      <view class="pro-img">
+        <image mode="scaleToFill" style="max-width:100%; max-height:100%" src="{{ pro_select_img ? imgUrl+pro_select_img : imgUrl+placeholder_img }}"/>
+      </view>
+      <view class="pro-description">
+        <view class="price">¥
+          <text class="big">{{pro_price.split('.')[0]}}</text>
+          <text>.{{pro_price.split('.')[1]}}</text>
+        </view>
+        <view class="pro-selected">
+          已选：{{pro_select_name}}
+        </view>
+      </view>
+      <image onTap="productModelClose" class="pro-close" mode="widthFix" src="/image/buynow/close.png"/>
+    </view>
+    <view class="model-main">
+      <text class="main-title">套餐</text>
+      <radio-group class="model-radio-group" onChange="radioChange" name="lib">
+        <label class="radio {{item.specs_names == pro_select_name ? 'model-active' : ''}}" a:for="{{model_list}}" key="label-{{index}}">
+          <!-- 更新后租金库新的标签 -->
+          <radio-item value="{{item.specs_names}}" checked="{{item.checked}}" />
+          <view style="display:inline-block;">{{item.specs_names}}</view>
+        </label>
+      </radio-group>
+    </view>
+    <view class="model-foot">
+      <button class="gobuy" onTap="goOrder">
+      立即抢购
+      </button>
+    </view>
+  </view>
+</popup>
+<!-- 没有数据提示页面 -->
+<view class="searchResult">
+  <view a:if="{{noData}}" class="noList">
+    <image src="/image/nolist.png" mode="aspectFit"></image>
+    <view class="content">该商品已下架/库存不足</view>
+    <view class="btn">
+      <button type="primary" onTap="goHome">再去逛逛</button>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,10 @@
+<view class="container">
+  <view class="state-mess">
+    <view class="state-icon"><image src="/image/order-fail.png" mode="aspectFit" /></view>
+    <view class="des"><text>{{msg}}</text></view>
+  </view>
+  <view class="operate-btn">
+    <button type="default" class="check-order" onTap="checkOrder">查看订单</button>
+    <button type="primary" class="back-to-origin" onTap="backToOrigin">返回首页</button>
+  </view>
+</view>

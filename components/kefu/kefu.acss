@@ -1,0 +1,79 @@
+.amd-popup-center{
+  min-height:0 !important;
+}
+.amd-popup-content {
+  min-height: 460rpx;
+}
+.kefu-container {
+  position: relative;
+}
+.tips {
+  text-align: center;
+  margin: 36rpx 0 24rpx;
+}
+
+.kefu-main {
+  padding: 0 40rpx;
+}
+
+.phone-kefu,
+.online-kefu {
+  display: flex;
+  align-items: center;
+  padding: 42rpx 0;
+  position: relative;
+}
+
+.line {
+  width: 100%;
+  height: 1px;
+  background-color: #ccc;
+  transform: scaleY(.5);
+}
+.kf_itemimg {
+  width: 86rpx;
+  height: 86rpx;
+  margin-right: 20rpx;
+}
+
+.kefu-title {
+  font-size: 32rpx;
+  display: flex;
+  align-items: center;
+  margin-bottom: 15rpx;
+}
+
+.kefu-title text {
+  line-height: 1;
+}
+
+.kefu-sub-title {
+  font-size: 24rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: rgba(136, 136, 136, 1);
+}
+
+.arrow-icon {
+  width: 16rpx;
+  height: 26rpx;
+  margin-left: 20rpx;
+}
+
+.close {
+  position: absolute;
+  bottom: -140rpx;
+  left: 50%;
+  margin-left: -32rpx;
+}
+
+.close image {
+  width: 64rpx;
+  height: 64rpx;
+}
+
+contact-button {
+  opacity: 0.001;
+  position: absolute;
+  width: 100%;
+}

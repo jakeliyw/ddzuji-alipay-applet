@@ -1,0 +1,13 @@
+<view class="help">
+  <view class="help-title">关于产品租赁服务</view>
+  <view class="helptop">信用租机的条件是什么？</view>
+  <view class="helpcontent">通过芝麻信用风险评估体系的用户可享受租机服务，信用越好，所免押金越多，信用较高的用户可享受押金全免服务。</view>
+   <view class="helptop">租赁流程</view>
+  <view class="helpcontent">用户选择商品规格、型号、颜色、租赁期数下单。商家发货后将自动扣除首期款（包含安装包/配件/意外保障费用），以后每月定时扣款，请保证扣款时余额充足。使用期间耗材更换由客户承担。租期满可续租、可买断、可归还。</view>
+  <view class="helptop">发货流程</view>
+  <view class="helpcontent">客服人员会通过电话与您联系，确认订单。物流信息会在发货后以短信形式通知。收货地址务必精确到门牌号，快递需本人签收。</view>
+  <view class="helptop">退货流程</view>
+  <view class="helpcontent">商品未发货前可以申请退货；如果已经发货，不支持取消；非产品硬件故障，不支持7天无理由退换；硬件故障可免费维修更换；客户原因拒签需承担往返运费和原定租期全额租金。</view>
+  <view class="helptop">租期完成</view>
+  <view class="helpcontent">租赁期满，可选择续租、归还或者买断，归还用户可直接联系我司客服，也可根据需求选择其他产品下单。</view>
+</view>

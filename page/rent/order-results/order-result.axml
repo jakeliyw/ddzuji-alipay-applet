@@ -1,0 +1,28 @@
+<view>
+  <view class="container">
+    <view class="order_status">
+      <view class="status_title">
+        <image mode="scaleToFill" src="/image/confirm-order-circle-active.png" />下单成功！
+      </view>
+      <!-- <image class="mian" src="/image/ordersuccess-zhima-top.png" mode="aspectFit" /> -->
+      <view class="order_infoItem">
+        <view>{{orderResult.order_day_rent>=30?'月租金':'总租金'}}</view>
+        <text class="numStyle">{{orderResult.order_monthly_rent}}</text></view>
+    </view>
+    <view class="order_infoItem">
+      <view>到期买断金</view>
+      <view>¥{{orderResult.buy_money}}</view>
+    </view>
+    <view class="order_infoItem order_infoItem1">
+      <view>租用天数</view>
+      <view>{{orderResult.order_day_rent}}天</view>
+    </view>
+    <view class="bottom_line"></view>
+  </view>
+  <view class="btns">
+    <view class="success_btns">
+      <view type="default" class="check-order" onTap="checkOrder">查看订单</view>
+      <view type="primary" class="back" onTap="backToOrigin">返回首页</view>
+    </view>
+  </view>
+</view>

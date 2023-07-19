@@ -1,0 +1,85 @@
+<view a:if="{{order_status=='SUCCESS'}}">
+  <view class="container">
+    <view class="order_status">
+      <view class="status_title">
+        <image mode="scaleToFill" src="/image/confirm-order-circle-active.png" />下单成功！
+      </view>
+      <image class="mian" src="/image/ordersuccess-zhima-top.png" mode="aspectFit" />
+
+      <view class="order_infoItem">
+        <view>{{orderResult.order_day_rent>=30?'月租金':'总租金'}}</view>
+        <!-- <view>¥{{orderResult.order_monthly_rent}}</view> -->
+        <text class="numStyle" style="{{orderResult.after_voucher_month_rent ?'text-decoration: line-through':''}}">{{orderResult.order_monthly_rent}}</text></view>
+      </view>
+      <!--<view a:if="{{orderResult.cou_name}}" class="order_infoItem"><view>店铺优惠</view><view>{{orderResult.cou_name}}</view></view><view a:if="{{orderResult.cou_name}}" class="order_infoItem order_infoItem1"><view>首期付款(优惠后)</view><view>¥{{orderResult.first_money}}</view></view><view a:if="{{!orderResult.cou_name}}" class="order_infoItem order_infoItem1"><view>首期付款</view><view>¥{{orderResult.order_monthly_rent}}</view></view> -->
+      <view class="order_infoItem single-price list" a:if="{{buyOutMsg.buy_money==undefined&&orderResult.after_voucher_month_rent!==''}}">
+        <view class="title">
+          <text>优惠后月租金</text></view>
+        <view class="value" style="color:#FF4A0C">
+          <text class="rmb">￥</text>
+          <text class="numStyle">{{orderResult.after_voucher_month_rent}}</text></view>
+      </view>
+      <view class="order_infoItem single-price list" a:if="{{ is_exclusive_discounts }}">
+        <view class="title">
+          <text>专享优惠</text>
+        </view>
+        <view class="value" style="color:#FF4A0C">
+          <text class="rmb">–￥</text>
+          <text class="numStyle">{{ sesame_exclusive_discount_amount }}</text>
+        </view>
+      </view>
+      <view class="order_infoItem month list" a:if="{{orderResult.total_voucher_amount}}">
+        <view class="title">
+          <text>优惠券</text></view>
+        <view class="value" style="display:flex;align-items:center">
+          <text class="numStyle" style="{{!orderResult.total_voucher_amount?'color:#999':'color:#FF4A0C'}}">{{!orderResult.total_voucher_amount?'请选择':'–￥'+orderResult.total_voucher_amount}}</text>
+        </view>
+      </view>
+      <view class="order_infoItem">
+        <view>到期买断金</view>
+        <view>¥{{orderResult.buy_money}}</view>
+      </view>
+      <view class="order_infoItem order_infoItem1">
+        <view>租用天数</view>
+        <view>{{orderResult.order_day_rent}}天</view>
+      </view>
+      <view class="bottom_line"></view>
+    </view>
+    <view class="btns">
+      <view class="success_btns">
+        <view type="default" class="check-order" onTap="checkOrder">查看订单</view>
+        <view type="primary" class="back" onTap="backToOrigin">返回首页</view>
+      </view>
+    </view>
+    <!--<view class="rush_to_buy" a:if="{{floating}}" data-jump_type="{{floating.jump_type}}" data-app_id="{{floating.app_id}}" data-content_url="{{floating.content_url}}" data-telmp_id="{{floating.telmp_id}}" onTap="jump_tap"><image mode="scaleToFill" src="{{floating.imgurl}}"/></view> -->
+    <!-- 优惠券列表 -->
+    <!--<view class="gx">
+      恭喜你！本次下单可享权益</view> -->
+    <!--<view class="recomCoupon"><view class="recomCoupon_item" a:for="{{coupon}}" a:key="{{item}}" onTap="jump_tap" data-jump_type="{{item.cou_kind}}" data-app_id="{{item.app_id}}" data-content_url="{{item.j_url}}" data-telmp_id="{{item.tem_id}}"><view class="item_title" a:if="{{(item.cou_type==5||item.cou_type==4||item.cou_type==6)}}">
+          免租优惠</view><view class="item_title" a:if="{{item.cou_type==3}}">
+          满减优惠</view><view class="item_title" a:if="{{item.cou_type==1}}">
+          折扣优惠</view><view class="item_title" a:if="{{item.cou_type==11}}">
+          首月一元</view><view class="item_describe"><view class="text" a:if="{{item.cou_type==1}}"><text class="big_size">{{item.cou_sum_price*10}}</text>折</view><view class="text" a:if="{{item.cou_type==3}}">
+              满{{item.cou_sum_price}}减<text class="big_size">{{item.cou_price}}</text></view><view class="text" a:if="{{item.cou_type==5||item.cou_type==4||item.cou_type==6}}">
+            免租<text class="big_size">{{item.cou_price}}</text>天</view><view class="text" a:if="{{item.cou_type==11}}">
+            首月<text class="big_size">1</text>元</view></view><view class="item_btn {{is_receive==1?'item_btn_yes':''}}"><view class="text">领取</view></view></view></view> -->
+    <!--<view a:if="{{activity_banner!=''}}" class="activity-banner"><swiper autoplay="{{true}}" indicator-dots="{{false}}" onChange="activitybannerIndex" interval="3000" circular="{{true}}"><block a:for="{{activity_banner}}"><swiper-item class="item"><view onTap="jump_tap" data-jump_type="{{item.jump_type}}" data-app_id="{{item.app_id}}" data-content_url="{{item.content_url}}" data-telmp_id="{{item.telmp_id}}"><image src="{{(item.img_uri!=''&&item.img_uri)?imgUrl+item.img_uri:''}}" mode="scaleToFill" /></view></swiper-item></block></swiper><view class="swiper_dots"><view a:for="{{activity_banner}}" a:key="{{item}}" a:if="{{activity_banner.length>1}}" class="swiper_dots_item {{index==customBannerdotsindex?'active':''}}"></view></view></view> -->
+  </view>
+  <!-- 热门推荐 -->
+  <!--<recommend type="2"></recommend> -->
+
+<view a:if="{{order_status=='FAIL'}}" class="fail" style="padding-top:{{titleBarHeight}}px">
+  <view class="container1">
+    <view class="state-icon">
+      <image src="/image/order-fail.png" />
+    </view>
+    <view class="des">
+      <text class="text_title">下单失败</text>
+      <text class="text_ms">{{errorMsg}}</text>
+    </view>
+    <view class="botton_view">
+      <button class="btn" onTap="retry">重试</button>
+    </view>
+  </view>
+</view>
+<!--<life-follow sceneId="b667544248ad4d2b881e982cce5ede44" a:if="{{showfollow}}" /> -->

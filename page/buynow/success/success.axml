@@ -1,0 +1,13 @@
+<view class="success">
+  <image mode="scaleToFill" src="/image/order-success.png"/>
+  <view class="col333 mt30">恭喜你下单成功</view>
+  <view class="col888 mt20">我们将尽快为你配送</view>
+  <view class="btn-list">
+    <button type="ghost" onTap="viewOrder" hover-class="none">
+    查看订单
+    </button>
+    <button type="primary" onTap="goIndex" hover-class="none">
+    再逛逛
+    </button>
+  </view>
+</view>

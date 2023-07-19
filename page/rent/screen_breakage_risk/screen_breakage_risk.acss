@@ -1,0 +1,72 @@
+.layout {
+  width: 750rpx;
+  height: 480rpx;
+  background: linear-gradient(180deg, #E3F7FF 0%, #8DBAFF 100%);
+  position: relative;
+
+}
+
+.header {
+  font-size: 74rpx;
+  font-family: ZiZhiQuXiMaiTi-Regular, ZiZhiQuXiMaiTi;
+  font-weight: 400;
+  color: #001430;
+  position: absolute;
+  left: 50rpx;
+  top: 230rpx;
+}
+
+
+.screen_breakage_risk_img{
+  width: 252rpx;
+  height: 210rpx;
+  position: absolute;
+  right: 20rpx;
+  top: 210rpx;
+  z-index: 5;
+}
+
+.content {
+  width: 750rpx;
+  height: 1418rpx;
+  background: #FFFFFF;
+  border-radius: 60rpx 60rpx 0rpx 0rpx;
+  position: absolute;
+  top: 350rpx;
+  display: flex;
+  flex-direction: column;
+  padding: 40rpx;
+}
+.title {
+  font-size: 40rpx;
+  font-family: ZiZhiQuXiMaiTi-Regular, ZiZhiQuXiMaiTi;
+  font-weight: bold;
+  color: #001430;
+}
+
+:where(.games_console, .phone, .computer, .travel_wear) {
+  font-size: 28rpx;
+  font-family: PingFang SC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #001430;
+  margin-top: 28rpx;
+}
+
+.product_key {
+  font-size: 28rpx;
+  color: #1777FF;
+  font-family: PingFang SC-Regular, PingFang SC;
+  font-weight: bold;
+}
+
+/* .phone .product_key {
+  font-size: 28rpx;
+  color: #1777FF;
+  font-family: PingFang SC-Regular, PingFang SC;
+} */
+.product_value {
+  font-size: 28rpx;
+  font-family: PingFang SC-Regular, PingFang SC;
+  font-weight: Bold;
+  color: #001430;
+}

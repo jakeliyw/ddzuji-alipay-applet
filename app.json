@@ -1,0 +1,86 @@
+{
+  "pages": [
+    "page/rent/rent",
+    "page/rent/sorts/sorts",
+    "page/mine/mine",
+    "page/rent/goodsdetail/goodsdetail",
+    "page/rent/secondProduct/secondProduct",
+    "page/rent/newProduct/newProduct",
+    "page/rent/search/search",
+    "page/rent/confirm-order/confirm-order",
+    "page/rent/confirm-order-copy/confirm-order-copy",
+    "page/rent/confirm-order/rule/rule",
+    "page/rent/order-result/order-result",
+    "page/rent/screen_breakage_risk/screen_breakage_risk",
+    "page/rent/order-fail/order-fail",
+    "page/mine/myorders/orderdetail/orderdetail",
+    "page/mine/myVouchers/myVouchers",
+    "page/mine/myorders/myorders",
+    "page/mine/mybill/mybill",
+    "page/mine/myorders/return/return",
+    "page/mine/helpcenter/helpcenter",
+    "page/mine/my_feedback/feedback",
+    "page/rent/coupon/coupon",
+    "page/mine/upload_codeImg/upload_codeImg",
+    "page/mine/success/success",
+    "page/mine/myorders/renewal/renewal",
+    "page/mine/myorders/returngoods/returngoods",
+    "page/merchant/merchant",
+    "page/mine/myorders/express/express",
+    "page/rent/coupon/goodsdetailcoupon/goodsdetailcoupon",
+    "page/rent/confirm-order/real/real",
+    "page/buynow/buynow",
+    "page/activity/activity",
+    "page/buynow/order/order",
+    "page/buynow/success/success",
+    "page/buynow/order-status/status",
+    "page/buynow/myorder/myorder",
+    "page/rent/webview/webview",
+    "page/rent/channelH5/channelH5",
+    "page/webview/webview",
+    "page/rent/webview1/webview1",
+    "page/rent/rentIpad/rentIpad",
+    "page/rent/rentWatch/rentWatch",
+    "page/rent/rentComputer/rentComputer",
+    "page/mine/addAddress/addAddress",
+    "page/mine/addressList/addressList"
+  ],
+  "window": {
+    "defaultTitle": "叮咚租机",
+    "backgroundColor": "#F5F5F9",
+    "pullRefresh": true,
+    "allowsBounceVertical": "YES",
+    "enableInPageRender": "YES"
+  },
+  "tabBar": {
+    "textColor": "#404040",
+    "selectedColor": "#ff584f",
+    "backgroundColor": "#F5F5F9",
+    "items": [
+      {
+        "pagePath": "page/rent/rent",
+        "icon": "image/tabBar-rent.png",
+        "activeIcon": "image/tabBar-activeRent.png",
+        "name": "首页"
+      },
+      {
+        "pagePath": "page/rent/sorts/sorts",
+        "icon": "image/tabBar-sort.png",
+        "activeIcon": "image/tabBar_activeSort.png",
+        "name": "分类"
+      },
+      {
+        "pagePath": "page/mine/mine",
+        "icon": "image/tabBar-mine.png",
+        "activeIcon": "image/tabBar-activeMine.png",
+        "name": "我的"
+      }
+    ]
+  },
+  "plugins": {
+    "couponPlugin": {
+      "version": "*",
+      "provider": "2021002172680015" 
+    }
+  }
+}

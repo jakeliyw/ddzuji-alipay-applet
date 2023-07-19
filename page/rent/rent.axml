@@ -1,0 +1,181 @@
+<view class="content">
+  <!--<view class="statusBar" style="height: {{systemInfo.statusBarHeight}}"></view><view onTap="" class="titleBar" style="height: {{systemInfo.titleBarHeight}}"></view> -->
+  <view class="kefus" onTap="showKefus">
+    <!-- <image lazy-load="{{true}}" mode="scaleToFill" src="/image/kfs.png" /> -->
+    <image lazy-load="{{true}}" mode="scaleToFill" src="https://ddjzoss.oss-cn-shenzhen.aliyuncs.com/tmp/1.png" />
+  </view>
+  <view class="kefu" onTap="showKefu">
+    <!-- <image lazy-load="{{true}}" mode="scaleToFill" src="/image/rent-kefu.png" /> -->
+    <image lazy-load="{{true}}" mode="scaleToFill" src="https://ddjzoss.oss-cn-shenzhen.aliyuncs.com/tmp/2.png" />
+
+  </view>
+  <view class="topHeight">
+    <!-- 搜索 -->
+    <!--<view class="search {{!searchHidden ? 'search_fixed' : ''}}" id="view-position"><view class="wrap" onTap="toSearch"><image src="/image/search.png" mode="scaleToFill" lazy-load="{{true}}" /><input type="text" placeholder="搜索" placeholder-style="placeholder" disabled="true" /></view><view class="classify" onTap="toClassify"><image mode="scaleToFill" src="/image/tabBar-sort.png"/></view></view><view class="search" a:if="{{!searchHidden}}"></view> -->
+    <view class="header" style="position: relative;height: 434rpx;">
+      <!-- 轮播图 --> 
+      <view class="bannerswiper">
+        <swiper interval="3000" autoplay="{{true}}" onChange="activitybannerIndex" circular="{{true}}">
+          <block a:for="{{imgpic}}">
+            <swiper-item class="item">
+              <view onTap="jump_tap" data-jump_type="{{item.jump_type}}" data-app_id="{{item.app_id}}" data-content_url="{{item.content_url}}" 
+                data-telmp_id="{{item.telmp_id}}">
+                <image lazy-load="{{true}}" src="{{item.img_uri?imgUrl+item.img_uri+imgHandle:''}}" mode="scaleToFill" />
+                
+              </view>
+            </swiper-item>
+          </block>
+        </swiper>
+      </view>
+      <view class="swiper_dots active">
+        <view a:if="{{imgpic.length>0}}" a:for="{{imgpic}}" key="impic{{index}}" class="swiper_dots_item {{index==customBannerdotsindex?'active':''}}"></view>
+      </view>
+    </view>
+    <view class="desc">
+      <view a:for="{{descArr}}" class="desc-item">
+        <view class="desc-icon" />
+        <text>{{ item.txt }}</text></view>
+    </view>
+    <view style="width:100%;background:#fff;">
+      <lifestyle public-id="2021002130605084" />
+    </view>
+    <!--<view class="box"><view style="display:flex;align-items:center"><image mode="scaleToFill" src="/image/gou.png" style="height:40rpx;width:40rpx;margin-right:4rpx" />非监管机</view><view style="display:flex;align-items:center"><image mode="scaleToFill" src="/image/gou.png" style="height:40rpx;width:40rpx;margin-right:4rpx" />不查征信</view><view style="display:flex;align-items:center"><image mode="scaleToFill" src="/image/gou.png" style="height:40rpx;width:40rpx;margin-right:4rpx" />极速审批</view><view style="display:flex;align-items:center"><image mode="scaleToFill" src="/image/gou.png" style="height:40rpx;width:40rpx;margin-right:4rpx" />顺丰包邮</view></view> -->
+    <view class="radios">
+      <view class="levelOne cateBox" a:if="{{category.length>0}}">
+        <!--<scroll-view class="scroll-view_H" scroll-x="{{true}}" style="width: 100%"><view class="scroll-view-item_H"><view class="item" a:for="{{category}}" a:for-item="pro_item" a:for-index="pro_index" key="pro{{pro_index}}" onTap="toSorts" data-cate_id="{{pro_item.cate_id}}"><image src="{{pro_item.img_uri!=''?imgUrl+pro_item.img_uri+imgHandle:''}}" /><view class="text">{{pro_item.title}}</view></view></view></scroll-view> -->
+        <grid items="{{category}}" onTap="toSorts" columns="{{4}}" iconSize="88rpx" />
+      </view>
+      <!-- 文字区 -->
+      <!--<view class="wenZiQu_view"><image mode="scaleToFill" lazy-load="{{true}}" onTap="rent_step" class="bajiezuTitle" src="/image/zjgl.png" /><image mode="scaleToFill" lazy-load="{{true}}" onTap="getVoucher" class="bajiezuTitle" style="float:right;" src="/image/get_yhq.png" /></view> -->
+    </view>
+    <join-group-chat template-id="MC35371ba8b4bb4ed6b3c46f2913eb6443" />
+    <!-- 活动版块 -->
+    <view a:for="{{floor_data}}" a:key="{{this}}">
+      <!-- 热门活动 -->
+      <view class="popular_activity" a:if="{{item.layout_type==2}}">
+        <!--<view class="active_title">
+          热门活动</view> -->
+        <view class="popular_imgs">
+          <view class="img_left" data-jump_type="{{item.ob[0].type}}" data-app_id="{{item.ob[0].app_id}}" data-content_url="{{item.ob[0].content_url}}" 
+            data-telmp_id="{{item.ob[0].telmp_id}}" data-mode_type="2" onTap="jump_tap">
+            <image class="i_left" lazy-load="{{true}}" mode="scaleToFill" src="{{imgUrl+item.ob[0].img_uri+imgHandle}}" />
+          </view>
+          <view class="img_right">
+            <image class="img_top" lazy-load="{{true}}" data-jump_type="{{item.ob[1].type}}" data-app_id="{{item.ob[1].app_id}}" 
+              data-content_url="{{item.ob[1].content_url}}" data-telmp_id="{{item.ob[1].telmp_id}}" data-mode_type="2" onTap="jump_tap" 
+              mode="scaleToFill" src="{{imgUrl+item.ob[1].img_uri+imgHandle}}" />
+            <image class="img_bottom" lazy-load="{{true}}" data-jump_type="{{item.ob[2].type}}" data-app_id="{{item.ob[2].app_id}}" 
+              data-content_url="{{item.ob[2].content_url}}" data-telmp_id="{{item.ob[2].telmp_id}}" data-mode_type="2" onTap="jump_tap" 
+              mode="scaleToFill" src="{{imgUrl+item.ob[2].img_uri+imgHandle}}" />
+          </view>
+        </view>
+      </view>
+      <!-- 新人专区 -->
+      <view class="new_activity" a:if="{{item.layout_type==1}}">
+        <view class="new_content">
+          <image mode="scaleToFill" lazy-load="{{true}}" data-jump_type="{{item.ob[0].type}}" data-app_id="{{item.ob[0].app_id}}" 
+            data-content_url="{{item.ob[0].content_url}}" data-telmp_id="{{item.ob[0].telmp_id}}" onTap="jump_tap" src="{{imgUrl+item.ob[0].img_uri+imgHandle}}" />
+          <image mode="scaleToFill" lazy-load="{{true}}" data-jump_type="{{item.ob[1].type}}" data-app_id="{{item.ob[1].app_id}}" 
+            data-content_url="{{item.ob[1].content_url}}" data-telmp_id="{{item.ob[1].telmp_id}}" onTap="jump_tap" src="{{imgUrl+item.ob[1].img_uri+imgHandle}}" />
+        </view>
+      </view>
+    </view>
+    <!-- 新品速报 -->
+    <view class="new_goodsView" a:if="{{(datas.length>0)}}">
+      <!--<view class="active_title">新品速报</view> -->
+      <view class="new_goodsS_container">
+        <view class="new_goodsS_back">
+          <swiper class="new_back-swiper" current="{{newgoods_current}}" onChange="new_goods_change" autoplay="{{true}}}" 
+            interval="3000" vertical="{{false}}" circular="{{true}}">
+            <block a:for="{{datas}}">
+              <swiper-item key="swiper-item-{{index}} ">
+                <view class="new_goods_view">
+                  <image lazy-load="{{true}}" class="back_img" mode="" src="{{item.back_img + imgHandle}}" />
+                  <!--</swiper-item></block></swiper></view><view class="new_card_view"><swiper class="new_back-swiper new_back" onChange="new_goods_change" autoplay="{{false}}" vertical="{{false}}" circular="{{true}}"><block a:for="{{datas}}"><swiper-item key="swiper-item-{{index}} "> -->
+                  <view class="new_goodsS_shop teachers_banner">
+                    <view class="lunbo_center clearfix teachers_b">
+                      <view class="slide" id="slide">
+                        <view onTap="new_goodsDetail" data-index="{{index}}" data-id="{{item.goods_id}}" class="swiper-item newgoods_item" 
+                          style="height:100%">
+                          <view class="item_img">
+                            <image lazy-load="{{true}}" mode="scaleToFill" src="{{item.goods_img + imgHandle}}" />
+                          </view>
+                          <view class="item_info">
+                            <view class="title">{{item.title}}</view>
+                            <view class="des">
+                              <text class="des_d">仅需¥{{item.money}} 新款手机带回家</text>
+                            </view>
+                            <view class="price">
+                              <view class="sign sm">￥</view>
+                              <view class="pri">{{item.min_price}}</view>
+                              <view class="unit sm">/天</view>
+                            </view>
+                          </view>
+                        </view>
+                      </view>
+                    </view>
+                  </view>
+                </view>
+              </swiper-item>
+            </block>
+          </swiper>
+        </view>
+        <view class="swiper_spot">
+          <view class="swiper_spot_item" a:for="{{datas}}" key="datas{{index}}">
+            <image lazy-load="{{true}}" mode="scaleToFill" src="/image/{{index==newgoods_current?'swiper_spot_red.png':'swiper_spot.png'}}" />
+          </view>
+        </view>
+      </view>
+    </view>
+    
+    
+    <!-- 内容 -->
+    <view class="lists" id="lists">
+      <view class="cate-content">
+        <!-- 商品顶部tab栏 -->
+        <!-- 不悬浮到页面顶部 -->
+        <!--<view class="pro_tit_scroll" a:if="{{is_fixed}}"></view> -->
+        <view class="pro_tit_scroll">
+          <view class="page-section-demo">
+            <scroll-view class="scroll-view_H" scroll-left="{{tabscroll_left}}" scroll-with-animation="{{true}}" scroll-x="{{true}}" 
+              style="width: 100%">
+              <view class="scroll-view-item_H {{item.checked ? 'activeStyle' : ''}}" a:for="{{fixed_tab_data}}" key="tabdata{{index}}" 
+                data-id="{{index}}" data-proId="{{item.cate_id}}" onTap="clickTopItem">
+                <view class="title_H">{{item.cate_name}}</view>
+                <view class="tig">{{item.sub_name}}</view>
+              </view>
+            </scroll-view>
+          </view>
+        </view>
+        <view>
+        </view>
+        <!-- 底部商品列表-->
+        <view class="whoBuy">
+          <goods-list type="0" goods_list="{{newTabData[newTabsIndex]}}" />
+          <view class="loadText">
+            <text a:if="{{scroll}}">{{loadText}}</text></view>
+        </view>
+      </view>
+      <view class="bottom" a:if="{{goodslist!=''}}">
+        <view class="wrap">
+          <view class="line"></view>
+          <view class="inner-content">{{appInfo.globalData.rent.innerContent}}</view>
+          <view class="line"></view>
+        </view>
+      </view>
+    </view>
+    <!-- 返回顶部按钮 -->
+    <!-- 父组件传值给子组件，子组件调用父组件中的方法 -->
+    <!--<to-top showBtn="{{show_toTop_btn}}" onTopBtn="toTopIndex" data-index="{{is_fixed}}"></to-top> -->
+  </view>
+
+  <!-- 弹框 -->
+  <view class="popup-mask" catchtouchmove="preventTouchMove" a:if="{{is_show_popup}}">
+      <view class="popup">
+        <image onTap="navigateToChannelH5" class="popup-img" mode="widthFix" src="https://image.ddzuwu.com/file/images/f404da39ae04db221f627b0fa9f08c45.png"/>
+        <image onTap="closePopup" class="popup-close" mode="widthFix" src="https://image.ddzuwu.com/file/images/c01107396e039c5c7c5371a576eda945.png">
+      </view>
+  </view>
+
+</view>
+<kefu kefuisShow={{showKefuPop}} onHideKefu="hideKefu"></kefu>

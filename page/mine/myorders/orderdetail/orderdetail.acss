@@ -1,0 +1,985 @@
+page {
+  padding-bottom: 120rpx;
+}
+
+/* 订单状态 */
+
+.order-state {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  width: 100%;
+  height: 260rpx;
+  padding: 0 30rpx 0 40rpx;
+  /* background: url("/image/orderdetail-bg.png") no-repeat; */
+  background: linear-gradient(to right, #FF484D, #FF8155);
+  background-size: cover cover;
+  box-sizing: border-box;
+}
+
+.order-state .content {
+  width: 100%;
+  padding-top: 38rpx;
+}
+
+.order-state .title {
+  display: flex;
+  flex-flow: row nowrap;
+  width: 100%;
+  height: 42rpx;
+  font-size: 36rpx;
+  color: #fff;
+  line-height: 42rpx;
+}
+
+.order-state .title image {
+  width: 42rpx;
+  height: 42rpx;
+  margin-right: 14rpx;
+}
+
+.order-state .mess {
+  width: 100%;
+  height: 80rpx;
+  font-size: 28rpx;
+  color: #fff;
+  line-height: 40rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  margin-top: 20rpx;
+}
+
+.order-state .date {
+  font-size: 28rpx;
+  color: rgba(255, 255, 255, .5);
+  line-height: 1;
+  margin-top: 20rpx;
+}
+
+.order-state .icon {
+  width: 160rpx;
+  position: absolute;
+  right: 40rpx;
+}
+
+/* .order-state .icon image{
+    width: 16rpx;
+    height: 28rpx;
+} */
+
+.order-state .copyNum {
+  bottom: 30rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 156rpx;
+  height: 46rpx;
+  /* border: #000 1px solid; */
+  border: 1px solid rgba(255, 255, 255, .95);
+  border-radius: 23rpx;
+  margin-top: 195rpx;
+  bottom: 0px;
+}
+
+.order-state .copyNum {
+  font-size: 24rpx;
+  color: #fff;
+  line-height: 1;
+  text-align: center;
+}
+
+.frozenModel image {
+  width: 430rpx;
+  height: 60rpx;
+}
+
+/* 地址 */
+
+.my-address {
+  position: relative;
+  width: 100%;
+  background-color: #fff;
+  padding: 40rpx 0 40rpx;
+  margin-bottom: 20rpx;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.my-address .contact {
+  display: flex;
+  flex-flow: row nowrap;
+  width: 100%;
+  height: 32rpx;
+  padding: 0 30rpx;
+  font-size: 32rpx;
+  line-height: 1;
+  margin-bottom: 10rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+.my-address .contact .username {
+  max-width: 55%;
+  color: #0a0a0a;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.my-address .contact .phone {
+  color: #000;
+  margin-left: 40rpx;
+}
+
+.my-address .address {
+  display: flex;
+  flex-flow: row nowrap;
+  width: 100%;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+}
+
+.my-address .address .icon image {
+  width: 16rpx;
+  height: 20rpx;
+  margin-top: 10rpx;
+}
+
+.my-address .address .area {
+  font-size: 28rpx;
+  color: #999;
+  line-height: 40rpx;
+  margin-left: 11rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.my-address .line {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 10rpx;
+}
+
+/* 商品信息 */
+
+.goods-des {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  width: 100%;
+  background-color: #fff;
+  padding: 0 30rpx;
+  margin-bottom: 20rpx;
+  box-sizing: border-box;
+}
+
+.goods-des .goods-pic {
+  display: flex;
+  align-self: center;
+  width: 160rpx;
+  height: 160rpx;
+}
+
+.goods-des .content {
+  width: 74%;
+  height: 100%;
+  padding: 36rpx 0 38rpx;
+  box-sizing: border-box;
+}
+
+.goods-des .content .goods-name {
+  width: 100%;
+  font-size: 28rpx;
+  color: #333;
+  line-height: 1;
+  margin-bottom: 20rpx;
+}
+
+.goods-des .content .goods-attr {
+  width: 100%;
+  font-size: 24rpx;
+  color: #999;
+  line-height: 1;
+  margin-bottom: 14rpx;
+}
+
+.goods-des .content .other-pay {
+  width: 100%;
+  font-size: 24rpx;
+  color: #999;
+  line-height: 28rpx;
+  margin-bottom: 12rpx;
+}
+
+.goods-des .content .enjoy {
+  width: 100%;
+  font-size: 24rpx;
+  color: #999;
+  line-height: 28rpx;
+  margin-bottom: 12rpx;
+}
+
+.goods-des .content .total-price {
+  width: 100%;
+  font-size: 28rpx;
+  color: #333;
+  line-height: 1;
+  box-sizing: border-box;
+}
+
+.goods-des .content .zhima {
+  width: 170rpx;
+  height: 30rpx;
+  margin-top: 20rpx;
+}
+
+/* 账单信息  */
+
+.bill-info {
+  width: 100%;
+  /* height: 626rpx; */
+  background-color: #fff;
+  margin-bottom: 20rpx;
+  overflow: hidden;
+}
+
+.bill-info .pay-detail {
+  width: 100%;
+  padding: 20rpx 30rpx 35rpx;
+  box-sizing: border-box;
+}
+
+.bill-info .deposit {
+  width: 100%;
+  padding: 25rpx 30rpx;
+  box-sizing: border-box;
+}
+
+.bill-info .list {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  width: 100%;
+  height: 58rpx;
+  font-size: 28rpx;
+  line-height: 58rpx;
+}
+
+.bill-info .pay-detail .list {
+  color: #999;
+}
+
+.bill-info .deposit .list {
+  color: #333;
+}
+
+.bill-info .pay-detail .single-price {
+  color: #333;
+}
+
+.bill-info .gift .value text {
+  text-decoration: line-through;
+}
+
+.bill-info .deposit .total-deposit, .bill-info .deposit .guarantee-way {
+  color: #999;
+}
+
+.bill-info .title {
+  width: 55%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.bill-info .list text {
+  display: inline-block;
+}
+
+.bill-info .list image {
+  display: inline-block;
+  vertical-align: middle;
+  width: 32rpx;
+  height: 32rpx;
+  margin-left: 8rpx;
+  margin-top: -2rpx;
+}
+
+.bill-info .list .rmb {
+  display: inline-block;
+  font-size: 20rpx;
+}
+.credit-amount {
+  color: #999;
+}
+.mr-10 {
+  margin-right: 10rpx;
+}
+.actual-amount {
+  color: #f00;
+}
+
+.bill-info .cut {
+  display: inline-block;
+  font-size: 25rpx;
+}
+
+.bill-info .pay-detail .remind {
+  width: 100%;
+  height: 34rpx;
+  font-size: 24rpx;
+  color: #999;
+  line-height: 34rpx;
+}
+
+.bill-info .devide-line {
+  width: 100%;
+  height: 2px;
+  background-color: #f7f7f7;
+}
+
+/* 订单信息 */
+
+.order-mess {
+  width: 100%;
+  height: 210rpx;
+  background-color: #fff;
+  padding: 40rpx 30rpx;
+  box-sizing: border-box;
+}
+
+.order-mess .list {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  font-size: 28rpx;
+  color: #999;
+  line-height: 1;
+  margin-bottom: 30rpx;
+}
+
+.order-mess .list:last-of-type {
+  margin-bottom: 0;
+}
+
+/* 底部 */
+
+.bottom {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 3;
+  width: 100%;
+  height: 101rpx;
+  background-color: #fff;
+}
+
+.bottom .line {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 4;
+  width: 200%;
+  height: 1px;
+  background-color: #ddd;
+  transform: scale(.5);
+  margin-left: -50%;
+}
+
+.bottom .wrapper {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 0 30rpx 0;
+  box-sizing: border-box;
+}
+
+.bottom .wrapper button {
+  border: 0;
+  outline: 0;
+  width: 160rpx;
+  height: 48rpx;
+  border-radius: 24rpx;
+  font-size: 24rpx;
+  line-height: 48rpx;
+  margin-right: 24rpx;
+}
+
+.bottom .wrapper button:last-of-type {
+  margin-right: 0;
+}
+
+.bottom .wrapper .green {
+  border: 1px solid #00ac91;
+  color: #00ac91;
+}
+
+.bottom .wrapper .green:active {
+  color: #03a68c;
+  border-color: #03a68c;
+}
+
+.bottom .wrapper .red {
+  border: 1px solid rgb(255, 72, 77);
+  color: rgb(255, 72, 77);
+}
+
+.bottom .wrapper .red:active {
+  color: rgb(255, 72, 77);
+  border-color: rgb(255, 72, 77);
+}
+
+.bottom .wrapper .fill {
+  background: linear-gradient(to right, rgb(255, 72, 77), rgb(255, 129, 85));
+  color: #fff;
+}
+
+.bottom .wrapper .fill:active {
+  background-color: #03a68c;
+}
+
+.bottom .wrapper .gray {
+  border: 1px solid #999;
+  color: #999;
+}
+
+.bottom .wrapper .gray:active {
+  color: #777;
+  border-color: #777;
+}
+
+.bottom .wrapper form {
+  margin-left: 20rpx;
+}
+
+/* 弹出层 */
+
+.cover {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 9;
+  width: 100%;
+  height: 100%;
+}
+
+.cover .shadow {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .5);
+  opacity: 0;
+}
+
+.cover .layer {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 11;
+  width: 100%;
+  transform: scale(.8);
+  transform: translateZ(100);
+  opacity: 0;
+}
+
+/* 赠送意外保障、支付宝免密支付说明、支付宝资金授权 */
+
+.layer .module .des {
+  width: 72%;
+  padding: 59rpx 60rpx 0;
+  background-color: #fff;
+  border-radius: 20rpx;
+  margin: 0 auto;
+  margin-top: 40%;
+  box-sizing: border-box;
+  padding-bottom: 50rpx;
+}
+
+.layer .module .title {
+  font-size: 32rpx;
+  color: #000;
+  line-height: 1;
+  text-align: center;
+  margin-bottom: 20rpx;
+}
+
+.layer .module .content {
+  font-size: 26rpx;
+  color: #666;
+  line-height: 40rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: rgba(102, 102, 102, 1);
+}
+
+.layer .close {
+  padding-top: 40rpx;
+  text-align: center;
+}
+
+.layer .close image {
+  width: 64rpx;
+  height: 64rpx;
+}
+
+/* 取消订单 */
+
+.layer .cancelOrder {
+  width: 72%;
+  padding-top: 50rpx;
+  background-color: #fff;
+  border-radius: 20rpx;
+  margin: 0 auto;
+  margin-top: 36.4%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.layer .cancelOrder .title {
+  font-size: 32rpx;
+  color: #000;
+  line-height: 1;
+  text-align: center;
+}
+
+.layer .cancelOrder .des {
+  width: 100%;
+  font-size: 28rpx;
+  color: #999;
+  line-height: 1;
+  padding: 20rpx 60rpx 10rpx;
+  box-sizing: border-box;
+}
+
+.layer .cancelOrder .reason {
+  width: 100%;
+  padding: 0 60rpx 28rpx;
+  box-sizing: border-box;
+}
+
+.layer .cancelOrder .reason .list {
+  display: flex;
+  flex-flow: row nowrap;
+  width: 100%;
+  height: 44rpx;
+  font-size: 28rpx;
+  color: #666;
+  line-height: 44rpx;
+  margin-top: 20rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.layer .cancelOrder .reason .list .value {
+  max-width: 84%;
+}
+
+.layer .cancelOrder .reason .list image {
+  width: 44rpx;
+  height: 44rpx;
+  margin-right: 20rpx;
+}
+
+.layer .cancelOrder .btn {
+  position: relative;
+  width: 100%;
+  height: 100rpx;
+}
+
+.layer .cancelOrder .line1 {
+  width: 200%;
+  height: 1px;
+  background-color: #e5e5e5;
+  transform: scale(.5);
+  margin-left: -50%;
+}
+
+.layer .cancelOrder .btn .line2 {
+  position: absolute;
+  left: 50%;
+  top: -50rpx;
+  width: 1px;
+  height: 200%;
+  background-color: #e5e5e5;
+  transform: scale(.5);
+}
+
+.layer .cancelOrder .wrap {
+  display: flex;
+  flex-flow: row nowrap;
+  width: 100%;
+  height: 100%;
+}
+
+.layer .cancelOrder .btn .no, .layer .cancelOrder .btn .yes {
+  width: 50%;
+  font-size: 34rpx;
+  color: #333;
+  line-height: 100rpx;
+  text-align: center;
+}
+
+.layer .cancelOrder .btn .yes {
+  color: #FF584F;
+}
+
+.layer .cancelOrder .btn .no:active, .layer .cancelOrder .btn .yes:active {
+  background-color: #e5e5e5;
+}
+
+.demo-popover {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 400px;
+}
+
+.demo-popover-btn {
+  width: 100px;
+  height: 100px;
+  line-height: 100px;
+  text-align: center;
+  background-color: #fff;
+  border: 1px solid #dddddd;
+  border-radius: 2px;
+}
+
+.demo-popover-test-btns {
+  display: flex;
+  justify-content: space-around;
+}
+
+.am-popover-item {
+  color: #333;
+  height: 64rpx;
+  line-height: 64rpx;
+}
+
+.am-popover-inner {
+  box-shadow: 0px 2px 4px 0px #EEEEEE, 0px -2px 4px 0px #EEEEEE;
+}
+
+.demo-popover-test-btn {
+  width: 45%;
+}
+
+.popover_view {
+  width: 160rpx;
+  height: 48rpx;
+  margin-right: 30rpx;
+  float: right;
+}
+
+.am-popover-item:hover {
+  color: #FF584F;
+}
+
+.popover_view .img_view {
+  height: 48rpx;
+  width: 26rpx;
+  line-height: 48rpx;
+  display: inline-block;
+  margin-left: 15rpx;
+  transform: rotate(180deg)
+}
+
+.img_view image {
+  width: 100%;
+  height: 16rpx;
+}
+
+.check-move {
+  width: 160rpx;
+  height: 48rpx;
+  font-size: 24rpx;
+  color: white;
+  line-height: 48rpx;
+  text-align: center;
+  border: 0px solid #FF584F;
+  border-radius: 24rpx;
+  margin-top: 0rpx;
+  margin-right: 30rpx;
+  background: linear-gradient(90deg, rgb(255, 129, 85) 0%, rgb(255, 72, 77) 100%);
+}
+
+.redyouhui {
+  color: #FF584F;
+}
+
+.cover1 {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 9;
+  width: 100%;
+  overflow: hidden;
+  height: 100%;
+}
+
+.cover1 .shadow {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .65);
+  opacity: 0.5;
+}
+
+.cover1 .layer {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 11;
+  width: 100%;
+  height: 100%;
+  transform: translateZ(100);
+  opacity: 1;
+}
+
+.cover1 .layer .notReceive, .cover1 .layer .hasReceived {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  position: relative;
+}
+
+/* {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+} */
+
+.cover1 .layer .notReceive .img1, .cover1 .layer .hasReceived .img1 {
+  width: 100%;
+  /* margin-top: 167rpx; */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* width: 5.52rem;
+	height: 6.6rem;
+	margin-top: 1.67rem; */
+}
+
+.cover1 .layer .notReceive .img2 {
+  width: 420rpx;
+}
+
+.cover1 .layer .notReceive .close, .cover1 .layer .hasReceived .close {
+  position: absolute;
+  right: 2rpx;
+  top: 0 !important;
+  width: 74rpx;
+  height: 74rpx;
+}
+
+/* .cover .layer .hasReceived .img1{
+  width: 552rpx;
+	height: 660rpx;
+} */
+
+.cover1 .layer .hasReceived .img2 {
+  position: absolute;
+  left: 50%;
+  top: 770rpx;
+  width: 420rpx;
+  margin-left: -210rpx;
+}
+
+.Collectionhide {
+  transform: translate(800);
+  display: none;
+}
+
+.Collectionshow {
+  transition: translate(800);
+  display: block;
+}
+
+.cover1 .layer .module .des {
+  width: 72%;
+  height: 490rpx;
+  padding: 0rpx 40rpx;
+  background-color: #fff;
+  border-radius: 20rpx;
+  margin: 0 auto;
+  margin-top: 40%;
+  box-sizing: border-box;
+}
+
+.cover1 .layer .module .des .content {
+  height: 175rpx;
+  padding-top: 50rpx;
+}
+
+.kefu .content contact-button {
+  opacity: 0.001;
+  width: 70%;
+  position: absolute;
+}
+
+.cover1 .layer .module .des .content .ms_view .ms_view {
+  float: left;
+}
+
+/* .cover1 .layer .module .des .content .ms_view .title_text {
+  color: #333333;
+  font-size: 32rpx;
+  display: block;
+} */
+
+.cover1 .layer .module .des .content .ms_view .ms_text {
+  color: #999999;
+  font-size: 24rpx;
+}
+
+.cover1 .layer .module .des .content .ms_view .title_text .btn {
+  float: right;
+  color: #999999;
+  font-size: 22rpx;
+  border-radius: 16rpx;
+  border: 1px solid #999999;
+  height: 32rpx;
+  width: 118rpx;
+  text-align: center;
+  height: 0.32rem;
+  line-height: 28rpx;
+}
+
+.cover1 .layer .module .title {
+  font-size: 32rpx;
+  color: #000;
+  line-height: 1;
+  text-align: center;
+  margin-bottom: 20rpx;
+}
+
+.cover1 .layer .module .content {
+  font-size: 26rpx;
+  color: #666;
+  line-height: 40rpx;
+}
+
+.cover1 .layer .close {
+  padding-top: 40rpx;
+  text-align: center;
+}
+
+.cover1 .layer .close image {
+  width: 64rpx;
+  height: 64rpx;
+}
+
+.line {
+  color: #DDDDDD;
+  height: 2rpx;
+  background-color: #DDDDDD;
+}
+
+.content_text {
+  padding-top: 48rpx;
+  text-align: center;
+  font-size: 28rpx;
+  margin-bottom: 25rpx;
+}
+
+.kefu .content .kf_itemimg {
+  width: 86rpx;
+  height: 86rpx;
+  float: left;
+}
+
+.kefu .content .ms_view {
+  width: 350rpx;
+  float: right;
+}
+
+.kefu .content {
+  height: auto !important;
+  line-height: inherit !important;
+  clear: both;
+  padding-top: 42rpx !important;
+}
+
+.kefu .content .ms_view .ms_text {
+  padding-right: 29rpx;
+  font-size: 24rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: rgba(136, 136, 136, 1);
+  height: 55rpx;
+  display: flex;
+  align-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 17rpx;
+}
+
+.kefu .content .ms_view .mss_text {
+  padding-right: 29rpx;
+  font-size: 24rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: rgba(136, 136, 136, 1);
+  height: 23rpx !important;
+  display: flex;
+  align-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 17rpx;
+}
+
+.kefu .content .ms_view .ms_text text {
+  height: 24rpx;
+  line-height: 24rpx;
+}
+
+.kefu .content .ms_view .title_text {
+  font-size: 32rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: rgba(51, 51, 51, 1);
+  height: 31rpx;
+  display: flex;
+  align-items: center;
+  margin-top: 6rpx;
+}
+
+.mss_view {
+  line-height: 30rpx;
+}
+
+.kefu .content .ms_view .title_text image {
+  width: 16rpx;
+  height: 26rpx;
+  margin-left: 20rpx;
+}
+
+.kefu .content .ms_view .line_img {
+  width: 100%;
+  display: flex;
+  margin-top: 43rpx;
+}
+
+.kefu .content .ms_view .line_img image {
+  width: 100%;
+}
+.nolist_img {
+  text-align: center
+}

@@ -1,0 +1,126 @@
+<view class="order" style="padding-top: 90rpx;">
+  <view class="page-section-demo">
+    <scroll-view class="scroll-view_H" scroll-left="{{tabscroll_left}}" scroll-x="{{true}}" scroll-into-view="{{toView}}">
+      <view class="scroll-view-item_H {{item.checked}}" a:for="{{tabs}}" key="tabs{{index}}" onTap="clickTabs" data-id="{{index}}">
+				{{item.cate_name}}
+        <view a:if="{{item.checked != ''}}" class="line"></view>
+      </view>
+    </scroll-view>
+  </view>
+  <!-- tab栏切换的内容 -->
+  <view id="order-list">
+    <view class="tab-content">
+      <view class="nolist_img" a:if="{{order_data.length<=0}}">
+        <image mode="aspectFit" src="/image/nolist.png" />
+        <view class="nolist_view">
+            目前暂无订单
+        </view>
+      </view>
+      <block a:for="{{order_data}}">
+        <view class="order-item {{ order_data.length == index+1 ? 'nomb' : '' }} {{ item.order_status > 4 ? 'nopb' : '' }}">
+          <view class="title-bar">
+            <text class="create-time numStyle">
+								{{item.create_time}}
+            </text>
+            <text class="state">{{item.order_status == 1?'待付款':item.order_status==2?'待发货':item.order_status==3?'待收货':item.order_status==4?'已完成':'已取消'}}</text>
+            <view class="line"></view>
+          </view>
+          <view class="goods-des" data-goodsid="{{item.goods_id}}" data-orderid="{{item.order_id}}" data-entry="{{item.entry}}" onTap="orderDetail">
+            <view class="goods-img" data-goods_id="{{item.goods_id}}" data-orderId="{{item.order_id}}">
+              <image class="pic" src="{{imgUrl+item.goods_img}}" mode="scaleToFill" />
+            </view>
+            <view class="content" data-goodsid="{{item.goods_id}}" data-orderid="{{item.order_id}}" data-entry="{{item.entry}}">
+              <view class="goods-name">{{item.goods_name}}</view>
+              <view class="goods-parms">
+                <view>
+                  套餐：{{item.attr}}
+                </view>
+                <view>
+                  价格：￥{{item.type===2?"0.10":item.original_price}}
+                </view>
+                <view>
+                  数量：{{item.quantity}}
+                </view>
+              </view>
+            </view>
+          </view>
+          <view class="price-info">
+            <view a:if="{{item.type!==2}}">
+              <text>总价</text>
+              <text class="size20">￥</text>
+              <text>{{ item.original_price.split('.')[0] }}</text>
+              <text class="size20">.{{ item.original_price.split('.')[1] }}</text>，
+            </view>
+            <view class="ml20" data-entry="{{item.entry}}" a:if="{{item.type!==2}}">
+              <text a:if="{{ item.entry == 1 || item.entry == 2 }}">优惠
+                <text class="size20">¥</text>{{ item.discount_price.split('.')[0] }}</text>
+              <text a:else>优惠
+                <text class="size20">¥</text>0.
+                <text class="size22">00</text></text>
+              <text class="size22" a:if="{{ item.entry == 1 || item.entry == 2 }}">.{{ item.discount_price.split('.')[1] }}</text>
+            </view>
+            <view class="ml20 col333">
+              <text>需付款</text>
+              <text class="size20">￥</text>
+              <text>{{ item.pay_price.split('.')[0] }}</text>
+              <text class="size20">.{{ item.pay_price.split('.')[1] }}</text>
+            </view>
+          </view>
+          <view class="operation">
+            <button type="default" data-orderId="{{item.order_id}}" onTap="cancelOrder" class="check-order" a:if="{{ item.order_status == 1 }}">
+              取消订单
+            </button>
+            <button type="default" disabled="{{ btn_disabled }}" a:if="{{item.order_status==1}}" data-entry="{{ item.entry }}" data-orderId="{{item.order_id}}" onTap="payment" hover-class="none" class="check-order bg-active">
+              去付款
+            </button>
+            <view class="service" a:if="{{item.order_status==2}}">
+              <contact-button tnt-inst-id="{{appInfo.globalData.goodDetail.kf.tntInstId}}" scene="{{appInfo.globalData.goodDetail.kf.scene}}" color="#fff" size="48"></contact-button>
+              <button type="default" data-orderId="{{item.order_id}}" onTap="" hover-class="none" class="check-order">
+                联系客服
+              </button>
+            </view>
+            <button type="default" a:if="{{(item.order_status==3 || item.order_status==4) && item.type == 1}}" data-orderId="{{item.order_id}}" onTap="goExpress" hover-class="none" class="check-order">
+              查看物流
+            </button>
+            <button type="default" onTap="confirmGoods" data-orderId="{{item.order_id}}" class="check-order bg-active" a:if="{{item.order_status==3}}">
+              确认收货
+            </button>
+          </view>
+        </view>
+      </block>
+      <block a:if="{{ loadData.page == loadData.last_page }}">
+        <image class="hot-img" mode="widthFix" src="/image/recomend.png"/>
+        <view class="hot-lists">
+          <view a:for="{{ recommend }}" key="recommend{{index}}" class="hot-item {{ index % 2 == 0 ? 'mr20' : '' }}">
+            <navigator url="/page/buynow/buynow?goods_id={{item.id}}&entry={{item.entry}}">
+              <image mode="scaleToFill" src="{{ imgUrl+item.goods_img }}"/>
+              <text class="hot-info" number-of-lines="2">{{ item.goods_name }}</text>
+              <view class="hot-price">
+                <text class="size22">¥</text>
+                <text>{{ item.original_price.split('.')[0] }}</text>
+                <text class="size22">.{{ item.original_price.split('.')[1] }}</text>
+              </view>
+            </navigator>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+</view>
+<!-- 取消订单弹框 -->
+<view>
+  <modal className="cancel-model" show="{{cancelModel}}" onButtonClick="cancelOrderBtnsHander" buttons="{{cancelModelBtns}}">
+    <view slot="header">
+      取消原因
+    </view>
+    <radio-group class="radio-group" onChange="radioChange" name="lib">
+      <label class="radio" a:for="{{items}}" key="label-{{index}}">
+        <radio color="#FF584F" value="{{item.name}}" checked="{{item.checked}}" disabled="{{item.disabled}}" />
+        <text class="radio-text">{{item.value}}</text>
+      </label>
+    </radio-group>
+  </modal>
+</view>
+<!-- 返回顶部按钮 -->
+<!-- 父组件传值给子组件，子组件调用父组件中的方法 -->
+<to-top showBtn="{{show_toTop_btn}}" onTopBtn="toTop"></to-top>

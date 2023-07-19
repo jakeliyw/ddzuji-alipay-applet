@@ -1,0 +1,134 @@
+.exclusive {
+  padding: 30rpx;
+}
+
+.exclusive-head {
+  font-size: 34rpx;
+  font-family: PingFang SC-Heavy, PingFang SC;
+  font-weight: 800;
+  color: #000000;
+  margin-bottom: 20rpx;
+}
+
+.goods-list {
+  position: relative;
+}
+
+.title-view {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12rpx;
+}
+
+.title-hover {
+  color: #FF584F;
+}
+
+.title-view .title {
+  width: 160rpx;
+  height: 68rpx;
+  line-height: 68rpx;
+  text-align: center;
+  font-size: 28rpx;
+  border-radius: 34rpx;
+  background-color: #F2F2F2;
+}
+
+.title-hover {
+  background-color: #FFE6E5 !important;
+}
+
+.goods-view {
+  width: 690rpx;
+  height: 432rpx;
+  background-size: 100%;
+  padding: 30rpx;
+}
+
+.goods-head {
+  font-size: 26rpx;
+  color: white;
+  margin: 36rpx 10rpx;
+}
+
+.goods-group {
+  display: flex;
+  justify-content: space-between;
+  font-size: 24rpx;
+}
+
+.goods-img {
+  width: 196rpx;
+  height: 196rpx;
+  background-color: white;
+  border-radius: 10rpx;
+  padding: 10rpx;
+  margin-bottom: 8rpx;
+}
+
+.goods-img image {
+  width: 176rpx;
+  height: 176rpx;
+}
+
+.goods-name {
+  width: 196rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: rgba(51, 51, 51, 1);
+}
+
+.price {
+  color: #FF584F;
+  font-size: 22rpx;
+  margin-top: 10rpx;
+}
+
+.price .price-big {
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  font-size: 30rpx;
+  margin-top: 20rpx;
+}
+
+.recently_e {
+  width: 98rpx;
+  height: 34rpx;
+  background: linear-gradient(90deg, rgba(255, 84, 130, 1) 0%, rgba(255, 183, 183, 1) 100%);
+  border-radius: 0px 17rpx 17rpx 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 10rpx;
+}
+
+.recently_e .text {
+  font-size: 20rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 1);
+}
+
+.recently_r {
+  width: 98rpx;
+  height: 34rpx;
+  background: linear-gradient(90deg, rgba(255, 84, 130, 1) 0%, rgba(255, 183, 183, 1) 100%);
+  border-radius: 0px 17rpx 17rpx 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 5rpx;
+}
+
+.recently_r .text {
+  font-size: 20rpx !important;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 1) !important;
+}

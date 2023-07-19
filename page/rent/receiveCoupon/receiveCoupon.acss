@@ -1,0 +1,234 @@
+.receive_view {
+  background: #FCF4E7 url("/2020081816504167997.png") no-repeat;
+  background-size: 100%;
+  min-height: 540rpx;
+  width: 100%;
+}
+
+.coupon_view {
+  padding: 10rpx 30rpx 170rpx 30rpx;
+}
+
+.coupon_view .coupon_explain {
+  font-size: 24rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #999999;
+  line-height: 36rpx;
+  background: #FFFFFF;
+  border-radius: 0px 0px 20rpx 20rpx;
+  margin-top: -35rpx;
+  padding: 65rpx 30rpx 30rpx 30rpx;
+}
+
+.coupon_view .coupon_item {
+  /* background: url('/image/coupon_item.png') 0% 0% / 100% 100%; */
+  background-color: #FFFFFF;
+  border-radius: 20rpx;
+  width: 100%;
+  height: 196rpx;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20rpx;
+  position: relative;
+  overflow: hidden;
+  box-shadow:1rpx 1rpx 24rpx 0rpx rgba(252,244,231,1);
+}
+
+.coupon_view .move_rule {
+  border-radius: 20rpx 20rpx 0px 0px;
+  box-shadow: 0px 1rpx 24rpx 0px rgba(237, 237, 237, 1);
+  /* background: url('/image/coupon_item1.png') 0% 0% / 100% 100%; */
+}
+
+.coupon_view .coupon_item .coupon_item_left {
+  width: 180rpx;
+  height: 166rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.coupon_view .coupon_item .coupon_item_left .coupon_type1 {
+  color: #FF584F;
+  text-align: center;
+  width: 100%;
+}
+
+.coupon_view .coupon_item .coupon_item_left .coupon_type1 .unit {
+  font-size: 30rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+}
+
+.coupon_view .coupon_item .coupon_item_left .coupon_type1 .num {
+  font-size: 68rpx;
+  font-family: PingFang SC;
+  font-weight: 600;
+}
+
+.coupon_view .coupon_item .coupon_item_left .coupon_type2 {
+  color: #FF584F;
+  text-align: center;
+  width: 100%;
+}
+
+.coupon_view .coupon_item .coupon_item_left .coupon_type2 .unit {
+  font-size: 68rpx;
+  font-family: PingFang SC;
+  font-weight: 600;
+}
+
+.coupon_view .coupon_item .coupon_item_left .coupon_type2 .num {
+  font-size: 40rpx;
+  font-family: PingFang SC;
+  font-weight: 600;
+}
+
+.coupon_view .coupon_item .coupon_item_left .coupon_type3 {
+  color: #FF584F;
+  text-align: center;
+  width: 100%;
+}
+
+.coupon_view .coupon_item .coupon_item_left .coupon_type3 .unit {
+  font-size: 66rpx;
+  font-family: PingFang SC;
+  font-weight: 600;
+}
+
+.coupon_view .coupon_item .coupon_item_left .coupon_type4 {
+  color: #FF584F;
+  text-align: center;
+  width: 100%;
+}
+
+.coupon_view .coupon_item .coupon_item_left .coupon_type4 .unit {
+  font-size: 68rpx;
+  font-family: PingFang SC;
+  font-weight: 600;
+}
+
+.coupon_view .coupon_item .coupon_item_left .coupon_type4 .first {
+  font-size: 24rpx;
+  font-family: PingFang SC;
+  font-weight: 600;
+}
+
+.coupon_view .coupon_item .coupon_item_left .coupon_type4 .num {
+  font-size: 40rpx;
+  font-family: PingFang SC;
+  font-weight: 600;
+}
+
+.coupon_view .coupon_item .coupon_item_center {
+  width: 334rpx;
+  height: 166rpx;
+}
+
+.coupon_view .coupon_item .coupon_item_center .item_center_top {
+  font-size: 26rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #010101;
+  margin-top: 27rpx;
+  width: 100%;
+  overflow: hidden;
+}
+
+.coupon_view .coupon_item .coupon_item_center .item_center_center {
+  font-size: 22rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #999999;
+  margin-top: 15rpx;
+}
+
+.coupon_view .coupon_item .coupon_item_center .item_center_bottom {
+  font-size: 22rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #999999;
+  margin-top: 20rpx;
+  display: flex;
+  align-items: center;
+}
+
+.coupon_view .coupon_item .coupon_item_center .item_center_bottom .text {
+  height: 22rpx;
+  display: inline-block;
+}
+
+.coupon_view .move_rule .coupon_item_center .item_center_bottom image {
+  transform: scaleY(-1);
+}
+
+.coupon_view .coupon_item .coupon_item_center .item_center_bottom image {
+  width: 22rpx;
+  height: 22rpx;
+  margin-left: 10rpx;
+  display: inline-block;
+}
+
+.coupon_view .coupon_item .coupon_item_right {
+  width: 175rpx;
+  height: 166rpx;
+  font-size: 30rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: red;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.coupon_view .coupon_item .coupon_item_right .receive_yes {
+  width: 132rpx;
+  height: 53rpx;
+  border: 1px solid rgba(255, 88, 79, 1);
+  border-radius: 27px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: rgba(255, 88, 79, 1);
+}
+
+.coupon_view .coupon_item .coupon_item_right .receive_no {
+  width: 132rpx;
+  height: 53rpx;
+  background: linear-gradient(90deg, rgba(255, 129, 85, 1) 0%, rgba(255, 72, 77, 1) 100%);
+  border-radius: 27rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 1);
+}
+
+.c_view {
+  position: relative;
+  overflow: hidden;
+}
+
+.usd_img {
+  width: 130rpx;
+  height: 130rpx;
+  position: absolute;
+  right: -15rpx;
+  top: -30rpx;
+}
+.title_img{
+  width: 411rpx;
+  height: 143rpx;
+  margin-left: 170rpx;
+  margin-top: 30rpx;
+}
+.coupon_item_right .text{
+  height: 25rpx;
+}

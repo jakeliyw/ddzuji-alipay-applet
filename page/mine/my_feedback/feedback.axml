@@ -1,0 +1,33 @@
+<view>
+	<!-- 申诉反馈 -->
+	<view class="feedback">
+		 <view class="ta">
+			 <textarea placeholder="客官，请详细反馈问题～" placeholder-class="placeHolder" onInput="bindTextArea" />
+		 </view>
+		 <view class="inputTel">
+				<view class="fl"> 联系电话：</view>
+			 <input type="number" placeholder="请输入您的手机号" max="11" placeholder-class="placeHolder" onConfirm="submit" onInput="bindKeyInput"/>
+		 </view>
+		 <view class="subbtn" onTap="submit" style="{{state==1?'opacity:1':''}}">提交</view>
+	</view>
+</view>
+
+
+<view a:if="{{isfeedback}}" class="cover">
+  <view class="shadow"></view>
+  <view class="layer">
+    <view class="free-payment module">
+      <view class="des kefu tousu">
+          <view class="title">
+						感谢您的反馈！
+					</view>
+					<view class="title1">
+						我们会第一时间联系您～
+					</view>
+					<view class="btn" onTap="back">
+						我知道了
+					</view>
+      </view>
+    </view>
+  </view>
+</view>

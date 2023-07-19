@@ -1,0 +1,12 @@
+{
+  "defaultTitle": "商品详情",
+  "pullRefresh": false,
+  "usingComponents": {
+    "to-top": "/components/to_top/to_top",
+    "popup": "antd-mini/es/Popup/index",
+    "recommend": "/components/recommend/recommend",
+    "exclusive": "/components/exclusive/exclusive",
+    "get-coupon": "plugin://couponPlugin/get-coupon",
+    "badge": "antd-mini/es/Badge/index"
+  }
+}

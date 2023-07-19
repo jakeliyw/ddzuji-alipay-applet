@@ -1,0 +1,316 @@
+.order {
+  width: 100%;
+  background-color: #fff;
+  overflow: hidden;
+}
+
+.tab-content {
+  background-color: #f7f7f7;
+}
+
+.order .am-tabs-bar-tab {
+  width: 50%;
+  margin-left: 0rpx;
+}
+
+.tab-content {
+  overflow: auto;
+}
+
+.order .am-tabs-bar {
+  border-bottom-width: 0rpx;
+}
+
+/* 优惠券 */
+
+.card-con {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+.card-con .item {
+  width: 690rpx;
+  height: 140rpx;
+  margin: 20rpx auto;
+  background-size: 100% 100%;
+  display: flex;
+  flex-direction: row;
+  background-repeat: no-repeat;
+}
+
+.overdue .price {
+  color: #777777 !important;
+}
+
+.used .price {
+  color: #777777 !important;
+}
+
+.card-con .item .price {
+  line-height: 140rpx;
+  font-size: 28rpx;
+  color: #FF584F;
+  font-weight: 600;
+  width: 152rpx;
+  text-align: center;
+}
+
+.card-con .item .price text {
+  font-size: 56rpx;
+}
+
+.card-con .item .con {
+  padding-left: 40rpx;
+}
+
+.card-con .item .con .f28 {
+  font-size: 28rpx;
+  color: rgba(1, 1, 1, 1);
+  margin: 15rpx 0rpx 12rpx;
+}
+
+.card-con .item .con .f24 {
+  font-size: 24rpx;
+  color: #333;
+  margin-bottom: 12rpx;
+}
+
+.card-con .item .con .f22 {
+  font-size: 22rpx;
+  color: #777;
+}
+
+.nolist_img {
+  width: 100%;
+  text-align: center;
+}
+
+.nolist_img image {
+  width: 350rpx;
+  height: 350rpx;
+  margin: auto;
+}
+
+.nolist_view {
+  color: #666666;
+}
+
+.coupon_view {
+  padding: 10rpx 30rpx 170rpx 30rpx;
+}
+
+.coupon_view .coupon_explain {
+  font-size: 24rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #999999;
+  line-height: 36rpx;
+  background: #FFFFFF;
+  border-radius: 0px 0px 20rpx 20rpx;
+  margin-top: -35rpx;
+  padding: 65rpx 30rpx 30rpx 30rpx;
+}
+
+.coupon_view .coupon_item {
+  /* background: url('/image/coupon_item.png') 0% 0% / 100% 100%; */
+  background-color: #FFFFFF;
+  border-radius: 20rpx;
+  width: 100%;
+  height: 166rpx;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20rpx;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0px 1px 24px 0px rgba(237, 237, 237, 1);
+}
+
+.coupon_view .move_rule {
+  border-radius: 20rpx 20rpx 0px 0px;
+  box-shadow: 0px 1rpx 24rpx 0px rgba(237, 237, 237, 1);
+  /* background: url('/image/coupon_item1.png') 0% 0% / 100% 100%; */
+}
+
+.coupon_view .coupon_item .coupon_item_left {
+  width: 180rpx;
+  height: 166rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.coupon_view .coupon_item .coupon_item_left .coupon_type1 {
+  color: #FF584F;
+  text-align: center;
+  width: 100%;
+}
+
+.coupon_view .coupon_item .coupon_item_left .coupon_type1 .unit {
+  font-size: 30rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+}
+
+.coupon_view .coupon_item .coupon_item_left .coupon_type1 .num {
+  font-size: 68rpx;
+  font-family: PingFang SC;
+  font-weight: 600;
+}
+
+.coupon_view .coupon_item .coupon_item_left .coupon_type2 {
+  color: #FF584F;
+  text-align: center;
+  width: 100%;
+}
+
+.coupon_view .coupon_item .coupon_item_left .coupon_type2 .unit {
+  font-size: 68rpx;
+  font-family: PingFang SC;
+  font-weight: 600;
+}
+
+.coupon_view .coupon_item .coupon_item_left .coupon_type2 .num {
+  font-size: 40rpx;
+  font-family: PingFang SC;
+  font-weight: 600;
+}
+
+.coupon_view .coupon_item .coupon_item_left .coupon_type3 {
+  color: #FF584F;
+  text-align: center;
+  width: 100%;
+}
+
+.coupon_view .coupon_item .coupon_item_left .coupon_type3 .unit {
+  font-size: 66rpx;
+  font-family: PingFang SC;
+  font-weight: 600;
+}
+
+.coupon_view .coupon_item .coupon_item_left .coupon_type4 {
+  color: #FF584F;
+  text-align: center;
+  width: 100%;
+}
+
+.coupon_view .coupon_item .coupon_item_left .coupon_type4 .unit {
+  font-size: 68rpx;
+  font-family: PingFang SC;
+  font-weight: 600;
+}
+
+.coupon_view .coupon_item .coupon_item_left .coupon_type4 .first {
+  font-size: 24rpx;
+  font-family: PingFang SC;
+  font-weight: 600;
+}
+
+.coupon_view .coupon_item .coupon_item_left .coupon_type4 .num {
+  font-size: 40rpx;
+  font-family: PingFang SC;
+  font-weight: 600;
+}
+
+.coupon_view .coupon_item .coupon_item_center {
+  width: 334rpx;
+  height: 166rpx;
+}
+
+.coupon_view .coupon_item .coupon_item_center .item_center_top {
+  font-size: 26rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #010101;
+  margin-top: 27rpx;
+  width: 100%;
+  overflow: hidden;
+}
+
+.coupon_view .coupon_item .coupon_item_center .item_center_center {
+  font-size: 22rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #999999;
+  margin-top: 15rpx;
+}
+
+.coupon_view .coupon_item .coupon_item_center .item_center_bottom {
+  font-size: 22rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #999999;
+  margin-top: 20rpx;
+  display: flex;
+  align-items: center;
+}
+
+.coupon_view .coupon_item .coupon_item_center .item_center_bottom .text {
+  height: 22rpx;
+  display: inline-block;
+}
+
+.coupon_view .move_rule .coupon_item_center .item_center_bottom image {
+  transform: scaleY(-1);
+}
+
+.coupon_view .coupon_item .coupon_item_center .item_center_bottom image {
+  width: 22rpx;
+  height: 22rpx;
+  margin-left: 10rpx;
+  display: inline-block;
+}
+
+.coupon_view .coupon_item .coupon_item_right {
+  width: 175rpx;
+  height: 166rpx;
+  font-size: 30rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.c_view {
+  position: relative;
+  overflow: hidden;
+}
+
+.usd_img {
+  width: 130rpx;
+  height: 130rpx;
+  position: absolute;
+  right: -15rpx;
+  top: -30rpx;
+}
+
+/* 优惠券领取按钮 */
+
+.receive_btn {
+  width: 690rpx;
+  height: 100rpx;
+  background: linear-gradient(90deg, rgba(255, 129, 85, 1) 0%, rgba(255, 72, 77, 1) 100%);
+  border-radius: 20rpx;
+  font-size: 36rpx;
+  font-family: PingFang SC;
+  margin-left: 30rpx;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.receive_btn image {
+  width: 15rpx;
+  height: 26rpx;
+  margin-left: 20rpx;
+}
+.receive_view{
+  position: fixed;
+  bottom: 48rpx;
+}

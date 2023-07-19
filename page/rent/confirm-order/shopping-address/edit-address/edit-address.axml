@@ -1,0 +1,28 @@
+<view>
+  <view class="form-view">
+    <view class="form-row">
+      <view class="form-row-label">联系人：</view>
+      <input class="input" type="text" value="{{address.consignee}}" data-type="consignee" onInput="changeInput" placeholder="请填写真实姓名" />
+    </view>
+    <view class="form-row">
+      <view class="form-row-label">联系电话：</view>
+      <input class="input" type="number" value="{{address.consignee_phone}}" data-type="consignee_phone" onInput="changeInput" placeholder="请填写联系电话" />
+    </view>
+    <view class="form-row" onTap="selectCity">
+      <view class="form-row-label">所在地区：</view>
+      <view class="input input-address" type="text">
+        {{address.region ? address.province + ' ' + address.city + ' ' + address.region : "请选择城市"}}
+      </view>
+    </view>
+    <view class="form-row form-textarea">
+      <view class="form-row-label">详细地址：</view>
+      <textarea class="input" auto-height show-count="{{false}}" data-type="address" onInput="changeInput" value="{{address.address}}" placeholder="如道路、门牌号、小区、单元等" />
+    </view>
+  </view>
+  <view class="switch-item">
+    <view>设置为默认地址</view>
+    <switch checked="{{false}}" disabled="{{canSwitch}}" color="#FF584F" checked="{{address.is_default}}" onChange="changeDefault" />
+  </view>
+  <view class="delete" a:if="{{isEdit}}" onTap="deleteAddress">删除收货地址</view>
+  <view class="submit" onTap="submit">提交</view>
+</view>

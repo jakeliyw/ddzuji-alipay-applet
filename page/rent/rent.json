@@ -1,0 +1,12 @@
+{
+	"defaultTitle": "叮咚租机|预收少 租金低",
+	"pullRefresh": false,
+	"usingComponents": {
+		"kefu": "../../components/kefu/kefu",
+		"to-top": "/components/to_top/to_top",
+		"fixed-top": "/components/fixed_top/fixed_top",
+		"exclusive": "/components/exclusive/exclusive",
+		"goods-list": "/components/goods_list/goods_list",
+		"grid": "antd-mini/es/Grid/index"
+	}
+}

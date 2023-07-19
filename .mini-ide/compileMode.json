@@ -1,0 +1,122 @@
+{
+  "modes": [
+    {
+      "title": "订单详情",
+      "page": "page/mine/myorders/orderdetail/orderdetail",
+      "chInfo": "ch_outerUrl",
+      "pageQuery": "order_id=2022111010493097525148",
+      "query": "",
+      "update": false
+    },
+    {
+      "title": "带sku参数100174",
+      "page": "page/rent/goodsdetail/goodsdetail",
+      "chInfo": "ch_outerUrl",
+      "pageQuery": "id=100154"
+    },
+    {
+      "title": "带sku",
+      "page": "page/rent/rent",
+      "pageQuery": "id=100000&assure_fee=1.00&platform=ddzuji&sku_id=101126&uid=fee261aa-914d-48d5-a13b-7c52ee277135",
+      "update": false
+    },
+    {
+      "title": "sku2",
+      "page": "page/rent/goodsdetail/goodsdetail",
+      "pageQuery": "id=100000&assure_fee=1.00&platform=ddzuji&sku_id=101126&uid=fee261aa-914d-48d5-a13b-7c52ee277135"
+    },
+    {
+      "title": "sku_id=101138",
+      "page": "page/rent/goodsdetail/goodsdetail",
+      "pageQuery": "assure_fee=1.00&id=100000&platform=ddzuji&sku_id=101138&uid=fee261aa-914d-48d5-a13b-7c52ee277135"
+    },
+    {
+      "title": "绿色128G",
+      "page": "page/rent/goodsdetail/goodsdetail",
+      "pageQuery": "assure_fee=1.00&id=100000&platform=ddzuji&sku_id=101138&uid=fee261aa-914d-48d5-a13b-7c52ee277135"
+    },
+    {
+      "title": "sku_id101139",
+      "page": "page/rent/goodsdetail/goodsdetail",
+      "pageQuery": "id=100145"
+    },
+    {
+      "title": "我的订单",
+      "page": "page/rent/order-result/order-result",
+      "chInfo": "ch_outerUrl",
+      "query": "id=1&source=000",
+      "pageQuery": ""
+    },
+    {
+      "title": "我的订单",
+      "page": "page/mine/myorders/myorders",
+      "chInfo": "ch_outerUrl",
+      "pageQuery": "order_id=2021102305052755485751",
+      "query": ""
+    },
+    {
+      "title": "order",
+      "page": "page/buynow/order/order"
+    },
+    {
+      "title": "buynow",
+      "page": "page/buynow/buynow",
+      "pageQuery": "goods_id=100145"
+    },
+    {
+      "title": "资料上传",
+      "page": "page/mine/upload_codeImg/upload_codeImg",
+      "pageQuery": "codeName=倪锐炫&is_financial=0&is_warrant=0&t=0"
+    },
+    {
+      "title": "分类页",
+      "page": "page/rent/sorts/sorts"
+    },
+    {
+      "title": "addAddress",
+      "page": "page/mine/addAddress/addAddress"
+    },
+    {
+      "title": "addressList",
+      "page": "page/mine/addressList/addressList"
+    },
+    {
+      "title": "报错",
+      "page": "page/mine/mybill/mybill"
+    },
+    {
+      "title": "弹窗报错1",
+      "page": "page/rent/order-result/order-result",
+      "pageQuery": "zm_user_id=2"
+    },
+    {
+      "title": "webview",
+      "page": "page/rent/channelH5/channelH5"
+    },
+    {
+      "title": "商品详情",
+      "page": "page/rent/goodsdetail/goodsdetail",
+      "pageQuery": "id=100039"
+    },
+    {
+      "title": "全新手机页面",
+      "page": "page/rent/newProduct/newProduct",
+      "pageQuery": "id=100039"
+    },
+    {
+      "title": "二手机",
+      "page": "page/rent/secondProduct/secondProduct",
+      "pageQuery": "id=100242"
+    },
+    {
+      "title": "首页",
+      "page": "page/rent/rent",
+      "pageQuery": "id=100040"
+    },
+    {
+      "title": "碎屏险",
+      "page": "page/rent/screen_breakage_risk/screen_breakage_risk",
+      "pageQuery": "id=100040"
+    }
+  ]
+}

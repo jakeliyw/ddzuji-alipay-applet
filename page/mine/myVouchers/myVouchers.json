@@ -1,0 +1,8 @@
+{
+  "defaultTitle": "我的优惠券",
+  "pullRefresh": false,
+  "usingComponents": {
+    "tabs": "antd-mini/es/Tabs/index",
+    "tab-content": "antd-mini/es/Tabs/TabItem/index"
+  }
+}

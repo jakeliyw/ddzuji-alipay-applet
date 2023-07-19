@@ -1,0 +1,15 @@
+<view>
+	<!-- 顶部悬浮tab栏 -->
+	<view class="fixed_top_con {{is_fixed ? 'fixed_top_style' : ''}}">
+		<view class="page-section-demo">
+		
+			<scroll-view class="scroll-view_H" scroll-x="{{true}}" style="width: 100%">
+			
+				<view class="scroll-view-item_H {{item.checked ? 'active' : ''}}" a:for="{{fixed_tab_data}}" key="fixedtabdata{{index}}" onTap="bindTap"
+				 data-id="{{index}}" data-cateName="{{item.cate_name}}" data-proId="{{item.cate_id}}">
+					{{item.cate_name}}
+				</view>
+			</scroll-view>
+		</view>
+	</view>
+</view>

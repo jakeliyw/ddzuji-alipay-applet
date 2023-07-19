@@ -1,0 +1,51 @@
+<view class="upload-container">
+  <notice showIcon="{{true}}" enableMarquee="{{true}}" loop="{{true}}">
+    请正确上传真实的本人身份证照片和面部照片
+  </notice>
+  <view class="main-container">
+    <view class="title">
+      请上传本人真实有效的身份证照片
+    </view>
+    <view a:if="{{isSaved && frontfilePath && backfilePath}}" class="sfz-container">
+      <image class="sfz-img" mode="scaleToFill" data-src="{{frontfilePath}}" src="{{frontfilePath}}" onTap="previewImage" />
+      <image class="sfz-img" mode="scaleToFill" data-src="{{backfilePath}}" src="{{backfilePath}}" onTap="previewImage" />
+    </view>
+    <view a:else class="sfz-container">
+      <uploader maxCount="{{1}}" width="152" height="90" onDelete="onDelete" onUpload="uploadFrontfile">
+        <view slot="uploadIcon">
+          <image class="no-img" mode="widthFix" src="/image/upload/sfz_renxiang.png" />
+        </view>
+      </uploader>
+      <uploader maxCount="{{1}}" width="152" height="90" onDelete="onDelete" onUpload="uploadBackfile">
+        <view slot="uploadIcon">
+          <image class="no-img" mode="widthFix" src="/image/upload/sfz_guohui.png" />
+        </view>
+      </uploader>
+    </view>
+    <view class="title">
+      人像识别照片
+    </view>
+    <view a:if="{{isSaved && headfilePath}}">
+      <view class="tips">
+        已成功上传<text class="user-name">{{ codeName }}</text>本人的人像识别图片
+      </view>
+      <image class="head-img" mode="scaleToFill" data-src="{{headfilePath}}" src="{{headfilePath}}" onTap="previewImage" />
+    </view>
+    <view a:else>
+      <view class="tips">
+        请上传<text class="user-name">{{ codeName }}</text>本人的人像识别图片
+      </view>
+      <view class="renxiang-container">
+        <uploader maxCount="{{1}}" width="70" height="90" onDelete="onDelete" onUpload="uploadHeadfile">
+          <view slot="uploadIcon">
+            <image class="no-img" mode="widthFix" src="/image/upload/renlianshibie.png" />
+          </view>
+        </uploader>
+      </view>
+    </view>
+  </view>
+  <view a:if="{{!isSaved}}" class="save-btn {{frontfilePath && backfilePath && headfilePath ? '' : 'disabled'}}" onTap="save" 
+    disabled="{{}}" fill="solid">
+    确认上传
+  </view>
+</view>

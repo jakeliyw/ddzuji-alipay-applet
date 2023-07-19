@@ -1,0 +1,38 @@
+<popup visible={{kefuisShow}}>
+  <view class="kefu-container">
+    <view class="tips">
+      客服在线时间：{{appInfo.globalData.goodDetail.kf.time}}
+    </view>
+    <view class="kefu-main">
+      <view class="phone-kefu" onTap="pingTaiPhone">
+        <image class="kf_itemimg" mode="scaleToFill" src="/image/complaint.png" />
+        <view class="kefu-content">
+          <view class="kefu-title">
+            <text>电话客服</text>
+            <image class="arrow-icon" mode="scaleToFill" src="/image/arrow.png" />
+          </view>
+          <view class="kefu-sub-title">
+            <text>{{ appInfo.globalData.goodDetail.kf.phoneTitle}}</text>
+          </view>
+        </view>
+      </view>
+      <view class="line" />
+      <view class="online-kefu">
+        <contact-button tnt-inst-id="{{appInfo.globalData.goodDetail.kf.tntInstId}}" scene="{{appInfo.globalData.goodDetail.kf.scene}}" color="#fff" size="48"></contact-button>
+        <image class="kf_itemimg" mode="scaleToFill" src="/image/bajiephone.png" />
+        <view class="kefu-content">
+          <view class="kefu-title">
+            <text>在线客服</text>
+            <image class="arrow-icon" mode="scaleToFill" src="/image/arrow.png" />
+          </view>
+          <view class="kefu-sub-title">
+            <text>在线客服实时与您沟通</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="close">
+      <image onTap="closekefu" src="/image/close-btn.png" mode="aspectFit"></image>
+    </view>
+  </view>
+</popup>

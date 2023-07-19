@@ -1,0 +1,51 @@
+page{
+    background-color: #fff;
+    padding: 0 20rpx 30rpx;
+}
+.title{
+    width: 100%;
+    height: 70rpx;
+    font-size: 30rpx;
+    color: #000;
+    font-weight: 600;
+    text-align: center;
+    line-height: 70rpx;
+}
+.weight{
+    font-weight: 600;
+}
+.sj{
+    text-indent:2em;
+}
+.content,.list{
+    font-size: 28rpx;
+    color: #333;
+    line-height: 38rpx;
+}
+.tit{
+    color: #000;
+    font-weight: 600;
+    line-height: 50rpx;
+}
+.list{
+    margin-top: 20rpx;
+}
+.row{
+    display: inline-flex;
+    flex-flow: row,nowrap;
+    width: 100%;
+    margin-top: 30rpx;
+}
+.row .left{
+    width: 50%;
+}
+.row .right{
+    width: 50%;
+}
+.value{
+    padding: 0 10rpx;
+}
+.marginTop{
+    margin-top: 20rpx;
+}
+

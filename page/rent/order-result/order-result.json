@@ -1,0 +1,8 @@
+{
+
+    "defaultTitle": "",
+     "pullRefresh": false,
+    "usingComponents": {
+		"recommend": "/components/recommend/recommend"
+	}
+}

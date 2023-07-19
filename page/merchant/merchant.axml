@@ -1,0 +1,152 @@
+<view class="page_content">
+  <view class="store_view">
+    <view class="store_image">
+      <image mode="scaleToFill" src="{{ (mer_info.mer_logo&&mer_info.mer_logo!='')?imgUrl+mer_info.mer_logo:''}}"/>
+    </view>
+    <view class="store_info">
+      <text class="store_title">{{mer_info.mer_name}}</text>
+
+        <view class="store_guarantee" a:if="{{mer_info.is_security==1}}">
+            <image mode="scaleToFill" src="/image/guarantee.png"/>已缴纳保证金
+          </view>
+          <view class="store_guarantee" a:if="{{mer_info.is_security!=1}}">
+            未缴纳保证金
+          </view>
+      <view class="store_content">
+        <text>在租商品
+          <text class="zaizu_text">{{mer_info.renting}}</text>个</text>
+        <view class="store_line"></view>
+        <text>订单数量{{mer_info.total}}单</text>
+      </view>
+    </view>
+  </view>
+  <view class="type_view">
+    <view class="type_menus">
+      <view a:for="{{cates}}" key="cates{{index}}" data-index="{{index}}" data-id="{{item.cate_id}}" data-type="parent" onTap="cateOnclick" class="menu_item {{index==cateSelectIndex?'active':''}}">
+              {{item.cate_name}}
+      </view>
+    </view>
+  </view>
+  <view class="goodslist_view">
+    <view class="content-list">
+    <goods-list type="0" goods_list="{{goodslist}}" />
+      <!-- <view class="content-item" a:for="{{goodslist}}">
+        <navigator url="../rent/goodsdetail/goodsdetail?id={{item.id}}" hover-class="">
+          <view class="img">
+            <image class="activityicon" a:if="{{item.activity_icon!=null}}"  src="{{(item.activity_icon&&item.activity_icon!='')?imgUrl+item.activity_icon:''}}" lazy-load="true" mode="widthFix" />
+            <image src="{{(item.goods_img&&item.goods_img!='')?imgUrl+item.goods_img:''}}" class="scroll_pro" mode="widthFix" lazy-load="true" />
+            <image a:if="{{item.is_haiwai}}" src="../../image/haiwai.png" class="tip_img" a:if="item.is_haiwai" mode="widthFix" lazy-load="true" />
+          </view>
+           <label a:for="{{item.goods_labels}}" a:for-item="l" a:for-index="i" class="{{i==0?'oneredlabel':''}} {{l=='全新'?'redlabel':'bluelabel'}}">{{l}}</label>
+          <view class="pro_tit_28 single_ellipsis">
+            {{item.goods_name}}
+          </view>
+          <view class="pro_price_28">
+								¥{{item.rent}}/天 
+                <text class="small_qi">起</text>
+            <label>{{item.qzday}}天起租</label>
+          </view>
+        </navigator>
+      </view> -->
+      
+    </view>
+    <view a:if="{{goodslist.length>0}}" class="goodslist_bottom">
+          没有更多了哦～
+    </view>
+  </view>
+  <!-- 底部-->
+  <view class="bottom">
+    <view class="left">
+      <view class="top-line"></view>
+      <view class="innerLeft">
+        <view class="toHome" onTap="showkefu">
+          <view class="img por">
+            <image src="/image/s_kefu.png" mode="aspectFit" />
+          </view>
+          <view class="text">联系客服</view>
+        </view>
+        <view class="toService" data-origin="filter" onTap="showPanel">
+          <view class="img por">
+            <image src="/image/s_fenlei.png" mode="aspectFit" />
+          </view>
+          <view class="text">分类筛选</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="cover" a:if="{{filterHidden}}">
+  <view class="shadow" animation="{{shadowAnimation}}"></view>
+  <view class="panel" animation="{{contentAnimation}}">
+    
+    <view a:if="{{true}}" class="service-panel">
+      <view class="content filtercontent">
+        <view class="page-section-demo">
+          <scroll-view class="scroll-view_H" scroll-x="{{true}}">
+            <view class="scroll-view-item_H {{index==(cateSelectIndex==0?1:cateSelectIndex)?'active':''}}" data-index="{{index}}" data-id="{{item.cate_id}}" data-type="child" onTap="cateOnclick" a:for="{{cates}}" key="cates{{index}}" a:if="{{index!=0}}">
+				          {{item.cate_name}}
+              <view a:if="{{index==(cateSelectIndex==0?1:cateSelectIndex)}}" class="line"></view>
+            </view>
+          </scroll-view>
+        </view>
+        <view class="brand_view">
+          <view class="brand_itme" a:for="{{filterbrand}}" key="filterbrand{{index}}" data-id="{{item.cate_id}}" data-name="{{item.cate_name}}" onTap="brandOnclick">
+            <view a:if="{{item.cate_id==brandSelectId}}" class="active"></view>
+             {{item.cate_name}}
+          </view>
+        </view>
+      </view>
+      <view class="bottom_view">
+        <button class="bottom_red" onTap="filterGoodsList" type="defatlt">确定</button>
+      </view>
+    </view>
+    
+  </view>
+</view>
+<view a:if="{{kefuisShow}}" class="cover">
+  <view class="shadow"></view>
+  <view class="layer">
+    <view class="free-payment module">
+      <view class="des kefu">
+        <view class="content_text">客服在线时间：{{appInfo.globalData.goodDetail.kf.time}}</view>
+        <view class="content" onTap="shangJiaPhone">
+          <image class="kf_itemimg" mode="scaleToFill" src="/image/merphone.png"></image>
+          <view class="ms_view">
+            <view class="title_text">商家客服 <image  mode="scaleToFill" src="/image/arrow.png"></image></view>
+            <view class="ms_text">
+              <text>产品配置 发货、续租、买断、</text>
+              <text>归还、售后、还款等咨询</text>
+            </view>
+            <view class="line_img">
+               <image  mode="widthFix" src="/image/kefuline.png"/>
+            </view>
+          </view>
+        </view>
+
+        <view class="content">
+          <contact-button tnt-inst-id="{{appInfo.globalData.goodDetail.kf.tntInstId}}" scene="{{appInfo.globalData.goodDetail.kf.scene}}" color="#fff" size="48"></contact-button>
+          <image class="kf_itemimg" mode="scaleToFill" src="/image/bajiephone.png"></image>
+          <view class="ms_view">
+            <view class="title_text">在线客服<image  mode="scaleToFill" src="/image/arrow.png"></image></view>
+            <view class=" mss_text">在线客服实时与您沟通</view>
+            <view class="line_img">
+               <image  mode="widthFix" src="/image/kefuline.png"/>
+            </view>
+          </view>
+        </view>
+
+        <view class="content" onTap="pingTaiPhone">
+          <image class="kf_itemimg"  mode="scaleToFill" src="/image/complaint.png"></image>
+          <view class="ms_view">
+            <view class="title_text">投诉反馈<image  mode="scaleToFill" src="/image/arrow.png"></image></view>
+            <view class="mss_text">投诉建议反馈</view>
+          </view>
+        </view>
+
+      </view>
+      <view class="close">
+        <image onTap="closekefu" src="/image/close-btn.png" mode="aspectFit"></image>
+      </view>
+    </view>
+  </view>
+</view>

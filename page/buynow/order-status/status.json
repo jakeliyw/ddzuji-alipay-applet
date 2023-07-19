@@ -1,0 +1,9 @@
+{
+  "defaultTitle": "订单详情",
+  "pullRefresh": false,
+  "usingComponents": {
+    "to-top": "/components/to_top/to_top",
+    "fixed-top": "/components/fixed_top/fixed_top",
+    "modal": "antd-mini/es/Modal/index"
+  }
+}

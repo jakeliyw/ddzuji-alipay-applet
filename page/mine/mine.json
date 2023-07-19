@@ -1,0 +1,8 @@
+{
+  "defaultTitle": "我的",
+  "pullRefresh": true,
+	"usingComponents": {
+    "badge": "antd-mini/es/Badge/index",
+    "recommend": "/components/recommend/recommend"
+  }
+}

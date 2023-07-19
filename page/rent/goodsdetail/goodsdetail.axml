@@ -1,0 +1,1311 @@
+<view a:if="{{goodsDetail&&!noData}}">
+  <!-- 收藏组件 -->
+  <favorite a:if="{{showWhat.is_show_favorite=='yes'&&canUse_favorite}}">收藏小程序，下次使用更便捷</favorite>
+  <view style="width:100%;background:#fff">
+    <lifestyle public-id="2021002130605084" />
+  </view>
+  <!-- 轮播 -->
+  <view class="swiper-top" style="position:relative">
+    <image lazy-load="{{true}}" onTap="tapImage" mode="scaleToFill" src="../../../image/fenxiang.png" style="width:50rpx;height:50rpx;position:absolute;right:40rpx;z-index:9" />
+    <swiper class="banner" onChange="bannerIndex" indicator-dots="{{false}}" indicator-color="rgb(119,119,119)" indicator-active-color="rgb(255,255,255)" 
+      interval="3000" autoplay="{{true}}" circular="{{true}}">
+      <block a:for="{{banner}}">
+        <swiper-item class="item">
+          <image lazy-load="{{true}}" src="{{(item!=''&& item)?imgUrl + item:''}}" mode="aspectFit"></image>
+        </swiper-item>
+      </block>
+    </swiper>
+    <view class="swiper-top-label" onTap="tapShow">
+      <image class="fineness" mode="scaleToFill" src="/image/fineness.png"  />
+      <text>成色</text>
+    </view>
+    <!-- <label a:if="{{banner.length>1}}" class="swiper-top-label">
+      <text>{{current}}</text>
+      /{{banner.length}}
+    </label> -->
+    <view class="zhima-pic">
+      <view class="sesame_avoid_money">
+        <image lazy-load="{{true}}" mode="scaleToFill" src="/image/shuidi.png" style="width:40rpx;height:40rpx;margin-left:20rpx;margin-right:20rpx" />
+        <view class="v1" >
+          芝麻免押金:550分以上即有机会享受押金全免
+        </view>
+      </view>
+      <view class="swiper_page_current" a:if="{{banner.length>1}}">
+        <text class="swiper_page_current_page">{{current}}/{{banner.length}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="billions_subsidy">
+    <image  mode="scaleToFill" src="/image/goodsdetail/subsidy_bg.png" class="subsidy_bg"/>
+    <view class="subsidy_content">
+      <view class="subsidy_price">
+        <view class="price_layout">
+          <view class="text_style">
+            <image mode="scaleToFill" src="/image/goodsdetail/exclusive_price.png" a:if="{{ is_show_exclusive }}" class="exclusive_price_img"/>
+            <text  class="delivery_price" a:else>到手价￥</text>
+            <text class="delivery_number">{{goodsDetail.is_discount === 1 ? goodsDetail.after_discount_rent: goodsDetail.min_price}}</text>
+            /天
+            <view class="total_subsidy">
+              <image  mode="scaleToFill" src="/image/goodsdetail/total_subsidy.png" class="total_subsidy_img"/>
+              <view class="total_subsidy_money">共补贴￥1930</view>
+            </view>
+          </view>
+          <view class="daily_price">
+            日常价
+            <text class="delete-line">￥{{goodsDetail.min_price}} /天</text>
+            <image mode="scaleToFill" src="/image/goodsdetail/daily_icon.png" style="width: 20rpx; height: 20rpx"/>
+          </view>
+        </view>
+      </view>
+      <view class="billions_subsidy_link">
+        <view class="billions_subsidy_layout">
+          <image mode="scaleToFill" src="/image/goodsdetail/billions_subsidy.png" class="billions_subsidy_img"/>
+          <image mode="scaleToFill" src="/image/goodsdetail/billions_subsidy_arrow.png" class="billions_subsidy_arrow"/>
+        </view>
+        <view class="free_shipping">
+          租比买更省 | 包邮
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 详情 -->
+  <view class="goods-introduce por">
+    <!--<button open-type="getAuthorize" onGetAuthorize="onGetAuthorize" onError="onAuthError" scope='phoneNumber'>立即免押</button> -->
+    <view class="{{ goodsDetail.tag_data.length  ? 'header_tag_center' : 'header_tag_end'}}">
+      <view style="flex-grow: 9">
+        <view a:for="{{goodsDetail.tag_data}}" a:key="{{item.id}}" class="characteristic_label" >
+          <view class="text" >{{item.tag_name}}</view>
+        </view>
+      </view>
+      <text class="tenancy" data-origin="frozen" onTap="showEnjoyLayer">已租{{goodsDetail.month_sales}}</text>
+    </view>
+    <view class="goods_header_tag">
+      <view class="{{goodsDetail.goods_label=='全新'?'item_isNew':'item_noNew'}} ">
+        <view class="text" >{{goodsDetail.goods_label}}</view>
+      </view>
+      <text class="goods-name">{{goodsDetail.goods_name}}</text>
+    </view>
+    <view class="line">  
+    </view>
+    <view class="coupon_layout">
+      <view class="coupon_style">
+        <view class="coupon_content">
+          <view class="coupon">优惠卷</view>
+          <view class="coupon_money">{{cou_list[0].voucher_title || '领券下单更优惠'}}</view>
+        </view>
+      </view>
+      <view class="coupon_get">
+        <view class="coupon_receive" a:if="{{ !goodsDetail.is_credit }}"  onTap="tapShows">
+          <text style="margin-right: 8rpx;" >领券</text>
+          <image mode="scaleToFill" src="/image/goodsdetail/receive.png" class="receive_img"
+          style="width:20rpx; height:20rpx"
+          />
+        </view>
+      </view>
+    </view>
+    
+    <!--<view class="share"><image src="/image/get_yhq.png" mode="widthFix" class="yhq" onTap="getVoucher"></image></view> -->
+  </view>
+  <view class="anxin_renting">
+    <view class="anxin_renting_header">
+      <view  class="anxin_renting_header_layout">
+        <image mode="scaleToFill" src="/image/goodsdetail/certified_products.png" class="anxin_renting_img"/>
+        <text>国行正品保障</text>
+      </view>
+      <view class="anxin_renting_header_layout">
+        <image mode="scaleToFill" src="/image/goodsdetail/sesame.png" class="anxin_renting_img"/>
+        <text>芝麻信用合作</text>
+        </view>
+      <view class="anxin_renting_header_layout">
+        <image mode="scaleToFill" src="/image/goodsdetail/empower.png" class="anxin_renting_img"/>
+        <text>品牌官方授权</text>
+      </view>
+    </view>
+    <view class="anxin_renting_layout">
+      <view class="anxin_renting_query" onTap="jumpProduct">
+        <text style="line-height: 41rpx">查看</text>
+        <image mode="scaleToFill" src="/image/goodsdetail/query.png" class="query"/>
+      </view>
+      <image mode="scaleToFill" src="/image/goodsdetail/anxin_renting.png" class="anxin_renting_img"/>
+    </view>
+  </view>
+
+  <!-- 专属推荐 -->
+  <view class="recommend_view">
+    <view class="recommend_line"></view>
+    <exclusive a:if="{{goodsDetail!=''}}" exclusive_list="{{showfavorite}}" background="background" is_index="{{0}}" goods_id="{{goodsDetail.id}}" 
+      cate_pid="{{goodsDetail.cate_pid}}" currentIndex="{{goodsDetail.recommend_check==0?1:goodsDetail.recommend_check-1}}" />
+    
+  </view>
+  <!-- 活动坑位 -->
+  <view a:if="{{activity_banner!=''}}" class="activity-banner">
+    <swiper autoplay="{{true}}" onChange="activitybannerIndex" interval="3000" circular="{{true}}">
+      <block a:for="{{activity_banner}}">
+        <swiper-item class="item">
+          <view onTap="jump_tap" data-jump_type="{{item.jump_type}}" data-app_id="{{item.app_id}}" data-content_url="{{item.content_url}}" 
+            data-telmp_id="{{item.telmp_id}}">
+            <image lazy-load="{{true}}" src="{{(item.img_uri!=''&&item.img_uri)?imgUrl+item.img_uri:''}}" mode="scaleToFill" />
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+    <view class="swiper_dots">
+      <view a:for="{{activity_banner}}" key="banner{{index}}" a:if="{{activity_banner.length>1}}" class="swiper_dots_item {{index==customBannerdotsindex?'active':''}}"></view>
+    </view>
+  </view>
+  <!-- 规格参数 -->
+  <view class="specifications">
+    <view class="service-des por" data-origin="express" onTap="showPanel">
+      <view class="service-items">
+        <view class="item">
+          <view class="item_title">发货</view>
+          <view class="text item_fh">
+            <image lazy-load="{{true}}" mode="scaleToFill" src="/image/mark.png" /> {{goodsDetail.send_address}}
+            <text class='kd'>快递：{{goodsDetail.is_free}}</text></view>
+        </view>
+      </view>
+      <view class="arrow">
+        <image lazy-load="{{true}}" src="/image/arrow.png" mode="aspectFit"></image>
+      </view>
+    </view>
+    <view class="service-des por" a:if="{{data_cou.length>0}}" data-obj="{{data_cou}}" onTap="getVoucher">
+      <view class="service-items">
+        <view class="item">
+          <view class="item_title" style="width:60rpx;">优惠</view>
+          <view class="text quan_text">
+            <view class="coupon_label" a:for="{{data_cou}}" key="yhq{{index}}">
+              <image lazy-load="{{true}}" class="left_b" src="/image/discount.png" mode="widthFix"></image>
+              <view class="content_b">{{item.cou_desc}}</view>
+              <image lazy-load="{{true}}" class="right_b" src="/image/discount.png" mode="widthFix"></image>
+            </view>
+          </view>
+          <text class="receive_text">领券</text>
+        </view>
+      </view>
+      <view class="arrow">
+        <image lazy-load="{{true}}" src="/image/arrow.png" mode="aspectFit"></image>
+      </view>
+    </view>
+    <view class="service-des por" data-origin="service" onTap="showPanel">
+      <view class="service-items parameter_item">
+        <view class="item">
+          <view class="item_title">服务</view>
+          <view class="text fuw">
+            <view class="f" a:for="{{serve}}" key="serve{{index}}">{{index!=0?'·':''}}{{item.service_name}}</view>
+          </view>
+        </view>
+      </view>
+      <view class="arrow">
+        <image lazy-load="{{true}}" src="/image/arrow.png" mode="aspectFit"></image>
+      </view>
+    </view>
+    <view class="service-des por" data-origin="specs" onTap="showPanel">
+      <view class="service-items parameter_item">
+        <view class="item">
+          <view class="item_title">参数</view>
+          <view class="text">
+            <view a:for="{{sku_canshu}}" key="sku{{index}}" class="t">{{item.attr_spec_name}}</view>
+          </view>
+        </view>
+      </view>
+      <view class="arrow">
+        <image lazy-load="{{true}}" src="/image/arrow.png" mode="aspectFit"></image>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 了解租机流程 -->
+  <!-- <view class="process">
+    <view class="tab_view">
+      <view a:for="{{process}}" key="process{{index}}" class="tab_item {{process_selectindex!=index?'':'process_active'}}" 
+        data-index="{{index}}" onTap="tap_process">
+        <view class="image">
+          <image lazy-load="{{true}}" class="zj_img" src="/image/zj_{{process_selectindex!=index?'no_':''}}{{index+1}}.png" mode="widthFix"></image>
+        </view>
+        <view class="text">{{item.name}}</view>
+      </view>
+    </view>
+    <view class="tab_content">
+      <swiper onChange="process_tabIndex" current="{{process_selectindex}}">
+        <block a:for="{{process}}">
+          <swiper-item key="swiper-item-{{index}}">
+            <image  src="/image/zj_c_{{index+1}}.png" mode="widthFix"></image>
+          </swiper-item>
+        </block>
+      </swiper>
+      <view a:if="{{process_selectindex==3}}" class="byout_tap" data-origin="buy_out" onTap="showPanel"></view>
+    </view>
+  </view> -->
+  
+  
+  <!-- 商家信息 -->
+  <view a:if="{{shangJiaInfo.shop_name}}" class="store_view" onTap="{{shangJiaInfo.id==1?'tomer':''}}">
+    <view class="store_image">
+      <image lazy-load="{{true}}" mode="scaleToFill" src="{{(shangJiaInfo.mer_logo!=''&&shangJiaInfo.mer_logo)?imgUrl+shangJiaInfo.mer_logo:''}}"></image>
+    </view>
+    <view class="store_info  {{shangJiaInfo.shop_name.length < 13?'store_infomargin':''}}">
+      <text class="store_title">{{shangJiaInfo.shop_name}}</text>
+      <view class="score_view">
+        <image lazy-load="{{true}}" a:for="{{shangJiaInfo.two}}" key="two{{index}}" src="/image/star_2.png" mode="widthFix"></image>
+        <image lazy-load="{{true}}" a:for="{{shangJiaInfo.one}}" key="one{{index}}" src="/image/star_1.png" mode="widthFix"></image>
+        <image lazy-load="{{true}}" a:for="{{shangJiaInfo.zero}}" key="zero{{index}}" src="/image/star_0.png" mode="widthFix"></image>
+      </view>
+      <view class="store_content">
+        <text>
+          在租商品
+          <text class="zaizu_text">{{shangJiaInfo.mer_goods}}</text>
+          个
+        </text>
+        <view class="store_line"></view>
+        <text>订单数量{{shangJiaInfo.mer_orders}}单</text>
+      </view>
+    </view>
+    <view class="store_btn">
+      <button class="{{shangJiaInfo.id==1?'':'visi'}}" size="default" type="primary">进店逛逛</button>
+    </view>
+  </view>
+  
+  <!-- 模块切换 -->
+  <view class="goods-module">
+    <view a:if="{{module_fixed}}" class="goods-title fixed_top">
+      <view class="goods-intro {{selectTabindex==0?'active':''}}">
+        <view class="goods-wen" data-index="0" onTap="seleModule">
+          <view class="text">商品详情</view>
+          <view class="goods-border"></view>
+        </view>
+      </view>
+      <view class="goods-intro {{selectTabindex==1?'active':''}}">
+        <view class="goods-wen" data-index="1" onTap="seleModule">
+          <view class="text">租赁须知</view>
+          <view class="goods-border"></view>
+        </view>
+      </view>
+      <view class="goods-intro {{selectTabindex==2?'active':''}}">
+        <view class="goods-wen" data-index="2" onTap="seleModule">
+          <view class="text">常见问题</view>
+          <view class="goods-border"></view>
+        </view>
+      </view>
+      <view class="goods-intro {{selectTabindex==3?'active':''}}">
+        <view class="goods-wen" data-index="3" onTap="seleModule">
+          <view class="text">热门推荐</view>
+          <view class="goods-border"></view>
+        </view>
+      </view>
+    </view>
+    <view class="goods-title dong">
+      <view class="goods-intro {{selectTabindex==0?'active':''}}">
+        <view class="goods-wen" data-index="0" onTap="seleModule">
+          <view class="text">商品详情</view>
+          <view class="goods-border"></view>
+        </view>
+      </view>
+      <view class="goods-intro {{selectTabindex==1?'active':''}}">
+        <view class="goods-wen" data-index="1" onTap="seleModule">
+          <view class="text">租赁须知</view>
+          <view class="goods-border"></view>
+        </view>
+      </view>
+      <view class="goods-intro {{selectTabindex==2?'active':''}}">
+        <view class="goods-wen" data-index="2" onTap="seleModule">
+          <view class="text">常见问题</view>
+          <view class="goods-border"></view>
+        </view>
+      </view>
+      <view class="goods-intro {{selectTabindex==3?'active':''}}">
+        <view class="goods-wen" data-index="3" onTap="seleModule">
+          <view class="text">热门推荐</view>
+          <view class="goods-border"></view>
+        </view>
+      </view>
+    </view>
+    <!-- 商品介绍页面 -->
+    <view a:if="{{selectTabindex==0 || selectTabindex==3 }}" class="goods-content ">
+      <view class="goods-introde">
+        <block a:for="{{img_list}}">
+          <view class="img">
+            <image lazy-load="{{true}}" src="{{(item!=''&&item)?imgUrl+item:''}}" mode="widthFix"></image>
+          </view>
+        </block>
+      </view>
+    </view>
+    <!-- 租赁须知 -->
+    <!-- <view a:if="{{selectTabindex==1}}" class="goods-content zulin"> -->
+      <!-- <view class="rend">
+        <view class="rent-title">租赁流程</view>
+        <view class="rend-con">挑选商品</view>
+        <view class="rend-detail">选择您心仪的商品以及规格、租期，确认无误后点击立享免押。</view>
+        <view class="rend-con">芝麻免押</view>
+        <view class="rend-detail">{{appInfo.globalData.title}}与芝麻信用达成战略合作协议，用户芝麻分550及以上，有机会享受免押金租赁服务，信用越好免押额度越高。</view>
+        <view class="rend-con">扣款时间</view>
+        <view class="rend-detail">下单时签署支付协议；商品审核通过后5个工作日内发货，货物发出前会扣除首月租金。</view>
+        <view class="rend-con">租期结束</view>
+        <view class="rend-detail">(1) 续租：到期后可以选择续租商品</view>
+        <view class="rend-detail">(2) 归还：到期后邮寄归还商品</view>
+        <view class="rend-detail">(3) 买断：支付商品尾款，终身拥有</view>
+        <view class="rend-con">说明：</view>
+        <view class="rend-detail">1、“我的订单”页查看订单，根据需求选择。</view>
+        <view class="rend-detail">2、商品是否支持续租，续租租金、租期描述，可查看协议内容或联系客服
+          <text onTap="pingTaiPhone" class="phone">{{appInfo.globalData.kfPhone}}</text>。</view>
+      </view>
+      <view class="rend-line"></view>
+      <view class="rend">
+        <view class="rent-title">关于订单</view>
+        <view class="rend-con">我可以租赁几个商品?</view>
+        <view class="rend-detail">同一个用户每月可成功租赁一件商品。</view>
+        <view class="rend-con">租期内可以更换机型吗?</view>
+        <view class="rend-detail">租赁期内暂不支持更换机型。</view>
+        <view class="rend-con">订单可以更改租赁时间吗?</view>
+        <view class="rend-detail">租赁期内，承租人不可更改租赁时间，如需提前归还，需支付商品总价50%的违约金。</view>
+        <view class="rend-con">如何取消订单?</view>
+        <view class="rend-detail">未支付订单:在“我的订单”—>“订单详情”界面点击“取消订单”即可。</view>
+        <view class="rend-detail">已支付的订单：联系客服
+          <text onTap="pingTaiSPhone" class="phone">{{appInfo.globalData.kfPhone}}</text>即可，已支付的钱1-3个工作日之内原路退还，发货后不支持取消订单。</view>
+        <view class="rend-con">租期内，如何更换联系方式或其他信息?</view>
+        <view class="rend-detail">通过客服电话及时告知。如因您更换联系方式或其他相关信息未及时通知我们，造成未按时付款而产生的所有违约罚金，需您自行承担。</view>
+        <view class="rend-con">归还商品时配件需要归还吗?</view>
+        <view class="rend-detail">需要，如未归还需按协议配件价值进行赔偿。</view>
+        <view class="rend-con">下单成功后一般多久审核通过?</view>
+        <view class="rend-detail">下单成功后，1-5个工作日内会进行电话审核，此期间请保持电话手机畅通。(法定节假日、周末及活动期间审核顺延)，如复述的信息与订单信息不符，会被判定为高危用户，可能会被取消订单。</view>
+      </view>
+      <view class="rend-line"></view>
+      <view class="rend">
+        <view class="rent-title">关于费用</view>
+        <view class="rend-con">租金怎么支付?</view>
+        <view class="rend-detail">商品每月还款日会自动扣除您的租金，请保证扣款日支付宝账号或绑定的其他支付方式余额充足。</view>
+        <view class="rend-con">如租赁物失窃或严重损坏，如何赔偿?</view>
+        <view class="rend-detail">在租赁期内，商品失窃、报废或发生其他形式的损坏，商品将由租转售，需进行买断处理，买断金额以租赁协议为准。</view>
+      </view>
+      <view class="rend-line"></view>
+      <view class="rend">
+        <view class="rent-title">关于退换货</view>
+        <view class="rend-detail" style="margin-top: 22rpx;">订单发货前可取消订单，发货后非产品质量问题退货需支付产品总租金50%的违约金。</view>
+      </view>
+      <view class="rend-line"></view>
+      <view class="rend">
+        <view class="rent-title" style="margin-bottom: 30rpx;">损坏赔偿规则</view>
+        <view class="rend-detail" a:for='{{pay_for_rule.pay_for_desc}}' key="paydesc{{index}}">{{item}}</view>
+      </view>
+      <view class="rend">
+        <view class="rend-con">关于手机电脑物流:</view>
+        <view class="rend-detail">1、产品会在下单后一周内发货，因为所有设备都需要检测后发货;</view>
+        <view class="rend-detail">2、为不影响租户使用，请提前一周下单，周日不发货;</view>
+        <view class="rend-detail">3、收货时一定现场验收，如果包装显著破裂，请拒收，并联系{{appInfo.globalData.title}}客服
+          <text onTap="pingTaiSPhone" class="phone">{{appInfo.globalData.kfPhone}}</text>。</view>
+      </view> -->
+    <!-- </view> -->
+    <view a:if="{{selectTabindex==1}}" >
+      <view class="rent_tips_header_bg">
+        <view class="commitment">
+          <image mode="scaleToFill"  lazy-load="{{true}}" src="/image/goodsdetail/commitment.png" class="commitment"/>
+        </view>
+        <view class="platform_commitment">
+          <view class="platform_commitment_key">
+            平台承诺
+          </view>
+          <view class="platform_commitment_value">
+            <view class="service_detail"> 
+              <view class="img_background">
+                <image mode="scaleToFill" src="/image/goodsdetail/brand_new_product.png" lazy-load="{{true}}" class="platform_commitment_img"/>
+              </view>
+              <text class="platform_commitment_title">全新正品</text>
+            </view>
+            <view class="service_detail">
+              <view class="img_background">
+                <image mode="scaleToFill" src="/image/goodsdetail/worry_free_service.png" lazy-load="{{true}}" class="platform_commitment_img"/>
+              </view>
+              <text class="platform_commitment_title">无忧服务</text>
+            </view>
+            <view class="service_detail">
+              <view class="img_background">
+                <image mode="scaleToFill" src="/image/goodsdetail/broken_screen.png" lazy-load="{{true}}" class="platform_commitment_img"/>
+            </view>
+              <text class="platform_commitment_title">无忧服务</text>
+            </view>
+            <view class="service_detail">
+              <view class="img_background">
+                <image mode="scaleToFill" src="/image/goodsdetail/free_shipping.png" lazy-load="{{true}}" class="platform_commitment_img"/>
+              </view>
+              <text class="platform_commitment_title">无忧服务</text>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="flow_path_bg">
+        <view class="flow_path">
+          <view class="lease_header">
+            <view class="lease_title">
+              租物流程
+            </view>
+            <view class="lease_title_style"></view>
+          </view>
+          <view class="flow_path_content">
+            <view class="select_place_order">
+              <view class="select_place_order_content">
+                <view class="flow_path_icon">
+                  <image mode="scaleToFill" src="/image/goodsdetail/select_place_order.png" lazy-load="{{true}}" class="flow_path_img"/>
+                </view>
+                <text class="flow_path_main_text">选品下单</text>
+                <text class="flow_path_assistant_text">挑选心仪产品</text>
+              </view>
+              <image mode="scaleToFill" src="/image/goodsdetail/rented_property_arrow.png" class="rented_property_arrow"/>
+            </view>
+            <view class="select_place_order">
+              <view class="select_place_order_content">
+                <view class="flow_path_icon">
+                  <image mode="scaleToFill" src="/image/goodsdetail/sesame_rent_free.png" lazy-load="{{true}}" class="flow_path_img"/>
+                </view>
+                <text class="flow_path_main_text">芝麻免押</text>
+                <text class="flow_path_assistant_text">月付租金</text>
+              </view>
+              <image mode="scaleToFill" src="/image/goodsdetail/rented_property_arrow.png" class="rented_property_arrow"/>
+            </view>
+            <view class="select_place_order">
+              <view class="select_place_order_content">
+                <view class="flow_path_icon">
+                  <image mode="scaleToFill" src="/image/goodsdetail/fast_ shipping.png" lazy-load="{{true}}" class="flow_path_img"/>
+                </view>
+                <text class="flow_path_main_text">极速发货</text>
+                <text class="flow_path_assistant_text">快速审核发货</text>
+              </view>
+              <image mode="scaleToFill" src="/image/goodsdetail/rented_property_arrow.png" class="rented_property_arrow"/>
+            </view>
+            <view class="select_place_order">
+              <view class="select_place_order_content">
+                <view class="flow_path_icon">
+                  <image mode="scaleToFill" src="/image/goodsdetail/take_over.png" lazy-load="{{true}}" class="flow_path_img"/>
+                </view>
+                <text class="flow_path_main_text">收货租用</text>
+                <text class="flow_path_assistant_text">开启新体验</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="lease_term_computed">
+        <view class="lease_header">
+          <view class="lease_title">
+            租期计算
+          </view>
+          <view class="lease_title_style"></view>
+        </view>
+        <view class="lease_term_content">
+          <view class="lease_tetm_describe">
+            如果你能选择的租期是<text class="key_text">2号到8号</text>（计费时间为此<text class="key_text">
+              7天
+            </text>），来回物 流不算租期
+          </view>
+          <view class="flow_chart">
+            <image mode="scaleToFill" src="/image/goodsdetail/flow_chart.png" lazy-load="{{true}}" class="flow_chart_img"/>
+          </view>
+        </view>
+      </view>
+      <view class="expiration_plan">
+        <view class="lease_header">
+          <view class="lease_title">
+            租后到期方案
+          </view>
+          <view class="lease_title_style"></view>
+        </view>
+        <image mode="scaleToFill" src="/image/goodsdetail/expiration_plan.png" lazy-load="{{true}}" class="expiration_plan_img"/>
+      </view>
+      <view class="lease_flow_path">
+        <view class="lease_header">
+          <view class="lease_title">
+            租赁流程
+          </view>
+          <view class="lease_title_style"></view>
+          <view  onTap="clickExpand" data-key="isExpandLease" data-origin="{{!isExpandLease}}">
+            <text class="retract">{{ isExpandLease ? '收起' : '展开'}}</text>
+            <image mode="scaleToFill" src="/image/goodsdetail/expand.png" lazy-load="{{true}}" class="{{ isExpandLease ? 'expand_icon' : 'retract_icon'}}" />
+          </view>
+        </view>
+        <image mode="scaleToFill" src="/image/goodsdetail/Lease_process.png" lazy-load="{{true}}" class="lease_process_img" a:if="{{ isExpandLease }}"/>
+      </view>
+      <view class="about_order">
+        <view class="lease_header">
+          <view class="lease_title">
+            关于订单
+          </view>
+          <view class="lease_title_style"></view>
+          <view  onTap="clickExpand" data-key="isExpandOrder" data-origin="{{!isExpandOrder}}">
+            <text class="retract">{{ isExpandOrder ? '收起' : '展开'}}</text>
+            <image mode="scaleToFill" src="/image/goodsdetail/expand.png" lazy-load="{{true}}" class="{{ isExpandOrder ? 'expand_icon' : 'retract_icon'}}" />
+          </view>
+        </view>
+        <image mode="scaleToFill" src="/image/goodsdetail/about_oreder.png" lazy-load="{{true}}" class="about_oreder_img" a:if="{{ isExpandOrder }}"/>
+      </view>
+      <view class="about_money">
+        <view class="lease_header">
+          <view class="lease_title">
+            关于费用
+          </view>
+          <view class="lease_title_style"></view>
+          <view  onTap="clickExpand" data-key="isExpandMoney"  data-origin="{{!isExpandMoney}}">
+            <text class="retract">{{ isExpandMoney ? '收起' : '展开'}}</text>
+            <image mode="scaleToFill" src="/image/goodsdetail/expand.png" lazy-load="{{true}}" class="{{ isExpandMoney ? 'expand_icon' : 'retract_icon'}}" />
+          </view>
+        </view>
+        <image mode="scaleToFill" src="/image/goodsdetail/about_money.png" lazy-load="{{true}}" class="about_money_img" a:if="{{isExpandMoney}}"/>
+      </view>
+      <view class="about_return_goods">
+        <view class="lease_header">
+          <view class="lease_title">
+            关于退换货
+          </view>
+          <view class="lease_title_style"></view>
+          <view  onTap="clickExpand" data-key="isExpanReturnGoods" data-origin="{{!isExpanReturnGoods}}">
+            <text class="retract">{{ isExpanReturnGoods ? '收起' : '展开'}}</text>
+            <image mode="scaleToFill" src="/image/goodsdetail/expand.png" lazy-load="{{true}}" class="{{ isExpanReturnGoods ? 'expand_icon' : 'retract_icon'}}" />
+          </view>
+        </view>
+        <image mode="scaleToFill" src="/image/goodsdetail/about_return_goods.png" lazy-load="{{true}}" class="about_return_goods_img" a:if="{{isExpanReturnGoods}}"/>
+      </view>
+      <view class="about_compensate">
+        <view class="lease_header">
+          <view class="lease_title">
+            损坏赔偿
+          </view>
+          <view class="lease_title_style"></view>
+          <view onTap="clickExpand" data-key="isExpandCompensate" data-origin="{{!isExpandCompensate}}">
+            <text class="retract">{{ isExpandCompensate ? '收起' : '展开'}}</text>
+            <image mode="scaleToFill" src="/image/goodsdetail/expand.png" lazy-load="{{true}}" class="{{ isExpandCompensate ? 'expand_icon' : 'retract_icon'}}" />
+          </view>
+        </view>
+        <image mode="scaleToFill" src="/image/goodsdetail/about_compensate.png" lazy-load="{{true}}" class="about_compensate_img" a:if="{{isExpandCompensate}}"/>
+      </view>
+    </view>
+    <!-- 常见问题 -->
+    <!-- <view a:if="{{selectTabindex==2}}" class="goods-content zulin">
+      <view class="rend">
+        <view class="rent-title">关于商品</view>
+        <view class="rend-con">1、租赁的商品质量如何？</view>
+        <view class="rend-detail">{{appInfo.globalData.title}}严选商品来源，对租赁的商品均会进行专业的质检、消毒、包装，竭力为您提供优质的产品；全新手机保证正品国行，请放心选购。</view>
+        <view class="rend-con">2、使用过程中出现轻微划痕怎么办？</view>
+        <view class="rend-detail">正常使用手机产生的轻微划痕、轻微磕碰属于自然损耗，不会产生相关费用，不影响商品归还。</view>
+        <view class="rend-con">3、商品使用什么快递发货？邮费谁承担？</view>
+        <view class="rend-detail">{{appInfo.globalData.title}}的商品均使用顺丰等极速快递发货，偏远地区等特殊情况以实际到达的快递为准，部分商户需到付邮费，包邮商户页面会显示包邮字眼，以产品页面显示为准。</view>
+      </view>
+      <view class="rend-line"></view>
+      <view class="rend">
+        <view class="rent-title">关于租赁</view>
+        <view class="rend-con">1、下单及审核流程说明：</view>
+        <view class="rend-detail">1.选择心怡的产品及租期确认下单</view>
+        <view class="rend-detail">2.成功下单后{{appInfo.globalData.title}}初审需30分钟左右（非工作日可能会有延迟），审核结果会有短信发送至下单手机号</view>
+        <view class="rend-detail">3.初审通过后，需用户主动至{{appInfo.globalData.title}}“我的”页面进行资料上传，届时发货商会进行电话审核，请注意接听客服电话进行信息核对</view>
+        <view class="rend-detail">4.确认无误最快当天即可发出(以实际审核通过短信通知为准)，物流合作仅支持顺丰等急速运送公司。</view>
+        <view class="rend-con">2、租比买有什么优势？</view>
+        <view class="rend-detail">1 租机可以解决机器更换时处理旧机的烦恼，年年租最新款机器。</view>
+        <view class="rend-detail">2 租金仅需每期还款，大大减少一次性购买手机的资金压力。</view>
+        <view class="rend-detail">3 租机可满足不同群体对手机使用的需求，环保共享，发挥最大价值。</view>
+        <view class="rend-con">3、租期怎么计算呢？</view>
+        <view class="rend-detail">从扣款成功当天起计算，到合同约定的租赁期满后延3天为止，后延3天为物流运送周期，不计入租期，如遇特殊情况延迟发货可联系{{appInfo.globalData.title}}客服修改租期时间；租赁期间不支持更改和提前结束租期，以下单时选择的租期为准。</view>
+        <view class="rend-con">4、商品如何买断？</view>
+        <view class="rend-detail">机器到期时买断，支付买断尾款即可终身拥有；若想提前买断，租期内可在我的订单页面点击买断按钮，确认买断费用后支付成功即可买断商品。</view>
+        <view class="rend-con">5、可以同时下多个订单吗？</view>
+        <view class="rend-detail">{{appInfo.globalData.title}}不限制客户租赁的数量，您有多款商品需要租赁时，可根据支付宝评估的免押额度来考虑是否租赁。</view>
+        <view class="rend-con">6、关于订单取消，客户拒签</view>
+        <view class="rend-detail">如果已经发货，不支持取消；非产品硬件故障，不支持7天无理由退货；硬件故障可以免费更换；客户原因拒签需承担往返运费和原定租期全额租金。</view>
+      </view>
+      <view class="rend-line"></view>
+      <view class="rend">
+        <view class="rent-title">关于售后</view>
+        <view class="rend-con">1、租赁过程中，出现问题可以联系谁？</view>
+        <view class="rend-detail">租赁过程中，您有任何问题都可以通过在线客服或拨打客服热线联系我们，我们将竭诚为您服务。</view>
+      </view>
+      <view class="rend-line"></view>
+      <view class="rend">
+        <view class="rent-title">关于费用</view>
+        <view class="rend-con">1、租金如何计算？</view>
+        <view class="rend-detail">总租金=日租金*租赁天数，平台展示的月租金为日租金*30天，每月租金账单=每月实际使用天数*日租金。</view>
+        <view class="rend-con">2、买断费用如何计算？</view>
+        <view class="rend-detail">买断费用=买断尾款+未支付的租金，具体以买断页面展示的金额为准;提前6个月买断的用户可联系{{appInfo.globalData.title}}客服享受优惠买断价。</view>
+        <view class="rend-con">3、关于押金问题</view>
+        <view class="rend-detail">用户下单时，根据芝麻信用评估结果获取免押金后，若存在需要冻结的押金金额，需要通过支付宝账户的资金渠道，包括但不限于银行卡，支付宝余额等额度授权冻结相应的押金金额，且不发生实际消费，租赁服务终止后，我们会按照用户回收或最后买断的实际情况通过支付宝账户解冻用户的押金。</view>
+        <view class="rend-con">4、退换货邮费谁来承担？</view>
+        <view class="rend-detail">退换货的情况过程中产生的邮费遵循谁寄谁付的原则</view>
+      </view>
+    </view> -->
+    <view a:if="{{selectTabindex==2}}" >
+      <view class="about_good_layout">
+        <view class="lease_header">
+          <view class="lease_title">
+            关于商品
+          </view>
+          <view class="lease_title_style"></view>
+          <view  onTap="clickExpand" data-key="isExpanGood" data-origin="{{!isExpanGood}}">
+            <text class="retract">{{ isExpanGood ? '收起' : '展开'}}</text>
+            <image mode="scaleToFill" src="/image/goodsdetail/expand.png" lazy-load="{{true}}" class="{{ isExpanGood ? 'expand_icon' : 'retract_icon'}}" />
+          </view>
+        </view>
+        <image mode="scaleToFill" src="/image/goodsdetail/about_good.png" lazy-load="{{true}}" class="about_good_img" a:if="{{isExpanGood}}"/>
+      </view>
+      <view class="about_good_lease">
+        <view class="lease_header">
+          <view class="lease_title">
+            关于租赁
+          </view>
+          <view class="lease_title_style"></view>
+          <view  onTap="clickExpand" data-key="isExpenLease" data-origin="{{!isExpenLease}}">
+            <text class="retract">{{ isExpenLease ? '收起' : '展开'}}</text>
+            <image mode="scaleToFill" src="/image/goodsdetail/expand.png" lazy-load="{{true}}" class="{{ isExpenLease ? 'expand_icon' : 'retract_icon'}}" />
+          </view>
+        </view>
+        <image mode="scaleToFill" src="/image/goodsdetail/about_lease.png" lazy-load="{{true}}" class="about_lease_img" a:if="{{isExpenLease}}"/>
+      </view>  
+      <view class="about_after_sales">
+        <view class="lease_header">
+          <view class="lease_title">
+            关于售后
+          </view>
+          <view class="lease_title_style"></view>
+          <view  onTap="clickExpand" data-key="isAfterSales" data-origin="{{!isAfterSales}}">
+            <text class="retract">{{ isAfterSales ? '收起' : '展开'}}</text>
+            <image mode="scaleToFill" src="/image/goodsdetail/expand.png" lazy-load="{{true}}" class="{{ isAfterSales ? 'expand_icon' : 'retract_icon'}}" />
+          </view>
+        </view>
+        <image mode="scaleToFill" src="/image/goodsdetail/about_after_sales.png" lazy-load="{{true}}" class="about_after_sales_img" a:if="{{isAfterSales}}"/>
+      </view>
+      <view class="about_after_cost">
+        <view class="lease_header">
+          <view class="lease_title">
+            关于费用
+          </view>
+          <view class="lease_title_style"></view>
+          <view  onTap="clickExpand" data-key="isAboutCost" data-origin="{{!isAboutCost}}">
+            <text class="retract">{{ isAboutCost ? '收起' : '展开'}}</text>
+            <image mode="scaleToFill" src="/image/goodsdetail/expand.png" lazy-load="{{true}}" class="{{ isAboutCost ? 'expand_icon' : 'retract_icon'}}" />
+          </view>
+        </view>
+        <image mode="scaleToFill" src="/image/goodsdetail/about_cost.png" lazy-load="{{true}}" class="about_cost_img" a:if="{{isAboutCost}}"/>
+      </view>
+    </view>
+  </view>
+  <!-- 热门推荐 -->
+  <recommend class="remen" recomend_list="{{recomend_list}}" scroll={{scroll}} loadText={{loadText}} type="1"></recommend>
+  <!-- 底部 -->
+  <view class="bottom">
+    <view class="left">
+      <view class="top-line"></view>
+      <view class="innerLeft">
+        <view class="toHome" onTap="goHome">
+          <view class="img por">
+            <image lazy-load="{{true}}" src="/image/cheng.png" mode="aspectFit"></image>
+          </view>
+          <view class="text">首页</view>
+        </view>
+        <view class="toService" onTap="showkefu">
+          <view class="img por">
+            <image lazy-load="{{true}}" src="/image/goodsdetail_service.png" mode="aspectFit"></image>
+          </view>
+          <view class="text">客服</view>
+        </view>
+      </view>
+    </view>
+    <view class="right">
+      <form data-id="panelClose" data-origin="attr" data-color="{{goodsDetail.color}}" onSubmit="showPanel">
+        <button formType="submit" hover-class="none" scope='phoneNumber' ref="mianya">
+          <view style="display:flex;justify-content:center;">
+            <!-- <view class="rmb" style="font-size:22rpx;"></view> -->
+            <!-- <view a:if="{{ !goodsDetail.is_credit }}"><text  style="font-size:22rpx;">￥</text><text style="font-size:40rpx;">{{goodsDetail.is_discount === 0 ? goodsDetail.min_price : goodsDetail.after_discount_rent}}</text><text style="font-size:22rpx;">／天</text></view>
+            <view a:else style="letter-spacing: 2;"><text style="font-size:28rpx">首月</text>  1元</view>
+            <view style="margin:0rpx 10rpx;font-size:24rpx;">
+              |
+            </view> -->
+            <view style="display: flex; align-items: center;">
+              <image mode="scaleToFill" src="/image/goodsdetail/lightning.png" class="lightning"/>
+              立享免押
+            </view>
+          </view>
+        </button>
+      </form>
+    </view>
+  </view>
+  <!-- <view class="pos">
+    {{goodsDetail.is_credit?'首月1元':'领券更优惠'}}
+  </view> -->
+  <!-- 规格参数 -->
+  <view a:if="{{!attrpanelHidden}}" class="cover">
+    <view class="shadow" data-style="panel" onTap="hidePanel" animation="{{shadowAnimation}}"></view>
+    <view class="panel" animation="{{contentAnimation}}">
+      <!-- 规格参数 -->
+      <view a:if="{{!attrpanelHidden}}" class="service-panel">
+        <view class="content">
+          <view class="panel_title">规格参数</view>
+          <view class="goods-content content-cur">
+            <view a:for="{{sku_canshu}}" key="canshu{{index}}" class="baozhuang">
+              <view class="bao-classic">{{item.attr_spec_name}}</view>
+              <view class="baozhuang-detail">{{item.attr_spec_val}}</view>
+              <view class="u-line"></view>
+            </view>
+          </view>
+        </view>
+        <view class="line"></view>
+        <view class="must-close" data-style="panel" onTap="hidePanel">关闭</view>
+      </view>
+    </view>
+  </view>
+  <!-- 成色 -->
+  <view a:if="{{!chengseHidden}}" class="cover">
+    <!-- 成色 -->
+    <!--<image mode="scaleToFill" src="/image/chengse.png" style="width:692rpx;height:542rpx"/> -->
+    <view class="shadow" data-style="panel" onTap="hidePanel" animation="{{shadowAnimation}}"></view>
+    <view class="panel" animation="{{contentAnimation}}">
+      <!-- 成色说明 -->
+      <view a:if="{{!chengseHidden}}" class="service-panel">
+        <view class="content">
+          <view class="must-serve">成色说明</view>
+          <image lazy-load="{{true}}" mode="scaleToFill" src="/image/chengse-new.png" style="width:692rpx;height:542rpx;margin-top:30rpx" />
+        </view>
+        <view class="line"></view>
+        <view class="must-close" data-style="panel" onTap="hidePanel">关闭</view>
+      </view>
+    </view>
+  </view>
+  <!-- 优惠劵 -->
+  <view a:if="{{!couponHidden}}" class="cover" style="position: fixed;left: 0;bottom: 0;z-index: 22;width: 100%;height: 100%;">
+    <!-- 优惠劵 -->
+    <view class="shadow" data-style="coupon" onTap="hidePanel" animation="{{shadowAnimation}}"></view>
+    <view class="panel" animation="{{contentAnimation}}">
+      <!-- 优惠劵 -->
+      <view a:if="{{!couponHidden}}" class="service-panel">
+        <view class="header_coupon">
+          <view class="must-serve" style="margin-top:20px">领取优惠券</view>
+          <image lazy-load="{{true}}" data-style="coupon" onTap="hidePanel" mode="scaleToFill" src="/image/goodsdetail/delete_coupn.png" class="delete_coupn"/>
+        </view>
+        <!-- 优惠券列表 start-->
+        <view class="coupon_view" a:if="{{cou_list.length}}">
+          <view  class="card_coupon_content">
+            <view a:for="{{cou_list}}" a:key="{{this}}" a:for-index="index">
+              <view class="card_coupon_layout" >
+                <view class="card_coupon_l">
+                  <view class="card_coupon_l_money">
+                    ￥
+                    <text style="font-size: 50rpx;">{{item.amount}}</text>
+                  </view>
+                  <view class="full_reduction_coupon">{{item.voucher_type_name}}</view>
+                </view>
+                <view class="card_coupon_r">
+                  <view class="coupon_details">
+                    <view class="coupon_title">
+                      {{item.voucher_title}}
+                    </view>
+                    <view class="period_of_validity">
+                      有效期至{{item.valid_end_time}}
+                    </view>
+                    <view class="illustrate" onTap="getIshow" data-index="{{index}}">
+                      <image class="fineness" mode="scaleToFill" src="/image/fineness.png" style="margin-right: 5rpx" />
+                      <text>使用说明</text>
+                    </view>
+                  </view>
+                  <view class="claim_now" a:if="{{item.type===1}}">
+                    <get-coupon onGetCouponSuccess="onGetCouponSuccess" onGetCouponFail="onGetCouponFail" onUseImmediately="onUseImmediately" 
+                    onClose="onClose" params="{{[{activityId:item.activity_id,outBizNo:item.uuid}]}}" senderMerchantId="{{senderMerchantId}}" 
+                    dialogBtnType="{{dialogBtnType}}" dialogBtnStyle="{{dialogBtnStyle}}" zIndex="{{9998}}" extraData="{{'Any Data'}}">
+                    立即领取
+                  </get-coupon>
+                  </view>
+                <view a:if="{{item.type===2}}" class="received">已领取</view>
+                </view>
+              </view>
+              <view class="illustrate_tips" a:if="{{item.isShow}}">
+                <view class="illustrate_text">
+                  <text>
+                    1.本券不可兑换现金，不可找零
+                    2.如果消费并使用优惠券后，订单发生退款，优惠券无法退还
+                  </text>
+                </view>
+                <image mode="scaleToFill" src="/image/goodsdetail/instructions_for_use.png" class="instructions_for_use"
+                style="width: 719rpx; height: 82rpx"
+              />
+              </view>
+            </view>
+            </view>
+        </view>
+        <!-- <view class="coupon_view" a:if="{{cou_list.length}}">
+          <view a:for="{{cou_list}}" a:key="{{this}}" a:for-index="index">
+            <view class="c_view">
+              <view class="coupon_item">
+                <view class="coupon_item_center">
+                  <view class="item_center_top">{{item.amount}}
+                    <text style="font-size:26rpx;">元</text></view>
+                  <view class="item_center_center">{{item.voucher_type_name}}</view>
+                </view>
+                <view class="coupon_item_content">
+                  <view class="">
+                    <view style="font-size:32rpx;font-weight:bold;">
+                      {{item.voucher_title}}
+                    </view>
+                    <view style="font-size: 24rpx; color: #666666;margin-top:10rpx">
+                      有效期至{{item.valid_end_time}}
+                    </view>
+                  </view>
+                  <view style="font-size: 24rpx; color: #666666;" onTap="getIshow" data-index="{{index}}">
+                    使用说明
+                    <image lazy-load="{{true}}" mode="scaleToFill" src="/image/coupon_right.png" style="width:20rpx;height:20rpx" a:if="{{!item.isShow}}" />
+                    <image lazy-load="{{true}}" mode="scaleToFill" src="/image/coupon_bottom.png" style="width:20rpx;height:20rpx" a:else />
+                  </view>
+                </view>
+                <view class="coupon_item_right">
+                  <view class="receive_no" a:if="{{item.type===1}}">
+                    <get-coupon onGetCouponSuccess="onGetCouponSuccess" onGetCouponFail="onGetCouponFail" onUseImmediately="onUseImmediately" 
+                      onClose="onClose" params="{{[{activityId:item.activity_id,outBizNo:item.uuid}]}}" senderMerchantId="{{senderMerchantId}}" 
+                      dialogBtnType="{{dialogBtnType}}" dialogBtnStyle="{{dialogBtnStyle}}" zIndex="{{9998}}" extraData="{{'Any Data'}}">
+                      <view class="text-button">立即领取</view></get-coupon></view>
+
+                  <image lazy-load="{{true}}" style="width:180rpx;height:180rpx" mode="scaleToFill" a:if="{{item.type===2}}" src="/image/coupin_success.png" />
+                </view>
+              </view>
+            </view>
+            <view class="bottoms" a:if="{{item.isShow}}">
+              <view>
+                1、本券不可兑换现金，不可找零
+              </view>
+              <view style="margin-top:10rpx">
+                2、如果消费并使用优惠券后，订单发生退款，优惠券无法退还。
+              </view>
+            </view>
+          </view>
+        </view> -->
+        <!-- <view a:else style="height:500rpx;line-height:500rpx;text-align:center;">
+          暂无可领取优惠券，快去领券中心挑选吧~
+        </view> -->
+        <view class="line"></view>
+        <view class="receive" data-style="coupon" onTap="hidePanel">
+          <view class="receive-content">
+            关闭
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 买断金说明 -->
+  <view a:if="{{!buy_out}}" class="cover">
+    <view class="shadow" data-style="panel" onTap="hidePanel" animation="{{shadowAnimation}}"></view>
+    <view class="panel" animation="{{contentAnimation}}">
+      <!-- 买断金说明 -->
+      <view a:if="{{!buy_out}}" class="service-panel">
+        <view class="content">
+          <view class="must-serve">买断说明</view>
+          <view class="must-detail">
+            <text class="must-text">1.商品总价-已付租金=到期商品买断价格；
+              2.租期内支持随时买断（标注可买断的商品）；
+              3.提前买断可联系商户协商优惠买断；
+              4.下单后如需买断可在“我的”-订单详情-更多-买断， 查看买断金额；支付买断金完结订单后产品所有权归用户所有；
+              5.买断后不支持7天无理由退货；
+              6.如有疑问请咨询{{appInfo.globalData.abbreviation}}客服。
+            </text>
+          </view>
+        </view>
+        <view class="line"></view>
+        <view class="must-close" data-style="panel" onTap="hidePanel">关闭</view>
+      </view>
+    </view>
+  </view>
+  <!-- 选择面板 -->
+  <view a:if="{{!serviceHidden || !attrHidden || !voucherHidden || !expressHidden}}" class="cover">
+    <view class="shadow" data-style="panel" onTap="hidePanel" animation="{{shadowAnimation}}"></view>
+    <view class="panel {{!attrHidden?'attr_p':''}} {{!voucherHidden?'coupon_p':''}}" animation="{{contentAnimation}}">
+      <!-- 服务说明 -->
+      <view a:if="{{!serviceHidden}}" class="service-panel">
+        <view class="content service_content">
+          <view class="must-serve">服务说明</view>
+          <view a:for="{{serve}}" key="serve{{index}}" class="must-detail">
+            <view class="must-first">
+              <image lazy-load="{{true}}" src="/image/service_icon.png" mode="aspectFit"></image>
+              <view class="must-wen">{{item.service_name}}</view>
+            </view>
+            <view class="must-zi" onTap="shangJiaPhone">{{item.service_desc}}{{index==2?'：'+shangJiaInfo.mer_phone:''}}</view>
+          </view>
+        </view>
+        <view class="line"></view>
+        <view class="must-close" data-style="panel" onTap="hidePanel">关闭</view>
+      </view>
+      <!-- 快递运费说明 -->
+      <view a:if="{{!expressHidden}}" class="service-panel">
+        <view class="content">
+          <view class="panel_title">快递运费说明</view>
+          <view class="express_fee_main">
+            <text a:if="{{ goodsDetail.is_free != '包邮' }}" class="express_fee_main_text">1.本店所有设备来回快递费用均由用户承担
+              2.7天内未拆封未激活退货的快递费用由用户承担
+              3.若因产品质量问题换货的快递费用由商户承担
+            </text>
+            <text a:else class="express_fee_main_text">1.页面标注包邮的产品均由商户承担寄出费用，快递首选顺丰，部分地区京东、德邦
+              2.除产品质量问题之外产生的拒收、退货来回运费由用户承担
+            </text>
+          </view>
+        </view>
+        <view class="express_fee_line"></view>
+        <view class="express_fee_close" data-style="panel" onTap="hidePanel">关闭</view>
+      </view>
+
+      <!-- 规格属性 -->
+      <view a:if="{{!attrHidden}}" class="attr-panel">
+        <view class="close" data-style="panel" onTap="hidePanel">
+          <image lazy-load="{{true}}" src="/image/close.png" mode="aspectFit"></image>
+        </view>
+        <view class="goods-detail">
+          <view class="goods-pic">
+            <image lazy-load="{{true}}" src="{{(goods_params.goods_img!==''&&goods_params.goods_img)?(imgUrl+goods_params.goods_img):''}}" mode="aspectFit"></image>
+          </view>
+          <view class="goods-des">
+            <view class="price">
+              <image mode="scaleToFill" src="/image/goodsdetail/exclusive_price.png" a:if="{{ is_show_exclusive }}" class="exclusive_price_img"/>
+              <text a:else class="delivery_price">到手价</text>
+              <text class="rmb">￥</text>
+              <text class="price-num">{{goods_params.is_discount === 0 ? goods_params.day_price : goods_params.after_discount_rent}}</text>
+              <text class="day">/天</text>
+              <text class="original-price" a:if="{{goods_params.is_discount === 1}}">￥{{goods_params.day_price}}/天</text>
+            </view>
+            <view class="expected_buyout_price">
+              预估买断价：3440.00
+            </view>
+            <view class="select_goods">
+              <text>已选:“{{goodsDetail.goods_label}},{{sku_colorSelect}},{{sku_colorguige}},{{sku_daySelect}}天,{{sku_rentalSelect}}”</text>
+            </view>
+            <view class="dialog_coupon">
+              <view class="coupon_left">
+                <view class="coupon_key_content">优惠券</view>
+                <view class="coupon_value_content">{{cou_list[0].voucher_title || '领券下单更优惠'}}</view>
+              </view>
+              <view class="coupon_right" a:if="{{ !goodsDetail.is_credit }}"  onTap="tapShows">
+                <text>领券 ></text>
+              </view>
+            </view>
+          </view>
+        </view>
+        <!-- 新需求，删除这一块。因为js代码中使用了monthly_view这个类，暂时不动它-->
+        <view class="monthly_view">
+          <!-- <view class="monthly_item" a:if="{{sku_monthIsShow}}">
+            <view class="item_title">月租金</view>
+            <view class="item_value">￥{{goods_params.month_price}}</view>
+          </view> -->
+          <!-- <view a:if="{{!sku_monthIsShow}}" class="monthly_item">
+            <view class="item_title">日租金</view>
+            <view class="item_value">￥{{goods_params.day_price}}</view>
+          </view> -->
+
+          <!-- <view class="monthly_item">
+            <view class="item_title">总租金</view>
+            <view class="item_value left">￥{{goodsDetail.after_discount_goods_total_rent}}</view>
+          </view>
+          <view class="monthly_item" data-origin="buyout" onTap="showEnjoyLayer">
+            <view class="item_title">
+              <view class="title_title">到期买断金</view>
+              <view class="title_img">
+                <image lazy-load="{{true}}" src="/image/confirm-order-ques.png" mode="aspectFit"></image>
+              </view>
+            </view>
+            <view class="item_value">￥{{goods_params.md_price}}</view>
+          </view> -->
+          <view class="total_rent">
+            <view class="dialog_header_describe">总租金：</view>
+            <view class="dialog_header_money">￥{{goods_params.after_discount_goods_total_rent}}</view>
+          </view>
+          <view class="become_due_money" data-origin="buyout" onTap="showEnjoyLayer">
+            <view class="dialog_header_describe">
+              到期买断金：
+            </view>
+            <view class="dialog_header_money">￥{{goods_params.md_price}}</view>
+            <image src="/image/dialog_header_img.png" mode="aspectFit" class="dialog_header_img"></image>
+          </view>
+        </view>
+        <view class="under-line"></view>
+        <scroll-view class="choose-area" style="height:{{attr_height}}px" scroll-y="{{true}}">
+          <!-- 租赁方式 -->
+          <view class="rent-month part">
+          <view class="attr-title">租赁方式</view>
+          <view class="lease_method">
+            <view class="lease_method_layout">
+              <view a:for="{{sku_rentals}}" data-index="{{index}}" data-rental="{{item}}" 
+              onTap="click_rental" class="lease_method_content {{ index === sku_rentalSelectIndex ? 'active': 'not_active' }}">
+                <text class="numStyle">{{item}}</text>
+                <view class="border"></view>
+            </view>
+            </view>
+            <view class="cheaper">
+              <view class="triangle_save_money"></view>
+              <view class="save_money">
+                更省钱省心
+              </view>
+            </view>
+          </view>
+        </view>
+        <!-- 规格 -->
+        <view class="rent-month part">
+          <view class="attr-title">规格</view>
+          <view class="options">
+            <view a:for="{{sku_guiges}}" onTap="clickGuide" data-index="{{index}}" data-guige="{{item}}" class="option {{index === sku_guigeSelectIndex?'active':'not_active'}}">
+              <text class="numStyle">{{item}}</text>
+              <view class="border"></view>
+            </view>
+          </view>
+        </view>
+          <!-- 成色 -->
+          <view class="rent-month part">
+            <view class="attr-title">成色</view>
+            <view class="options">
+              <view class="option active ">
+                <text class="numStyle">{{goodsDetail.goods_label}}</text>
+                <view class="border"></view>
+              </view>
+            </view>
+          </view>
+          <!-- 颜色 -->
+          <view class="rent-month part">
+            <view class="attr-title">颜色</view>
+            <view class="options">
+              <view a:for="{{sku_colors}}" onTap="clickColor" data-index="{{index}}" data-color="{{item}}" class="option {{index===sku_colorSelectIndex ? 'active' : 'not_active'}}">
+                <text class="numStyle">{{item}}</text>
+                <view class="border"></view>
+              </view>
+            </view>
+          </view>
+
+          <!-- 租用天数 -->
+          <view class="rent-month part">
+            <view class="attr-title">租用天数</view>
+            <view class="options">
+              <view a:for="{{sku_days}}" onTap="click_day" data-index="{{index}}" data-day="{{item}}" class="option {{index===sku_daySelectIndex?'active':'not_active'}}">
+                <text class="numStyle">{{item}}</text>
+                <view class="border"></view>
+              </view>
+            </view>
+          </view>
+          <!-- 意外保障 -->
+          <view a:if="{{goods_safe.length>0}}" class="enjoy part">
+            <view class="attr-title">
+              <view class="attr-title">
+                <!-- 意外保障 {{goodsDetail.need_protection==1?'':'(可选)'}} -->
+                意外保障
+                <view class="part_red">{{goods_safe[0].isSelect?'意外保障将从首月租金中扣除':'无意外保障，损坏需您承担，有保障更安心'}}</view>
+              </view>
+            </view>
+            <view class="options">
+              <view a:for="{{goods_safe}}" data-price="{{item.safe_price}}" data-id="{{item.id}}" a:key="this" onTap="click_safe" 
+                class="option {{item.isSelect?'active':'not_active'}}">
+                <text class="numStyle">{{item.safe_name}}
+                  <view class="part_width_line"></view>¥{{item.safe_price}}</text>
+                <view class="border"></view>
+              </view>
+              <image lazy-load="{{true}}" class="part_img" src="/image/confirm-order-ques.png" data-origin="safe" onTap="showEnjoyLayer"></image>
+            </view>
+          </view>
+          <!-- 叮咚甄选服务 -->
+        <view class="select_service">
+          <view class="select_service_header">
+            <view class="select_service_title">叮咚甄选服务（碎屏保障）</view>
+            <view class="service_introduce">
+              <image src="/image/dialog_header_img.png" mode="aspectFit" class="dialog_header_img"></image>
+              <text>服务介绍</text>
+            </view>
+          </view>
+          <view class="select_service_content">
+            <view class="broken_screen_protection">碎屏保障-推荐选购(365天)￥326</view>
+            <view class="switch-item" style="margin-right: 27rpx;">
+              <switch checked onChange="switchChange" 
+              aria-label="{{switch ? 'switch_opened' : 'switch_closed'}}" style='zoom:0.5;'/>
+            </view>
+          </view>
+        </view>
+
+        <!-- 搭配商品 -->
+        <view class="matching_products">
+          <view class="attr-title">搭配商品</view>
+          <view class="matching_products_content">
+            <image mode="scaleToFill" src="/image/goodsdetail/phone_charger.jpg" class="img_size"/>
+            <view class="charger_details">
+              <view class="charger_details_title">全新iPhone 14 Pro8全网通-紫色紫Pro8全网通-紫色紫</view>
+              <view class="charger_total_price">
+                <text class="charger_main_price">￥129.00</text>
+                <text class="charger_auxiliary_price">￥129.00</text>
+              </view>
+            </view>
+            <radio value="1" checked="{{true}}"  />
+          </view>
+        </view>
+        
+        </scroll-view>
+        <!-- 立即租赁 -->
+        <view class="bubble_msg">
+          <text>已享最高优惠</text>
+          <view class="triangle">
+          </view>
+        </view>
+        <view class="btn btn_height" >
+          <form report-submit="{{true}}" data-id="panelClose" onSubmit="toRent" 
+          >
+            <button formType="submit" hover-class="none" >领券下单</button>
+          </form>
+        </view>
+      </view>
+      <!-- 优惠券 -->
+      <view a:if="{{!voucherHidden}}" class="service-panel coupon-panel">
+        <view class="content">
+          <view class="must-serve">优惠领取</view>
+          <view class="coupon_view">
+            <view a:for="{{data_cou}}" key="cou{{index}}">
+              <view class="coupon_item {{tap_role_index==index?'move_rule':''}}">
+                <view class="coupon_item_left ">
+                  <view class="coupon_type1" a:if="{{item.cou_type==3}}">
+                    <text class="unit">¥</text>
+                    <text class="num">{{item.cou_price}}</text>
+                  </view>
+                  <view class="coupon_type2" a:if="{{item.cou_type==1}}">
+                    <text class="unit">{{item.cou_sum_price*10}}</text>
+                    <text class="num">折</text>
+                  </view>
+                  <view class="coupon_type3" a:if="{{item.cou_type==5||item.cou_type==4||item.cou_type==6}}">
+                    <text class="unit">免</text>
+                  </view>
+                  <view class="coupon_type4" a:if="{{item.cou_type==11}}">
+                    <text class="first">首月</text>
+                    <text class="unit">1</text>
+                    <text class="num">元</text>
+                  </view>
+                </view>
+                <view class="coupon_item_center">
+                  <view class="item_center_top">{{item.cou_effect}}</view>
+                  <view class="item_center_center">{{item.cou_start_time.replace(/-/g,'.')}} - {{item.cou_end_time.replace(/-/g,'.')}}</view>
+                  <view class="item_center_bottom" data-tap_index="{{index}}" onTap="rule_explain">
+                    <view class="text">使用规则说明</view>
+                    <image lazy-load="{{true}}" src="/image/rule.png"></image>
+                  </view>
+                </view>
+                <view class="coupon_item_right" data-style="panel" onTap="jump_tap" data-jump_type="{{item.cou_kind}}" data-app_id="{{item.app_id}}" 
+                  data-content_url="{{item.j_url}}" data-telmp_id="{{item.tem_id}}">
+                  立即领取
+                </view>
+              </view>
+              <view class="coupon_explain" a:if="{{tap_role_index==index}}">
+                {{item.cou_describe}}
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="line"></view>
+        <view class="must-close" data-style="panel" onTap="hidePanel">关闭</view>
+      </view>
+    </view>
+  </view>
+  <!-- 弹出框 -->
+  <view a:if="{{!enjoyHidden || !buyoutHidden || !yiwaiHidden|| !frozenHidden}}" class="cover enjoyCover">
+    <view class="shadow" animation="{{shadowAnimation}}"></view>
+    <view class="layer" animation="{{layerAnimation}}">
+      <!-- 意外保障 -->
+      <view a:if="{{!enjoyHidden}}" class="enjoyLayer">
+        <view class="des">
+          <scroll-view class="scrollView" scroll-y="{{true}}">
+            <view class="title">意外保障</view>
+            <view class="content">1.您购买的“意外保障服务”，在产品租赁期间，因非人为造成的产品磨损、毁坏、进水，和快递运输寄还的维修风险，由{{appInfo.globalData.title}}承担70%，用户仅需承担剩余30%维修费用。</view>
+            <view class="content">2.产品丢失、被盗、配件损坏等无法维修的情况不在“意外保障”范围内。</view>
+            <view class="content">3.本服务不支持使用优惠券。</view>
+          </scroll-view>
+        </view>
+        <view class="close">
+          <image lazy-load="{{true}}" data-style="layer" onTap="hidePanel" src="/image/close-btn.png" mode="aspectFit"></image>
+        </view>
+      </view>
+      <!-- 买断金 -->
+      <view a:if="{{!buyoutHidden}}" class="buyout_content_layout">
+        <view class="buyout_text_content">买断金是指该机器到期买断所需款项，如提前买断可享受平台最优惠买断价</view>
+        <view class="my_get" data-style="layer" onTap="hidePanel">
+          我知道了
+        </view>
+      </view>
+      <!-- 冻结押金 -->
+      <view a:if="{{!frozenHidden}}" class="enjoyLayer">
+        <view class="des dongjie">
+          <scroll-view class="scrollView" scroll-y="{{true}}">
+            <view class="title">冻结押金说明</view>
+            <view class="content">信用好，全额免押金；如需支付冻结部分的押金，支付的金额暂时冻结在支付宝原支付账户内，订单取消或订单完结，冻结金额即刻释放，请留意支付宝消息通知。</view>
+            <view class="content">1.如支付时使用储蓄卡，支付金额冻结在支付宝内，详询支付宝客服；</view>
+            <view class="content">2.如支付时使用花呗、信用卡、余额宝等产品，冻结部分在原账户内，但不可使用，不产生任何利息；</view>
+            <view class="content">3.如有疑问详询{{appInfo.globalData.abbreviation}}客服</view>
+          </scroll-view>
+        </view>
+        <view class="close">
+          <image lazy-load="{{true}}" data-style="layer" onTap="hidePanel" src="/image/close-btn.png" mode="aspectFit"></image>
+        </view>
+      </view>
+      <!-- 意外保障 -->
+      <view a:if="{{!yiwaiHidden}}" class="enjoyLayer">
+        <view class="des">
+          <scroll-view class="scrollView" scroll-y="{{true}}">
+            <view class="title">保障范围</view>
+            <view class="content">{{goods_safe[0].safe_desc}}</view>
+          </scroll-view>
+        </view>
+        <view class="close">
+          <image lazy-load="{{true}}" data-style="layer" onTap="hidePanel" src="/image/close-btn.png" mode="aspectFit"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 收藏有礼固定按钮 -->
+  <!--<view a:if="{{ isCollection }}" class="onlineService por" onTap="toUse"><image src="/image/collection_btn.gif" mode="aspectFit"></image></view> -->
+  <!-- 返回顶部按钮 -->
+  <!-- 父组件传值给子组件，子组件调用父组件中的方法 -->
+  <to-top showBtn="{{show_toTop_btn}}" onTopBtn="toTop"></to-top>
+</view>
+<!-- 没有数据提示页面 -->
+<view class="searchResult">
+  <view a:if="{{noData}}" class="noList">
+    <image lazy-load="{{true}}" src="/image/nolist.png" mode="aspectFit"></image>
+    <view class="content">该商品已下架/库存不足</view>
+    <view class="btn">
+      <button type="primary" onTap="goHome">再去逛逛</button>
+    </view>
+  </view>
+</view>
+
+<view a:if="{{kefuisShow}}" class="cover">
+  <view class="shadow"></view>
+  <view class="layer">
+    <view class="free-payment module">
+      <view class="des kefu">
+        <view class="content_text">客服在线时间：{{appInfo.globalData.goodDetail.kf.time}}</view>
+        <view class="content" onTap="shangJiaPhone">
+          <image lazy-load="{{true}}" class="kf_itemimg" mode="scaleToFill" src="/image/merphone.png"></image>
+          <view class="ms_view">
+            <view class="title_text">商家客服
+              <image lazy-load="{{true}}" mode="scaleToFill" src="/image/arrow.png"></image></view>
+            <view class="ms_text">
+              <text>产品配置 发货、续租、买断、</text>
+              <text>归还、售后、还款等咨询</text>
+            </view>
+            <view class="line_img">
+              <image lazy-load="{{true}}" mode="widthFix" src="/image/kefuline.png" />
+            </view>
+          </view>
+        </view>
+        <view class="content">
+          <contact-button tnt-inst-id="{{appInfo.globalData.goodDetail.kf.tntInstId}}" scene="{{appInfo.globalData.goodDetail.kf.scene}}" 
+            color="#fff" size="48"></contact-button>
+          <image lazy-load="{{true}}" class="kf_itemimg" mode="scaleToFill" src="/image/bajiephone.png"></image>
+          <view class="ms_view">
+            <view class="title_text">在线客服
+              <image lazy-load="{{true}}" mode="scaleToFill" src="/image/arrow.png"></image></view>
+            <view class=" mss_text">在线客服实时与您沟通</view>
+            <view class="line_img">
+              <image lazy-load="{{true}}" mode="widthFix" src="/image/kefuline.png" />
+            </view>
+          </view>
+        </view>
+        <view class="content" onTap="pingTaiPhone">
+          <image lazy-load="{{true}}" class="kf_itemimg" mode="scaleToFill" src="/image/complaint.png"></image>
+          <view class="ms_view">
+            <view class="title_text">投诉反馈
+              <image lazy-load="{{true}}" mode="scaleToFill" src="/image/arrow.png"></image></view>
+            <view class="mss_text">投诉建议反馈</view>
+          </view>
+        </view>
+      </view>
+      <view class="close">
+        <image lazy-load="{{true}}" onTap="closekefu" src="/image/close-btn.png" mode="aspectFit"></image>
+      </view>
+    </view>
+  </view>
+</view>
+<!--<gift-share appId="2018031602387571"/> -->
+<!--<popup show="{{showBottom}}" position="bottom" onClose="onPopupClose"></popup> -->

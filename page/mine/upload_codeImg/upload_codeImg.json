@@ -1,0 +1,9 @@
+{
+  "defaultTitle": "资料上传",
+  "pullRefresh": false,
+  "usingComponents": {
+    "notice": "antd-mini/es/NoticeBar/index",
+    "uploader": "antd-mini/es/ImageUpload/index",
+    "am-icon": "antd-mini/es/Icon/index"
+  }
+}

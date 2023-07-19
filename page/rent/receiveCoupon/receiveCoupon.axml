@@ -1,0 +1,56 @@
+<view class="receive_view" style="min-height:{{systemInfo.screenHeight}}px;padding-top:{{systemInfo.titleBarHeight+systemInfo.statusBarHeight}}px">
+  <!-- 头图 -->
+  <image class="title_img" mode="scaleToFill" src="/2020081819342879008.png"/>
+  <!-- 优惠券列表 start-->
+  <view class="coupon_view">
+    <view class="c_view" a:for="{{nousefilter}}" a:key="{{this}}">
+      <view class="coupon_item {{tap_role_index==index?'move_rule':''}}">
+        <image a:if="{{voucher_status==3}}" class="usd_img" mode="scaleToFill" src="/image/usd.png" />
+        <view class="coupon_item_left ">
+          <!-- 减免券 -->
+          <view class="coupon_type1" a:if="{{item.cou_type==3}}">
+            <text class="unit">¥</text>
+            <text class="num">{{item.cou_price}}</text>
+          </view>
+          <!-- 折扣券 -->
+          <view class="coupon_type2" a:if="{{item.cou_type==1}}">
+            <text class="unit">{{item.cou_sum_price*10}}</text>
+            <text class="num">折</text>
+          </view>
+          <!-- 免租券 -->
+          <view class="coupon_type3" a:if="{{item.cou_type==6||item.cou_type==5||item.cou_type==4}}">
+            <text class="unit">免</text>
+          </view>
+          <!-- 首月1元券 -->
+          <view class="coupon_type4" a:if="{{item.cou_type==11}}">
+            <text class="first">首月</text>
+            <text class="unit">1</text>
+            <text class="num">元</text>
+          </view>
+        </view>
+        <view class="coupon_item_center">
+          <view class="item_center_top">{{item.cou_effect}}</view>
+          <view class="item_center_center">{{item.cou_start_time.replace(/-/g,'.')}} - {{item.cou_end_time.replace(/-/g,'.')}}</view>
+          <view class="item_center_bottom" data-tap_index="{{index}}" onTap="rule_explain">
+            <view class="text">使用规则说明</view>
+            <image src="/image/rule1.png"></image>
+          </view>
+        </view>
+        <!-- 按钮 -->
+        <view class="coupon_item_right" data-style="panel" data-jump_type="{{item.cou_kind}}" data-app_id="{{item.app_id}}" data-content_url="{{item.j_url}}" data-telmp_id="{{item.tem_id}}">
+          <view a:if="{{item.used_status==0}}" class="receive_no"  onTap="jump_tap" data-cou_id="{{item.cou_id}}"  data-jump_type="{{item.cou_kind}}" data-app_id="{{item.app_id}}" data-content_url="{{item.j_url}}" data-telmp_id="{{item.tem_id}}">
+            <view class="text">立即领取</view>
+          </view>
+          <view a:if="{{item.used_status!=0}}" class="receive_yes" onTap="goSort">
+            <view class="text">去使用</view>
+          </view>
+        </view>
+      </view>
+      <!-- 规则详情 -->
+      <view class="coupon_explain" a:if="{{tap_role_index==index}}">
+            {{item.cou_describe}}
+      </view>
+    </view>
+  </view>
+  <!-- 优惠券列表 end -->
+</view>

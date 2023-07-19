@@ -1,0 +1,170 @@
+<view a:if={{bill!=''}}>
+  <!-- 产品详情 -->
+  <view class="order-item" a:if="{{goodsInfo!=null}}">
+    <view class="goods-des">
+      <view class="goods-img">
+        <image class="pic" src="{{imgUrl+goodsInfo.goods_order_thumbnail}}" data-goods_id="{{goodsInfo.goods_id}}" onTap="toGoodsDetail" 
+          mode="aspectFit" />
+      </view>
+      <view class="content">
+        <view class="goods-name">{{goodsInfo.goods_name}}</view>
+        <view class="other-pay">
+          <text class="other-pay-name">{{goodsInfo.goods_order_attr}}</text>
+        </view>
+        <view class="total-price">
+          <text class="total-pay-name">总租金：</text>
+          <text class="rmb">￥</text>
+          <text class="total-pay-value numStyle">{{goodsInfo.order_gross_rent}}</text>
+        </view>
+        <image class="zhima" a:if={{depositState=='0'||depositState=='1'}} src="/image/zhima-mind.png" mode="scaleToFill" />
+      </view>
+    </view>
+  </view>
+  <!-- 租金 -->
+  <view class="rend_pay">
+    
+    <view class="rend_mon">
+      <view class="rend_repay">
+        <view class="rend_money numStyle">{{goodsInfo.order_gross_rent}}</view>
+        <view class="rend_state">应还租金(元)</view>
+      </view>
+      <view class="rend_repay">
+        <view class="rend_money numStyle">{{goodsInfo.ispaid}}</view>
+        <view class="rend_state">已还租金(元)</view>
+      </view>
+      <view class="rend_repay">
+        <view class="rend_money numStyle">{{goodsInfo.nopay}}</view>
+        <view class="rend_state">待还租金</view>
+      </view>
+      <view class="rend_detail">
+        <image mode="scaleToFill" src="/image/group_hui.png" />
+        <view class="rend_wenzi">账单到期若未主动还款将通过支付宝支付方式还款，请注意查收信息</view>
+      </view>
+    </view>
+    <view class="rend_insurance" a:if="{{goodsInfo.PolicyNo}}">
+      <view class="rend_insurance_line"></view>
+      <view class="rend_insurance_content">
+        <text>保单号：{{goodsInfo.PolicyNo}}</text>
+        <view class="insurance_line"></view>
+        <text onTap="showtoubao">已投保
+          <image mode="scaleToFill" src="/image/confirm-order-ques.png" />
+        </text>
+      </view>
+    </view>
+  </view>
+  <!-- 详情 detail-->
+  <view class="loan_detail" a:if={{bill}}>
+    <!--<view class="checked_all" onTap="checkedAll"><view class="checked_view"><image mode="widthFix" src="/image/{{isSelectAll?'select.png':'noselect.png'}}"/>
+            全选</view></view> -->
+    <view class="detail_item" a:for="{{bill}}" key="bill{{index}}" data-id="{{item.id}}" data-index="{{index}}" onTap="{{item.fq_status!=2?'clickItem':''}}">
+      <view class="detail {{item.fq_status==2?'gary':'white'}}">
+        <view class="detail_top">
+          <view class="checked_view">
+            <image a:if="{{item.fq_status!=2}}" mode="widthFix" src="/image/{{selectbillids.indexOf(item.id)!=-1?'select.png':'noselect.png'}}" />
+            
+            <text a:if="{{item.current_tenancy_term!=13}}">{{item.current_tenancy_term}}/{{item.tenancy_term}}期</text>
+            <text a:if="{{item.current_tenancy_term==13}}">买断金</text>
+            
+          </view>
+          <view class="detail_state" style="font-weight:600">
+            <text class="overdue" a:if="{{item.fq_status==3}}">逾期金额:{{item.amount_override}}</text>  {{item.fq_statusName}}
+          </view>
+        </view>
+        <view class="detail_bottom" style="margin-top:26rpx">
+          <view class="money {{item.fq_status==2?'gary':''}}" style="padding-left:44rpx;">
+            <text class="money_fu">￥</text>
+            <text class="money_data numStyle">
+              <text class="mon1">{{item.total_pay}}</text></text>
+          </view>
+          <view>
+            <view a:if="{{item.explain.length}}" a:for="{{item.explain}}" a:for-item="it" style="text-align:right;" >
+              {{it.title}}&nbsp;&nbsp;<text style="color:orange">￥{{it.money}}</text>
+            </view>
+            <view style="text-align:right;margin-top:15rpx" class="money_state numStyle">{{item.fq_status==2?item.last_repayment_time:item.repayment_time.split(' ')[0]}}通过支付宝支付还款</view>
+          </view>
+        </view>
+      </view>
+      <view class="u-line"></view>
+    </view>
+  </view>
+  <view class="bottom">
+    <view class="line"></view>
+    <view class="wrapper">
+      <view a:if="{{stageNum==0}}">
+        请选择期数
+      </view>
+      <view a:if="{{stageNum!=0}}" class="bottom_text">
+        <text class="moneyUnit">￥</text>
+        <text class="money">{{total.split('.')[0]}}</text>
+        <text class="money00">.{{total.split('.')[1]}}</text>
+        <text class="day">共{{stageNum}}期</text>
+      </view>
+      <form report-submit="{{false}}" data-id="panelClose">
+        <button formType="submit" class=" {{stageNum==0?'disabled':'red'}}" onTap="{{stageNum==0?'':'showhuankuan'}}" type="primary">去还款</button>
+      </form>
+    </view>
+  </view>
+</view>
+<view class="cover" a:if="{{isShowHuankuan}}">
+  <view class="shadow" animation="{{shadowAnimation}}"></view>
+  <view class="panel" animation="{{contentAnimation}}">
+    <view a:if="{{true}}" class="service-panel">
+      <view class="content filtercontent">
+        <view class="close" data-style="panel" onTap="hidehuankuan">
+          <image src="/image/close.png" mode="aspectFit" />
+        </view>
+        <view a:if="{{selectbill.length==1}}" class="leftlabel">
+          第{{selectbill[0].current_tenancy_term}}/{{bill.length}}期
+        </view>
+        <view a:if="{{selectbill.length>1}}" class="leftlabel">
+          第{{selectbill[0].current_tenancy_term}}~{{selectbill[selectbill.length-1].current_tenancy_term}}期
+        </view>
+        <view class="detail_content">
+          <view class="detail_title">
+            {{selectbill.length>1?'应还金额':'本期应还'}}
+          </view>
+          <view class="detail_amount">
+            <text class="smaill_unit">¥</text>{{total}}
+          </view>
+          <view class="detail_word">
+            <view a:if="{{selectbill.length==1}}" class="word_item">
+              <text class="word_left">最后还款日</text>
+              <text class="word_right">{{selectbill[0].repayment_time}}</text>
+            </view>
+            <view a:if="{{selectbill.length>1}}" a:for="{{selectbill}}" key="selectbill{{index}}" class="word_item">
+              <text class="word_left">第{{item.current_tenancy_term}}期</text>
+              <text class="word_right">¥{{item.total_pay}}</text>
+            </view>
+            <view a:if="{{amount_override!=0}}" class="word_item">
+              <text class="word_left">逾期金额</text>
+              <text class="word_right">¥{{amount_override}}</text>
+            </view>
+            <view class="word_item">
+              <text class="word_left">还款方式</text>
+              <text class="word_right">还款日当天或在此之前主动支付还款</text>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="bottom_view">
+        <button class="bottom_red" onTap="repayment" type="defatlt">立即还款</button>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="cover" a:if="{{isShowToubao}}">
+  <view class="shadow"></view>
+  <view class="layer">
+    <view class="free-payment module">
+      <view class="des">
+        <view class="insurance_title">投保说明</view>
+        <view class="insurance_content">
+          此订单由中国人民保险公司提供信用保证保险服务，具体费用由平台承担。
+        </view>
+      </view>
+      <view class="close">
+        <image onTap="closetoubao" src="/image/close-btn.png" mode="aspectFit" />
+      </view>
+    </view>
+  </view>
+</view>

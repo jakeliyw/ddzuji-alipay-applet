@@ -1,0 +1,9 @@
+
+
+<web-view a:if="{{canUse}}" id="webView"
+	src="https://h5.bajiezu.cn/{{showWhat}}.html" 
+	onMessage="onMessage"></web-view>
+
+  <!-- <web-view id="webView"
+	src="https://h5.dev.bajiezu.cn/blindbox/blindBox.html" 
+	onMessage="onMessage"></web-view> -->

@@ -1,0 +1,9 @@
+<view class="layout">
+  <view >
+    <image mode="scaleToFill" src="/image/goodsdetail/product_tips_header.png" lazy-load={{true}} class="product_tips_header_img">
+  </view>
+  <view style="display: flex; justify-content: center;">
+    <image mode="scaleToFill" src="/image/goodsdetail/product_tips_content.png" lazy-load={{true}} class="product_tips_content_img"/>
+  </view>
+    <image mode="scaleToFill" src="/image/goodsdetail/product_tips_bottom.png" lazy-load={{true}} class="product_tips_bottom_img"/>
+</view>

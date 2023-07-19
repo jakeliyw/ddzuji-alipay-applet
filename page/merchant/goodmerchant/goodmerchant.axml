@@ -1,0 +1,45 @@
+<view class="mer_top" a:if="{{you_mer.length>0}}">
+  <scroll-view class="scroll-view_H" scroll-x="{{true}}" style="width: 100%">
+    <view a:for="{{you_mer}}" key="youmer{{index}}" class="scroll-view-item_H recommend_item" data-mer_id="{{item.mer_id}}" data-cate_id="{{item.cate_id}}" onTap="go_mer_sort">
+      <image mode="scaleToFill" src="{{imgurl+item.img}}"/>
+    </view>
+    <view class="scroll-view-item_H blank"></view>
+  </scroll-view>
+</view>
+<view class="mer_good" a:if="{{merchant.length>0}}">
+  <view class="active_title">
+        优质店铺
+  </view>
+  <view class="mer_card">
+    <view a:for="{{merchant}}" key="merchant{{index}}" class="mer_card_item" data-mer_id="{{item.id}}" onTap="go_mer">
+      <view class="image_logo">
+        <image src="{{imgurl+item.mer_logo}}" mode="scaleToFill" />
+      </view>
+      <view class="order_num">
+        订单数量{{item.order_num}}单
+      </view>
+      <view class="card_item_top">
+        <view class="item_top_center">
+          <view class="mer_name">{{item.shop_name}}
+          </view>
+          <view class="mer_text" a:if="{{item.is_security==1}}">
+            <image mode="scaleToFill" src="/image/guarantee.png"/>已缴纳保证金
+          </view>
+          <view class="mer_text" a:if="{{item.is_security!=1}}">
+            未缴纳保证金
+          </view>
+        </view>
+        <view class="go_mer">
+                进店
+          <image src="/image/go_right.png" mode="widthFix" />
+        </view>
+      </view>
+      <view class="card_item_imgs">
+        <view a:for="{{item.mer_recommend}}" key="merrecommend{{index}}-{{item_index}}" a:for-item="item_img" a:for-index="item_index" class="mer_imgs_item">
+          <image mode="scaleToFill" src="{{imgurl+item_img}}"/>
+        </view>
+      </view>
+    </view>
+ 
+  </view>
+</view>

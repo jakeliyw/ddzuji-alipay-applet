@@ -1,0 +1,335 @@
+page {
+  background: #f7f7f7;
+  /* background: #fff; */
+  padding-bottom: 100rpx;
+  position: relative;
+}
+
+.yel {
+  color: #FF584F;
+}
+
+.col333 {
+  color: #333;
+}
+
+.col666 {
+  color: #666
+}
+
+.col000 {
+  color: #000;
+}
+
+.col888 {
+  color: #888;
+}
+
+.col999 {
+  color: #999;
+}
+
+.fff {
+  color: #fff;
+}
+
+.size20 {
+  font-size: 20rpx;
+}
+
+.size22 {
+  font-size: 22rpx;
+}
+
+.size24 {
+  font-size: 24rpx;
+}
+
+.size32 {
+  font-size: 32rpx;
+}
+
+.size36 {
+  font-size: 36rpx;
+}
+
+.size28 {
+  font-size: 28rpx;
+}
+
+.size42 {
+  font-size: 42rpx;
+}
+
+.mt10 {
+  margin-top: 10rpx;
+}
+
+.mt25 {
+  margin-top: 25rpx;
+}
+
+.mt30 {
+  margin-top: 30rpx;
+}
+
+.mt40 {
+  margin-top: 40rpx;
+}
+
+.mb20 {
+  margin-bottom: 20rpx;
+}
+
+.pl40 {
+  padding-left: 40rpx;
+}
+
+.mt17 {
+  margin-top: 17rpx;
+}
+
+.mb22 {
+  margin-bottom: 22rpx;
+}
+
+.mb30 {
+  margin-bottom: 30rpx;
+}
+
+.pt30 {
+  padding-top: 30rpx;
+}
+
+.order-status {
+  padding: 40rpx 90rpx 30rpx 30rpx;
+  background: linear-gradient(270deg, rgba(255, 129, 85, 1) 0%, rgba(255, 72, 77, 1) 100%);
+  position: relative;
+}
+
+.status-val {
+  color: #fff;
+  font-weight: 600;
+  display: flex;
+}
+
+.status-icon {
+  width: 42rpx;
+  margin-right: 10rpx;
+}
+
+.order-time {
+  color: #fff;
+  opacity: 0.5;
+}
+
+.order-status .copy {
+  width: 156rpx;
+  height: 48rpx;
+  line-height: 48rpx;
+  border-radius: 24rpx;
+  border: 1rpx solid rgba(255, 255, 255, 1);
+  font-size:24rpx;
+  color: #fff;
+  position: absolute;
+  bottom: 30rpx;
+  right: 30rpx;
+  background: transparent;
+  z-index: 1;
+}
+
+.order-description {
+  line-height: 40rpx;
+}
+
+.address {
+  padding: 40rpx 30rpx;
+  background: #fff;
+}
+
+.address-icon {
+  width: 16rpx;
+  float: left;
+  margin-right: 10rpx;
+  margin-top: 10rpx;
+}
+
+.address-text {
+  line-height: 40rpx;
+}
+
+.line {
+  height: 10rpx;
+  background: linear-gradient(90deg, rgba(255, 129, 85, 1) 0%, rgba(255, 72, 77, 1) 100%);
+}
+
+.product {
+  padding: 40rpx 30rpx;
+  background: #fff;
+  display: flex;
+}
+
+.product .pro-img {
+  width: 160rpx;
+  height: 160rpx;
+}
+
+.product .pro-info {
+  margin-left: 20rpx;
+}
+
+.pro-info .pro-title {
+  max-width: 510rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.pro-info .pro-price {
+  margin: 12rpx 0
+}
+
+.phone-info {
+  display: flex;
+  justify-content: flex-start;
+  padding: 25rpx 30rpx 35rpx;
+  background: #fff;
+  color: #333;
+  font-size: 28rpx;
+  align-items: center;
+}
+
+.phone-info image {
+  width: 56rpx;
+  height: 56rpx;
+}
+
+.phone-info .phone-text {
+  padding: 0 20rpx;
+}
+
+/* 价格信息 */
+
+.price-info-wrap {
+  padding: 40rpx 30rpx;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.price-info-wrap .info-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: #333;
+  font-size: 28rpx;
+}
+
+.price-info-wrap .real-payment {
+  border-top: solid 1rpx #ddd;
+  position: relative;
+}
+
+.price-info-wrap .real-payment .arrow-down {
+  border: solid #ddd;
+  border-width: 0 1rpx 1rpx 0;
+  padding: 3px;
+  transform: rotate(45deg);
+  position: absolute;
+  top: -7rpx;
+  right: 30rpx;
+  background: #fff;
+}
+
+.order-info {
+  display: flex;
+  flex-direction: column;
+  padding: 40rpx 30rpx;
+  background: #fff;
+}
+
+.order-info view {
+  display: flex;
+  justify-content: space-between;
+}
+
+.order-bottom {
+  width: 100%;
+  height: 100rpx;
+  position: fixed;
+  bottom: 0;
+  border-top: solid 1rpx #ddd;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background: #fff;
+  padding-right: 6rpx;
+}
+
+.order-bottom button {
+  width: 160rpx;
+  height: 48rpx;
+  border-radius: 24rpx;
+  line-height: 48rpx;
+  font-size: 24rpx;
+  color: #FF584F;
+  margin-right: 24rpx;
+  border: 1rpx solid rgba(255, 88, 79, 1);
+}
+
+.order-bottom>button:last-child {
+  color: #fff;
+  border: none;
+  background: linear-gradient(270deg, rgba(255, 72, 77, 1) 0%, rgba(255, 129, 85, 1) 100%);
+}
+
+.order-bottom .service {
+  position: relative;
+}
+
+.order-bottom .service contact-button {
+  width: calc(100% - 24rpx);
+  height: 100%;
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  left: 0;
+}
+
+/* 取消订单弹框 */
+
+.cancel-model .am-modal-content {
+  padding: 50rpx 60rpx 35rpx;
+}
+
+.cancel-model .am-modal-body {
+  text-align: left;
+}
+
+.cancel-model .am-modal-header {
+  font-size: 32rpx;
+  color: #000;
+  font-weight: 400;
+}
+
+.cancel-model .am-modal-body {
+  font-size: 28rpx;
+  color: #666;
+  font-weight: 400;
+  line-height: 28rpx;
+}
+
+.cancel-model .radio {
+  display: block;
+  margin-bottom: 20rpx;
+}
+
+.cancel {
+  color: #333;
+  font-size: 34rpx;
+}
+
+.btn-payment {
+  color: #FF584F;
+  font-size: 34rpx;
+}

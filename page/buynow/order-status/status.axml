@@ -1,0 +1,154 @@
+<!-- 订单状态 -->
+<view class="order-status">
+  <view class="size36 status-val">
+    <image class="status-icon" mode="widthFix" src="{{imgUrl + info.status.img}}"/>{{info.status.name}}
+  </view>
+  <view class="size28 fff mt25 order-description">
+    {{info.status.msg}}
+  </view>
+  <view class="order-time mt40">
+    {{info.create_time}}
+  </view>
+  <button a:if="{{ order_status == 3 && type == 1 }}" class="copy" type="defatlt" hover-class="none" onTap="copyNum">复制单号</button>
+</view>
+<!-- 地址信息 -->
+<view class="address" a:if="{{ type == 1 }}">
+  <view class="size32 col000">
+    <text>{{ info.receiver.name }}</text>
+    <text class="pl40">{{ info.receiver.phone }}</text>
+  </view>
+  <view class="mt10 clearfix">
+    <image class="address-icon" mode="widthFix" src="/image/confirm-order-address.png"/>
+    <view class="size28 address-text col888">
+      {{ info.receiver.address }}
+    </view>
+  </view>
+</view>
+<!-- 花费信息 -->
+<view class="phone-info" a:if="{{ type == 2 }}">
+  <image mode="scaleToFill" src="/image/buynow/phone.png"/>
+  <text class="phone-text">话费充值号码：</text>
+  <text>{{info.user_note}}</text>
+</view>
+<view class="line mb20"></view>
+<view class="product mb20">
+  <image mode="scaleToFill" src="{{ imgUrl + info.goods.img }}" class="pro-img"/>
+  <view class="pro-info">
+    <view class="col333 size28 pro-title mb20">
+      {{ info.goods.name }}
+    </view>
+    <block a:if="{{type == 1}}">
+      <view class="col999 size24">
+      套餐：{{ info.goods.attr }}
+      </view>
+      <view class="col999 size24 pro-price">
+      价格：¥{{ info.goods.original_price }}
+      </view>
+    </block>
+    <block a:if="{{type == 2}}">
+      <view class="col999 size24">
+      充值号码：{{ info.user_note }}
+      </view>
+      <view class="col999 size24 pro-price">
+      充值面额：最高得888元话费
+      </view>
+    </block>
+    <view class="col999 size24">
+      数量：{{ info.goods.num }}
+    </view>
+  </view>
+</view>
+<!-- 价格信息 -->
+<view class="price-info-wrap mb20">
+  <view class="info-item" a:if="{{type!==2}}">
+    <text>商品总价</text>
+    <view>
+      <text class="size20">¥</text>
+      <text class="size28">{{ info.goods.original_price.split('.')[0] }}</text>
+      <text class="size22">.{{ info.goods.original_price.split('.')[1] }}</text>
+    </view>
+  </view>
+  <view class="info-item mt30 mb30" a:if="{{type!==2}}">
+    <text>优惠券</text>
+    <view class="{{ entry == 3 ? '' : 'yel' }}">
+      <text a:if="{{ entry == 1 }}">支付宝积分兑换 省¥{{ info.discount_price.split('.')[0] }}</text>
+      <text a:elif="{{ entry == 2 }}">优惠 省¥{{ info.discount_price.split('.')[0] }}</text>
+      <text a:else>无</text>
+      <text class="size22" a:if="{{ entry == 1 || entry == 2 }}">.{{ info.discount_price.split('.')[1] }}</text>
+    </view>
+  </view>
+  <view class="info-item mb30" a:if="{{ type == 1 }}">
+    <text>邮费</text>
+    <view>
+      <text class="size20">¥</text>
+      <text class="size28">{{ info.free_price.split('.')[0] }}</text>
+      <text class="size22">.{{ info.free_price.split('.')[1] }}</text>
+    </view>
+  </view>
+  <view class="info-item real-payment pt30">
+    <text>实付款</text>
+    <view class="yel">
+      <text class="size20">¥</text>
+      <text class="size28">{{ info.pay_price.split('.')[0] }}</text>
+      <text class="size24">.{{ info.pay_price.split('.')[1] }}</text>
+    </view>
+    <view class="arrow-down"></view>
+  </view>
+</view>
+<!-- 订单编号与时间 -->
+<view class="mb20 order-info col999 size28">
+  <view>
+    <text>订单编号</text>
+    <text>{{ info.order_id }}</text>
+  </view>
+  <view class="mt30">
+    <text>下单时间</text>
+    <text>{{ info.create_time }}</text>
+  </view>
+  <view class="mt30" a:if="{{ info.pay_time }}">
+    <text>付款时间</text>
+    <text>{{ info.pay_time }}</text>
+  </view>
+  <view class="mt30" a:if="{{ info.receiv_time }}">
+    <text>成交时间</text>
+    <text>{{ info.receiv_time }}</text>
+  </view>
+  <view class="mt30" a:if="{{ info.update_time }}">
+    <text>取消时间</text>
+    <text>{{ info.update_time }}</text>
+  </view>
+</view>
+<view class="order-bottom">
+  <button type="ghost" onTap="btnCancelOrder" hover-class="none" a:if="{{ info.order_status == 1 }}">
+    取消订单
+  </button>
+  <button type="ghost" onTap="goExpress" hover-class="none" a:if="{{ (info.order_status == 3 || info.order_status == 4) && type==1 }}">
+    查看物流
+  </button>
+  <view class="service">
+    <contact-button tnt-inst-id="{{appInfo.globalData.goodDetail.kf.tntInstId}}" scene="{{appInfo.globalData.goodDetail.kf.scene}}" color="#fff" size="48"></contact-button>
+    <button type="ghost" hover-class="none">
+    联系客服
+    </button>
+  </view>
+  <button type="primary" hover-class="none" onTap="goPay" a:if="{{ info.order_status == 1 }}" disabled="{{btn_disabled}}">
+    去付款
+  </button>
+  <button type="primary" hover-class="none" onTap="confirmGoods" a:if="{{ info.order_status == 3 }}">
+    确认收货
+  </button>
+</view>
+<!-- 取消订单弹框 -->
+<view>
+  <modal className="cancel-model" show="{{cancelModel}}" onButtonClick="cancelOrderBtnsHander" buttons="{{cancelModelBtns}}">
+    <view slot="header">
+      取消原因
+    </view>
+    <radio-group class="radio-group" onChange="radioChange" name="lib">
+      <label class="radio" a:for="{{items}}" key="label-{{index}}">
+        <radio color="#FF584F" value="{{item.name}}" checked="{{item.checked}}" disabled="{{item.disabled}}" />
+        <text class="radio-text">{{item.value}}</text>
+      </label>
+    </radio-group>
+  </modal>
+</view>

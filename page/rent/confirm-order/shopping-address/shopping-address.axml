@@ -1,0 +1,18 @@
+<view>
+  <view class="address-view">
+    <view class="address-group" a:for="{{addressList}}" key="{{index}}" data-index="{{index}}" onTap="selectAdd">
+      <view class="address-left">
+        <view class="name">
+          <view>{{item.consignee}}</view>
+          <view class="phone">{{item.consignee_phone}}</view>
+          <button type="primary" class="default" a:if="{{item.is_default === 1 }}">默认</button>
+        </view>
+        <view class="address-text">{{item.province + item.city + item.region + item.address}}</view>
+      </view>
+      <view class="line"></view>
+      <view class="edit" data-id="{{item.id}}" data-type="edit" catchTap="toEditAdd">编辑</view>
+    </view>
+  </view>
+  <view class="get-add" onTap="getAliAdd">获取支付宝收货地址</view>
+  <view class="ad-add" data-type="ad" onTap="toEditAdd">+新增地址</view>
+</view>

@@ -1,0 +1,404 @@
+<view a:if="{{orderDetail!='' || buyOutMsg.buy_money}}">
+  <!--<view class="tips_view" a:if="{{is_showTips && !buyOutMsg.buy_money}}"><image class="warning" mode="scaleToFill" src="/image/warning.png" />温馨提示：请确保账户金额大于实付款，确保下单成功<image class="del_icon" onTap="del_topWarning" mode="scaleToFill" src="/image/del_.png" /></view>
+   -->
+  <!-- <view style="position:relative;display:flex">
+    <image class="warning" mode="scaleToFill" src="/image/warning.png" />
+    <view style="width:50rpx;height20rpx;background:rgb(247, 247, 247)">
+    </view>
+    <view style="font-size:14px;" class="water_tips">
+      <text class="water_text">温馨提示：请确保本次租赁服务是在本人正常使用条件下下单，下单人须承担缴纳租金责任以及逾期后所面临的法律诉讼，利用平台进行贷款交易是违法行为，若发现以上行为，平台必会追究法律责任！</text>
+    </view>
+  </view> -->
+  <!--<view> -->
+  <!-- 地址 -->
+  <view class="my-address" a:if="{{!buyOutMsg.buy_money}}">
+    <!-- 已选择地址 -->
+    <view class="getAddress" a:if="{{address_info}}" onTap="getAddress">
+      <view class="address-info">
+        <view class="contact">
+          <text class="username">{{address_info.fullname}}</text>
+          <text class="phone numStyle">{{address_info.mobilePhone}}</text>
+        </view>
+        <view class="address select_address">
+          <view class="icon">
+            <image class="marker_img" src="/image/confirm-order-address.png" mode="aspectFit" />
+          </view>
+          <view class="area">{{address_info.address}}</view>
+        </view>
+      </view>
+      <image class="right_arrow" src="/image/arrow.png" mode="aspectFit" />
+    </view>
+    <!-- 未选择地址 -->
+    <view class="address select_address" a:if="{{!address_info}}" onTap="getAddress">
+      <image class="right_icon" src="/image/arrow.png" mode="aspectFit" />
+      <view class="icon">
+        <image class="marker_img" src="/image/confirm-order-address.png" mode="aspectFit" />
+      </view>
+      <view class="area">请选择收货地址</view>
+    </view>
+    <!--<view class="emailcontact"><text class="username">邮箱</text><view class="emailview"><input type="text" onInput="setEmail" onConfirm="hideEngine" value="{{emailstr}}" placeholder="点击填写邮箱" placeholder-style="placeholder" /><view a:if="{{showEngine}}" class="emailengine_view"><view class="emailengine_item" data-suffix="{{item}}" onTap="engineOnclick" a:for="{{emailSuffixs}}" key="emailSuffixs{{index}}">
+            {{emailstr}}{{item}}</view></view></view></view><view class="address"><view class="icon"><image src="/image/email.png" mode="aspectFit" /></view><view class="areared">填写真实邮箱，以便查收账单信息</view></view><image class="line" src="/image/confirm-order-line.png" mode="aspectFill" /> -->
+  </view>
+  <view class="emergency_contact" a:if="{{false}}">
+    <view class="title">紧急联系人</view>
+    <view class="sub_title">非紧急情况下，我们不会联系，请您放心</view>
+    <view class="info_item">
+      <view class="item_title">联系人姓名</view>
+      <input class="item_input" value="{{eme_contact}}" onInput="setEmeContact" placeholder="请输入联系人姓名" />
+    </view>
+    <view class="info_item">
+      <view class="item_title">联系人手机</view>
+      <input class="item_input" value="{{eme_contact_phone}}" onInput="setEmeContactPhone" type="number" placeholder="请输入联系人电话" />
+    </view>
+    <view class="info_item">
+      <view class="item_title">联系人关系</view>
+      <picker class="eme_picker" placeholder="请选择联系人关系" onOk="handleOk" value="{{eme_contact_relation}}" data="{{relationList}}">
+      </picker>
+    </view>
+  </view>
+  <button class="real_nameview" a:if="{{is_auth!=1 && !buyOutMsg.buy_money}}" open-type="getAuthorize" onGetAuthorize="onGetAuthorize" 
+    onError="onAuthError" scope='phoneNumber'>
+    <!--<view class="real_nameview" > -->
+    <view class="title">实名认证</view>
+    <view class="msg">还未进行实名认证，去认证</view>
+    <image class="right_icon" src="/image/arrow.png" mode="aspectFit" />
+    <!--</view> -->
+  </button>
+  <!-- feature: 叮咚租机暂时不需要补充资料 -->
+  <!-- <button class="real_nameview" a:if="{{!isUploadUserInfo}}" onTap="gotoUserInfo">
+    <view class="title">补充资料</view>
+    <view class="msg">以便于加速审核订单</view>
+    <image class="right_icon" src="/image/arrow.png" mode="aspectFit" />
+  </button> -->
+  <!-- 商品信息 -->
+  <view class="goods-des">
+    <image class="goods-pic" a:if="{{buyOutMsg.buy_money}}" src="{{imgUrl+buyOutMsg.goods_order_thumbnail}}" mode="aspectFit" />
+    <image class="goods-pic" a:else src="{{imgUrl+orderDetail.goods_order_thumbnail}}" data-goods_id="{{goods_id}}" onTap="toGoodsDetail" 
+      mode="aspectFit" />
+    <view class="content">
+      <view class="goods-name">{{orderDetail.goods_name || buyOutMsg.goods_name}}</view>
+      <view class="goods-attr">{{orderDetail.goods_order_attr || buyOutMsg.goods_order_attr}}</view>
+      <view class="enjoy" a:if="{{orderDetail.safe_id !== 0 && !buyOutMsg.buy_money}}">
+        <text>意外保障：</text>
+        <text >￥</text>
+        <text>{{orderDetail.safe_price}}</text>
+      </view>
+      <!-- <view class="total-price" a:if={{!buyOutMsg.buy_money}}>
+        <text class="total-pay-name">月租金：</text>
+        <text class="rmb">￥</text>
+        <text class="total-pay-value numStyle" >{{orderDetail.order_monthly_rent}}</text>
+      </view> -->
+      <image class="zhima" a:if={{depositState=='0'||depositState=='1'}} src="/image/zhima-mind.png" mode="scaleToFill" />
+    </view>
+  </view>
+  <!-- 账单信息 -->
+  <view class="bill-info">
+    <view class="pay-detail">
+      <view class="total-pay list" a:if="{{false}}">
+        <view class="title">
+          <text>总租金</text></view>
+        <view class="value">
+          <text >￥</text>
+          <text class="numStyle">{{orderDetail.order_gross_rent||buyOutMsg.order_gross_rent}}</text></view>
+      </view>
+      <view class="month list" a:if="{{buyOutMsg.buy_money}}">
+        <view class="title">
+          <text>已付租金</text></view>
+        <view class="value">
+          <text >￥</text>
+          <text class="numStyle">{{buyOutMsg.paid_money}}</text></view>
+      </view>
+      <view class="month list" a:if="{{buyOutMsg.buy_money}}">
+        <view class="title">
+          <text>未付租金</text></view>
+        <view class="value">
+          <text >￥</text>
+          <text class="numStyle">{{buyOutMsg.no_pay_money}}</text></view>
+      </view>
+      <!-- <view  class="single-price list">
+        <view class="title">
+          <text class="one_month_money">首期实付金额</text>
+        </view>
+        <view class="value" style="display:flex">
+
+          <view>
+            <text class="down_payment_money">￥{{orderDetail.first_month_pay_amount}}</text>
+          </view>
+        </view>
+      </view>
+      <view class="line" ></view> -->
+
+      <!-- <view a:if={{!buyOutMsg.buy_money}} class="single-price list">
+        <view class="title">
+          <text>月租金</text>
+        </view>
+        <view class="value">
+          <text class="rmb">￥</text>
+          <text class="numStyle" style="{{orderDetail.after_voucher_month_rent!==''?'text-decoration:line-through':''}}">{{orderDetail.order_monthly_rent}}</text>
+        </view>
+      </view> -->
+      
+      <!-- <view class="single-price list" a:if="{{ buyOutMsg.buy_money === undefined && orderDetail.after_voucher_month_rent !== ''}}">
+        <view class="title">
+          <text>首期租金</text>
+        </view>
+        <view class="initial_rent">
+          <view class="value" a:if="{{ orderDetail.is_have_discount  }}">
+            <text class="numStyle delete_line">￥{{orderDetail.order_monthly_rent}}</text>
+          </view>
+          <view class="value" >
+            <text >￥</text>
+            <text class="numStyle">{{orderDetail.first_month_rent}}</text>
+          </view>
+        </view>
+      </view>
+      <view class="total-pay list" a:if="{{!buyOutMsg.buy_money}}">
+        <view class="title">
+          <text>碎屏险金额</text>
+        </view>
+        <view class="value">
+          <text >￥</text>
+          <text class="numStyle">{{orderDetail.order_goods_insurance}}</text></view>
+      </view>
+      <view class="line" ></view> -->
+      <!-- <view class="total-pay list">
+        <view class="title">
+          <text>剩余总租金</text>
+        </view>
+        <view class="value coupon_money">
+          <text>￥</text>
+          <text class="numStyle">{{orderDetail.order_actual_month_rent}}x{{orderDetail.surplus_term}}期</text>
+        </view>
+      </view>
+      <view class="month list " a:if="{{buyOutMsg.buy_money}}">
+        <view class="title">
+          <text>押金</text></view>
+        <view class="value" >
+          <text>￥</text>
+          <text class="numStyle">{{buyOutMsg.order_gross_credit_rent}}</text></view>
+      </view>
+      <view class="month list" a:if="{{buyOutMsg.buy_money}}">
+        <view class="title">
+          <text>免押金额</text></view>
+        <view class="value">
+          <text >￥</text>
+          <text class="numStyle">{{buyOutMsg.zm_credit_amount}}</text></view>
+      </view>
+      <view class="month list" a:if="{{buyOutMsg.buy_money}}">
+        <view class="title">
+          <text>需支付金额</text></view>
+        <view class="value">
+          <text >￥</text>
+          <text class="numStyle">{{buyOutMsg.need_pay}}</text></view>
+      </view> -->
+
+      <view class="total-pay list">
+        <view class="title ahead_buyout_layout">
+          <text>到期买断金</text>
+          <text class="ahead_buyout">
+            提前买断享优惠
+          </text>
+        </view>
+        <view class="value">
+          <text >￥</text>
+          <text class="numStyle">{{orderDetail.buy_money || buyOutMsg.buy_money}}</text></view>
+      </view>
+      <view class="month list" a:if="{{buyOutMsg.buy_money === undefined}}">
+        <view class="title">
+          <text>租用天数</text></view>
+        <view class="value">
+          <text>共
+            <text class="numStyle">{{orderDetail.order_day_rent}}</text>天</text></view>
+      </view>
+      <!-- <view class="line" ></view> -->
+
+      <!-- <view class="total-pay list" a:if="{{ orderDetail.total_discount_amount !== 0 }}">
+        <view class="title coupon_layout_center">
+          <image mode="scaleToFill" src="/image/coupon-badge.png" class="coupon-badge" />
+          <text class="bold_coupon_text ">可享优惠</text>
+        </view>
+        <view class="value coupon_money" >
+          <text >–￥</text>
+          <text class="numStyle">{{orderDetail.total_discount_amount}}</text>
+        </view>
+      </view> -->
+      <view class="total-pay list " a:if="{{ is_exclusive_discounts }}">
+        <view class="title">
+          <text class="bold_coupon_text margin_coupon_text">专享优惠</text>
+        </view>
+        <view class="value" >
+          <text >–￥</text>
+          <text class="numStyle">{{sesame_exclusive_discount_amount}}</text>
+        </view>
+      </view>
+      <view a:if={{!orderDetail.one_yuan && !buyOutMsg.buy_money}} class="month list "  onTap="showVoucherPanel">
+        <view class="title">
+          <text class="bold_coupon_text margin_coupon_text">优惠券</text>
+        </view>
+        <view class="value" style="display:flex;align-items:center">
+          <text class="but" a:if="{{!orderDetail.total_voucher_amount}}">
+            {{cou_list.length}}张可用
+          </text>
+          <text class="numStyle" a:else >{{'–￥' + orderDetail.total_voucher_amount}}</text>
+          <image mode="scaleToFill" src="/image/coupon-right.png" style="width:50rpx;height:50rpx" />
+        </view>
+      </view>
+    </view>
+    <view class="devide-line"></view>
+  </view>
+  <!-- 备注 -->
+  <view class="remarks" a:if="{{!buyOutMsg.buy_money}}">
+    <textarea onBlur="bindTextAreaBlur" placeholder-class="remarke_placeholder" auto-height placeholder="输入您的备注信息" />
+  </view>
+  <!-- 买断提交 -->
+  <view class="cash-bottom" a:if="{{buyOutMsg.buy_money}}">
+    <view>
+      <text class="cash-submit-money">
+        ¥
+        <text>{{buyOutMsg.need_pay.split(".")[0]}}</text>
+        .{{buyOutMsg.need_pay.split(".")[1]}}
+      </text>
+      <text class="grey">买断金</text>
+    </view>
+    <view class="cashSub" catchTap="cashSub">确定买断</view>
+  </view>
+  <!-- 协议及提交 -->
+  <view class="bottom" a:if="{{!buyOutMsg.buy_money}}">
+    <view class="tip {{show == '0'?'none':'self'}}">
+      <image src="/image/confirm-order-tip.png" mode="scaleToFill" /></view>
+    <view class="rule">
+      <view class="circle">
+        <image onTap="choose" src="/image/confirm-order-circle{{cho==1?'-active':''}}.png" mode="scaleToFill" /></view>
+      <view class="text">我已阅读并同意
+        <text class="link">
+          <text onTap="toRule" data-type="1">《用户租赁及服务协议》</text>
+        </text>
+      </view>
+    </view>
+    <view class="submit_view" a:if="{{!buyOutMsg.buy_money}}">
+      <text class="exclusive_price" a:if="{{ is_show_exclusive }}">专享价</text>
+      <view class="submit_money" data-origin="actual_payment_Details" onTap="showPanel">
+        <text class="t">首期实付</text>
+        <text class="rmb" style="color: #F43139">￥</text>
+        <text class="price">{{orderDetail.first_month_pay_amount}}</text>
+        <image mode="scaleToFill" src="/image/vip_details_arrow.png" class="vip_details_arrow"
+        />
+
+        <!-- <text class="price" a:if="{{ orderDetail.one_yuan }}">{{down_payments.split(".")[0]}}</text>
+        <text class="price0" a:if="{{ orderDetail.one_yuan  }}">.{{down_payments.split(".")[1]}}</text>
+        <text class="price" a:if="{{ !orderDetail.one_yuan }}">{{down_payment.split(".")[0]}}</text>
+        <text class="price0" a:if="{{ !orderDetail.one_yuan  }}">.{{down_payment.split(".")[1]}}</text> -->
+      </view>
+      <view class="bubble_msg">
+        <text>芝麻分当钱花，记得完成刷脸哦~</text>
+        <view class="triangle">
+        </view>
+      </view>
+      <form report-submit="{{true}}" onSubmit="subOrder">
+        <button formType="submit" class="submit {{cho == '1' ? 'active' : ''}}">去免押</button>
+      </form>
+    </view>
+  </view>
+  <!-- 弹出层 -->
+  <view a:if="{{ !actual_payment_Details }}" class="cover"  style="bottom: 240rpx">
+    <view class="shadow" data-style="actual_payment" onTap="hidePanel" animation="{{shadowAnimation}}"></view>
+    <view class="panel" animation={{contentAnimation}}>
+      <view a:if="{{ !actual_payment_Details }}" class="service-panel">
+        <view class="service-panel" a:if="{{ !actual_payment_Details }}">
+          <view class="content" >
+            <view class="payment_title_layout">
+              <view  class="payment_title">首期实付金额</view>
+              <image mode="scaleToFill" src="/image/close.png" class="payment_del_img" data-style="actual_payment" onTap="hidePanel"/>
+            </view>
+            <view class="payment_line">
+            </view>
+            <view a:if="{{ orderDetail.first_month_pay_amount_detail.length }}">
+              <view class="payment_details_laytou" a:for="{{ orderDetail.first_month_pay_amount_detail }}">
+                <view class="payment_details_key">{{item.name}}</view>
+                <view class="payment_details_value">￥{{item.amount}}</view>
+              </view>
+            </view>
+            <view a:else class="empty_data">
+              暂无数据
+            </view>
+          </view>
+          <!-- <view class="line"></view> -->
+        </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="cover" a:if="{{!voucherHidden}}">
+    <view class="shadow" data-style="panel" onTap="hidePanel" animation="{{shadowAnimation}}"></view>
+    <view class="panel" animation={{contentAnimation}}>
+      <view a:if={{!voucherHidden}}>
+        <!--<view class="title">店铺优惠</view> -->
+        <!-- 优惠券 -->
+        <view a:if="{{!voucherHidden}}" class="service-panel">
+          <view class="must-serve" style="margin-top:20px">使用优惠券</view>
+          <!-- 优惠券列表 start-->
+          <view class="coupon_view" a:if="{{cou_list.length}}">
+            <view a:for="{{cou_list}}" a:key="{{this}}" a:for-index="indexs">
+              <view class="c_view">
+                <view class="coupon_item">
+                  <view class="coupon_item_center">
+                    <view class="item_center_top">{{item.amount}}
+                      <text style="font-size:26rpx;">元</text></view>
+                    <view class="item_center_center">{{item.voucher_type_name}}</view>
+                  </view>
+                  <!-- 内容 -->
+                  <view class="coupon_item_content">
+                    <view class="">
+                      <view style="font-size:32rpx;font-weight:bold">
+                        {{item.voucher_title}}
+                      </view>
+                      <view style="font-size: 24rpx; color: #666666;margin-top:10rpx">
+                        有效期至{{item.valid_end_time}}
+                      </view>
+                    </view>
+                    <view style="font-size: 24rpx; color: #666666;" onTap="getIshow">
+                      使用说明
+                      <image mode="scaleToFill" src="/image/coupon_right.png" style="width:20rpx;height:20rpx" a:if="{{!item.isShow}}" />
+                      <image mode="scaleToFill" src="/image/coupon_bottom.png" style="width:20rpx;height:20rpx" a:else />
+                    </view>
+                  </view>
+                  <!-- 按钮 -->
+                  <view class="coupon_item_right">
+                    <!--<view class="receive_no" a:if="{{item.type===1}}"><get-coupon onGetCouponSuccess="onGetCouponSuccess" onGetCouponFail="onGetCouponFail" onUseImmediately="onUseImmediately" 
+                        onClose="onClose" params="{{[{activityId:item.activity_id,outBizNo:item.uuid}]}}" senderMerchantId="{{senderMerchantId}}" 
+                        dialogBtnType="{{dialogBtnType}}" dialogBtnStyle="{{dialogBtnStyle}}" zIndex="{{9998}}" extraData="{{'Any Data'}}"><view class="text-button">立即领取</view></get-coupon></view> -->
+                    <!--<view class="receive_no" onTap="jump_tap" data-obj="{{item}}" a:if="{{item.type===2}}"><view class="text">去使用</view></view> -->
+                    <!--<image style="width:180rpx;height:180rpx" mode="scaleToFill" src="/image/coupon-yishiyong.png" /> -->
+                    <view class="receive_no" onTap="getCurrent" data-index="{{indexs}}" data-activeId="{{item.user_voucher_id}}">
+                      <view class="{{indexs === current ? 'radio-active':'radio'}}">
+                        ✓
+                      </view>
+                    </view>
+                    <!--<image style="width:180rpx;height:180rpx" mode="scaleToFill" a:if="{{item.type===2}}" src="/image/coupin_success.png" /> -->
+                  </view>
+                </view>
+              </view>
+              <view class="bottoms" a:if="{{item.isShow}}">
+                <view>
+                  1、本券不可兑换现金，不可找零
+                  <!-- {{item.voucher_description}} -->
+                </view>
+                <view style="margin-top:10rpx">
+                  2、如果消费并使用优惠券后，订单发生退款，优惠券无法退还。
+                </view>
+              </view>
+            </view>
+          </view>
+          <view class="coupon_views" a:else>
+            该商品暂无可使用的优惠券！
+          </view>
+          <view class="btn">
+            <view class="closeVou" data-style="panel" onTap="hidePanels">确定</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <dialog title="温馨提示" content="您还未上传个人资料，上传后可有效提高审核效率及通过率" buttonText="{{['继续下单', '立即上传']}}" visible="{{isHoriShow}}" 
+      maskClosable="{{false}}" direction="horizontal" onButtonTap="handleButtonTap" />
+  </view>

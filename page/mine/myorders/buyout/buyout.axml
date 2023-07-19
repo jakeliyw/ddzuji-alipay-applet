@@ -1,0 +1,5 @@
+<view>
+  <button type="primary" onTap="toPay">
+  支付
+  </button>
+</view>

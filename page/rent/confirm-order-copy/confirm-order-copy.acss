@@ -1,0 +1,1481 @@
+page {
+  padding-bottom: 252rpx;
+}
+
+.exclusive_price{
+  position: absolute;
+  width: 95rpx;
+  height: 54rpx;
+  background: linear-gradient(180deg, #FFE4DB 0%, #FFFFFF 100%);
+  border-radius: 20rpx 20rpx 0rpx 0rpx;
+  opacity: 1;
+  font-size: 25rpx;
+  font-weight: bold;
+  text-align: center;
+  line-height: 54rpx;
+  display: inline-block;
+  color: #FF4300;
+  transform: translate(130rpx, -45rpx)
+}
+
+.ahead_buyout_layout {
+  display: flex;
+  align-items: center;
+}
+.ahead_buyout{
+  width: 192rpx;
+  height: 34rpx;
+  border-radius: 9rpx 9rpx 9rpx 9rpx;
+  border: 1rpx solid #F43139;
+  font-size: 24rpx;
+  font-family: PingFang SC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #F43139;
+  text-align: center;
+  line-height: 34rpx;
+  margin-left: 10rpx;
+}
+
+/* 加粗可享优惠 */
+ .bold_coupon_text{
+  font-size: 30rpx;
+  font-family: PingFang SC-Bold, PingFang SC;
+  font-weight: bold;
+  color: #2E3139;
+}
+
+.coupon_layout_center {
+  display: flex;
+  align-items: center;
+}
+
+.coupon_money{
+  font-size: 28rpx;
+  font-family: PingFang SC-Bold, PingFang SC;
+  font-weight: 400;
+  color: #F43139;
+}
+
+.margin_coupon_text {
+  margin-left: 39rpx;
+}
+
+.bubble_msg{
+  position: absolute;
+  bottom: 115rpx;
+  right: 20rpx;
+  width: 368rpx;
+  height: 54rpx;
+  background: #E1E1E1;
+  border-radius: 10rpx 10rpx 10rpx 10rpx;
+  font-size: 22rpx;
+  color: #333333;
+  text-align: center;
+  line-height: 54rpx;
+  z-index: 99;
+  opacity: 1;
+}
+
+.line{
+  color: #EEEEEE;
+  height: 2rpx;
+  background-color: #EEEEEE;
+  margin: 10rpx 0;
+}
+
+/* 服务说明面板 */
+
+.service-panel {
+  width: 100%;
+  background-color: #fff;
+  border-radius: 30rpx 30rpx 0rpx 0rpx;
+}
+
+.service-panel .empty_data{
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: 80rpx;
+  font-size: 26rpx;
+  font-family: PingFang SC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #999999;
+}
+
+.service-panel .content {
+  width: 100%;
+  padding: 38rpx 50rpx;
+  box-sizing: border-box;
+  border-radius: 30rpx 30rpx 0rpx 0rpx;
+}
+.service-panel .contents {
+  width: 100%;
+  padding: 30rpx 30rpx;
+  box-sizing: border-box;
+
+}
+
+.service-panel .payment_title_layout{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.service-panel .payment_line{
+  height: 1rpx;
+  background-color: #EEEEEE;
+  margin-top: 30rpx;
+}
+
+.service-panel .payment_details_laytou{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 23rpx;
+}
+
+.payment_details_laytou .payment_details_key {
+  font-size: 30rpx;
+  font-family: PingFang SC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #666666;
+}
+
+.payment_details_laytou .payment_details_value {
+  font-size: 30rpx;
+  font-family: PingFang SC-Bold, PingFang SC;
+  font-weight: bold;
+  color: #333333;
+}
+
+.service-panel .payment_title_layout .payment_title {
+  font-size: 38rpx;
+  font-family: PingFang SC-Bold, PingFang SC;
+  font-weight: bold;
+  color: #2E3139;
+  line-height: 0rpx
+}
+
+.service-panel .payment_title_layout .payment_del_img {
+  width: 35rpx;
+  height: 35rpx;
+}
+
+.service-panel .must-serve {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #333;
+  line-height: 1;
+  text-align: center;
+}
+
+.service-panel .must-detail {
+  width: 100%;
+  margin-top: 40rpx;
+  box-sizing: border-box;
+}
+
+
+
+/* 专享详情箭头 */
+.vip_details_arrow {
+  width: 23rpx;
+  height: 23rpx;
+  margin-left: 8rpx;
+}
+
+.triangle{
+  width: 0;
+  height: 0;
+  border-top: 8rpx solid #E1E1E1;
+  border-right: 8rpx solid transparent;
+  border-left: 8rpx solid transparent;
+  margin-left: 80%;
+}
+
+.but{
+  width: 120rpx;
+  height: 45rpx;
+  background: linear-gradient(227deg, #F43139 0%, #FFC4C6 100%);
+  border-radius: 8rpx 8rpx 8rpx 8rpx;
+  font-size: 24rpx;
+  font-family: PingFang SC-Bold, PingFang SC;
+  font-weight: bold;
+  color: #FFFFFF;
+  text-align: center;
+  line-height: 45rpx;  
+}
+
+.initial_rent {
+  display: flex;
+  flex-direction: row;
+}
+
+.delete_line {
+  text-decoration: line-through;
+  font-size: 26rpx;
+  font-family: PingFang SC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #999999;
+  margin-right: 10rpx;
+}
+
+.down_payment_money{
+  font-size: 38rpx;
+  font-family: PingFang SC-Bold, PingFang SC;
+  font-weight: bold;
+  color: #040404;
+}
+
+.water_tips {
+  display: flex;
+  align-items: center;
+  padding: 10rpx;
+  width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+.warning {
+  position: absolute;
+  left: 10rpx;
+  top: 12rpx;
+  height: 24rpx;
+  width: 24rpx;
+  margin-right: 15rpx;
+}
+
+.water_text {
+  white-space: nowrap;
+  display: inline-block;
+  color: #FA6400;
+  animation: 20s scroll linear infinite normal;
+}
+@keyframes scroll {
+  0% {
+    transform: scale3d(1, 1, 1) translateX(20%);
+  }
+  100% {
+    transform: scale3d(1, 1, 1) translateX(-100%);
+  }
+}
+.bottoms{
+  padding: 20rpx;
+  font-size: 22rpx;
+  color: #999;
+}
+.receive_no {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.radio-active{
+  width: 36rpx;
+  height: 36rpx;
+  text-align: center;
+  line-height: 36rpx;
+  border-radius: 50%;
+  font-weight: bold;
+  background: rgb(252, 80, 41);
+  color: #ffffff;
+  font-size: 22rpx;
+}
+.radio{
+  width: 36rpx;
+  height: 36rpx;
+  text-align: center;
+  line-height: 36rpx;
+  border-radius: 50%;
+  font-weight: bold;
+  border: 1rpx solid rgb(117, 117, 117);
+  background: #fff;
+  color: #ffffff;
+  font-size: 22rpx;
+}
+.btn {
+  width: 100%;
+  padding: 30rpx;
+  background-color: #fff;
+  box-sizing: border-box;
+}
+ .btn .closeVou {
+  width: 100%;
+  height: 88rpx;
+  background-color: #FF584F;
+  font-size: 36rpx;
+  color: #fff;
+  line-height: 88rpx;
+  text-align: center;
+  border-radius: 44rpx;
+  letter-spacing: 1px;
+}
+.btn .closeVou:active {
+  background-color: #FF584F;
+}
+
+.c_view {
+  position: relative;
+  overflow: hidden;
+  width: 690rpx;
+  height: 184rpx;
+  background:url('/image/coupon_bg.png');
+  background-size: 100%;
+  margin-top: 20rpx;
+}
+.must-serve {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #333;
+  line-height: 1;
+  text-align: center;
+}
+.coupon_view {
+  padding: 10rpx 30rpx 170rpx 30rpx;
+  height: 500rpx;
+  overflow-y: scroll;
+  margin-top: 20rpx;
+}
+.coupon_views {
+  height: 500rpx;
+  line-height: 500rpx;
+  color: #999;
+  text-align: center;
+  margin-top: 20rpx;
+}
+.coupon_view .coupon_explain {
+  font-size: 24rpx;
+  color: #999;
+  line-height: 36rpx;
+  /* background: #fff; */
+  border-radius: 0px 0px 20rpx 20rpx;
+  margin-top: -35rpx;
+  padding: 65rpx 30rpx 30rpx 30rpx;
+}
+
+.coupon_view .coupon_item {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  /* border-radius: 20rpx; */
+  width: 100%;
+  height: 180rpx;
+  /* overflow: hidden; */
+  /* background-color: #FFF; */
+  /* box-shadow: 1rpx 1rpx 24rpx 0rpx #FCF4E7; */
+}
+
+.coupon_view .move_rule {
+  border-radius: 20rpx 20rpx 0px 0px;
+  /* box-shadow: 0px 1rpx 24rpx 0px #EDEDED; */
+}
+
+.coupon_view .coupon_item .coupon_item_content {
+  width: 320rpx;
+  height: 180rpx;
+  padding: 20rpx 0rpx 20rpx 40rpx;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.coupon_view .coupon_item .coupon_item_center {
+  width: 210rpx;
+  height: 180rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* padding-left:30rpx;  */
+}
+
+.coupon_view .coupon_item .coupon_item_center .item_center_top {
+  text-align: center;
+  width: 100%;
+  color: #fff;
+  font-size: 44rpx;
+}
+
+.coupon_view .coupon_item .coupon_item_center .item_center_center {
+  color: #fff;
+  font-size: 24rpx;
+  margin-top: 15rpx;
+}
+
+.coupon_view .coupon_item .coupon_item_right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: red;
+  width: 175rpx;
+  height: 180rpx;
+  font-size: 30rpx;
+  font-weight: 500;
+  text-align: center;
+}
+
+.coupon-left{
+  width: 300rpx;
+  height: 46rpx;
+  background: #FFFFFF;
+  border: 1rpx solid #FF4A0C;
+  display: flex;
+  align-items: center;
+  border-radius: 4rpx;
+}
+.coupon-left-l{
+  width: 90rpx;
+  height: 46rpx;
+  text-align: center;
+  line-height: 46rpx;
+  background: linear-gradient(180deg, #FE9842 0%, #FC4C28 100%);
+  color: #fff;
+}
+.coupon-left-r{
+  height: 46rpx;
+  line-height: 46rpx;
+  width: 210rpx;
+  text-align: center;
+  color: #FF4A0C;
+  /* background: #fff; */
+  
+}
+.coupon-right{
+  color: #FF4A0C;
+  display: flex;
+  align-items: center;
+}
+.amd-dialog-content-button-first .amd-button-text {
+  color: rgba(0, 0, 0, .3);
+}
+.amd-button-text {
+  /* color: #000; */
+}
+.tips_view {
+  padding: 16rpx 30rpx;
+  font-size: 24rpx;
+  color: #666666;
+  display: flex;
+  align-items: center;
+  background-color: #FFF0F0;
+}
+
+
+.tips_view .del_icon {
+  height: 24rpx;
+  width: 24rpx;
+  position: absolute;
+  right: 30rpx;
+}
+.my-address {
+  position: relative;
+  width: 100%;
+  background-color: #fff;
+  padding: 32rpx 0 44rpx;
+  margin-bottom: 20rpx;
+  box-sizing: border-box;
+}
+
+.my-address .contact {
+  display: flex;
+  flex-flow: row nowrap;
+  width: 100%;
+  height: 36rpx;
+  padding: 0 30rpx;
+  font-size: 32rpx;
+  line-height: 36rpx;
+  margin-bottom: 8rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+
+.my-address .contact .username {
+  max-width: 55%;
+  color: #0A0A0A;
+  align-items: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.my-address .getAddress{
+  display: flex;
+  align-items: center;
+  padding-right:20rpx;
+}
+.my-address .contact image {
+  width: 16rpx;
+  height: 26rpx;
+  position: absolute;
+  right: 30rpx;
+  top: 45rpx;
+}
+.address-info {
+  flex: 1;
+}
+.right_arrow {
+  width: 16rpx;
+  height: 26rpx;
+
+}
+
+.address .right_icon {
+  position: absolute;
+  width: 16rpx;
+  height: 26rpx;
+  right: 30rpx;
+  top: 38rpx;
+}
+
+.my-address .contact .phone {
+  color: #0A0A0A;
+  align-items: center;
+  margin-left: 40rpx;
+}
+
+.my-address .address {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+}
+
+.my-address .address .icon {
+  position: relative;
+  width: 3.8%;
+  height: 100%;
+}
+
+.my-address .address .icon image {
+  position: absolute;
+  left: 0;
+  top: 10rpx;
+  width: 16rpx;
+  height: 20rpx;
+}
+
+.my-address .address .area {
+  width: 96.2%;
+  font-size: 28rpx;
+  color: #888888;
+  line-height: 40rpx;
+}
+
+.my-address .address .areared {
+  width: 96.2%;
+  font-size: 28rpx;
+  color: #FF584F;
+  line-height: 40rpx;
+}
+
+.my-address .direction {
+  width: 100%;
+  padding: 0 30rpx 0 56rpx;
+  font-size: 28rpx;
+  color: #999;
+  line-height: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.my-address .line {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 10rpx;
+}
+
+.emergency_contact {
+  background-color: #fff;
+  padding: 30rpx 30rpx 20rpx;
+  font-size: 32rpx;
+  line-height: 36rpx;
+  margin-bottom: 20rpx;
+}
+
+.emergency_contact .title {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: rgba(51, 51, 51, 1);
+}
+.emergency_contact .sub_title {
+  font-size: 24rpx;
+  color: #ccc;
+  margin: 10rpx 0;
+}
+
+.emergency_contact .info_item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10rpx 0;
+}
+
+.emergency_contact .info_item .item_input {
+  text-align: right;
+}
+
+/* 实名认证 */
+.real_nameview {
+  height: 100rpx;
+  padding: 30rpx;
+  background-color: white;
+  margin: 20rpx 0rpx;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.real_nameview .title {
+  font-size: 32rpx;
+  color: #0A0A0A;
+}
+
+.real_nameview .msg {
+  color: #FF584F;
+  display: inline-block;
+  font-size: 28rpx;
+  position: absolute;
+  right: 56rpx;
+}
+
+.real_nameview .right_icon {
+  display: inline-block;
+  width: 16rpx;
+  height: 26rpx;
+  position: absolute;
+  right: 30rpx;
+}
+
+/* 商品详情 */
+
+.goods-des {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  width: 100%;
+  background-color: #fff;
+  padding: 0 30rpx;
+  margin-bottom: 20rpx;
+  box-sizing: border-box;
+}
+
+.goods-des .goods-pic {
+  display: flex;
+  align-self: center;
+  width: 160rpx;
+  height: 160rpx;
+}
+
+.goods-des .content {
+  width: 74%;
+  height: 100%;
+  padding: 36rpx 0 38rpx;
+  box-sizing: border-box;
+}
+
+.goods-des .content .goods-name {
+  width: 100%;
+  font-size: 28rpx;
+  color: #333;
+  line-height: 1;
+  margin-bottom: 20rpx;
+}
+
+.goods-des .content .goods-attr {
+  width: 100%;
+  font-size: 24rpx;
+  color: #999;
+  line-height: 1;
+  margin-bottom: 14rpx;
+}
+
+.goods-des .content .other-pay {
+  width: 100%;
+  font-size: 24rpx;
+  color: #999;
+  line-height: 28rpx;
+  margin-bottom: 12rpx;
+}
+
+.goods-des .content .enjoy {
+  width: 100%;
+  font-size: 24rpx;
+  color: #999;
+  line-height: 28rpx;
+  margin-bottom: 12rpx;
+}
+
+.goods-des .content .total-price {
+  width: 100%;
+  font-size: 28rpx;
+  color: #333;
+  line-height: 1;
+}
+
+.goods-des .content .zhima {
+  width: 170rpx;
+  height: 30rpx;
+  margin-top: 20rpx;
+}
+
+.bill-info {
+  width: 100%;
+  background-color: #fff;
+  margin-bottom: 20rpx;
+  overflow: hidden;
+}
+
+.bill-info .pay-detail {
+  width: 100%;
+  padding: 20rpx 30rpx 35rpx;
+  box-sizing: border-box;
+}
+
+.bill-info .deposit {
+  width: 100%;
+  padding: 25rpx 30rpx;
+  box-sizing: border-box;
+}
+
+.coupon-badge{
+  width: 35rpx;
+  height: 35rpx;
+  margin-right: 5rpx;
+}
+
+.margin_coupon_text{
+  margin-left: 39rpx;
+}
+
+.bill-info .list {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  width: 100%;
+  height: 58rpx;
+  font-size: 28rpx;
+  line-height: 58rpx;
+}
+
+.bill-info .pay-detail .list {
+  color: #999;
+}
+
+.bill-info .deposit .list {
+  color: #333;
+}
+
+.bill-info .pay-detail .single-price {
+  color: #333;
+}
+
+.single-price .title .one_month_money {
+  font-size: 30rpx;
+  font-family: PingFang SC-Bold, PingFang SC;
+  font-weight: bold;
+  color: #2E3139;
+}
+
+.bill-info .deposit .total-deposit, .bill-info .deposit .guarantee-way {
+  color: #999;
+}
+
+.bill-info .gift .value {
+  text-decoration: line-through;
+}
+
+.bill-info .title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 26rpx;
+  font-family: PingFang SC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #333333;
+}
+
+.bill-info .list text {
+  display: inline-block;
+}
+
+.bill-info .list image {
+  display: inline-block;
+  vertical-align: middle;
+  width: 32rpx;
+  height: 32rpx;
+  margin-left: 8rpx;
+  margin-top: -2rpx;
+}
+
+.bill-info .list .rmb {
+  display: inline-block;
+  font-size: 20rpx;
+}
+
+.bill-info .cut {
+  display: inline-block;
+  font-size: 25rpx;
+}
+
+.bill-info .pay-detail .remind {
+  width: 100%;
+  height: 34rpx;
+  font-size: 24rpx;
+  font-weight: 300;
+  color: #FF584F;
+  line-height: 34rpx;
+}
+
+.bill-info .devide-line {
+  width: 100%;
+  height: 2rpx;
+  background-color: #f7f7f7;
+}
+
+.bill-info .pay-detail .voucher {
+  color: #333;
+}
+
+.bill-info .voucher .value {
+  display: flex;
+  flex-flow: row nowrap;
+  color: #FF6262;
+}
+
+.bill-info .voucher .value image {
+  width: 16rpx;
+  height: 26rpx;
+  margin-left: 10rpx;
+  align-self: center;
+}
+
+/* 协议及提交 */
+
+.bottom {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 9;
+  width: 100%;
+  height: 252rpx;
+  background-color: #fff;
+  padding: 26rpx 30rpx;
+  box-sizing: border-box;
+}
+
+.bottom .tip {
+  position: absolute;
+  left: 30rpx;
+  top: -62rpx;
+  transform: scale(0);
+  transform-origin: 0 bottom;
+  transition: all .25s;
+}
+
+.bottom .none {
+  transform: scale(0);
+}
+
+.bottom .self {
+  transform: scale(1);
+}
+
+.bottom .tip image {
+  width: 314rpx;
+  height: 81rpx;
+}
+
+.bottom .rule {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  width: 100%;
+  height: 44rpx;
+  font-size: 28rpx;
+  color: #333;
+  justify-content: center;
+}
+
+.bottom .rule .circle image {
+  width: 44rpx;
+  height: 44rpx;
+  align-self: center;
+  margin-right: 16rpx;
+  margin-top: 2rpx;
+}
+
+.bottom .rule .text .link {
+  color: #1f84fa;
+}
+.bottom .rule .text .link text{
+  
+  color: #1f84fa;
+}
+
+
+.submit_view{
+  margin-top: 70rpx;
+  display: flex;
+  justify-content:space-between;
+  height: 75rpx;
+  align-items: center;
+}
+
+.submit_view .submit {
+  outline: 0;
+  border: 0;
+  width: 345rpx;
+  height: 75rpx;
+  background: linear-gradient(90deg, rgba(255, 129, 85, 1) 0%, rgba(255, 72, 77, 1) 100%);
+  font-size: 36rpx;
+  opacity: 0.6;
+  color: #fff;
+  line-height: 75rpx;
+  text-align: center;
+  border-radius: 44rpx;
+  margin-left:20rpx; 
+}
+
+.submit_view .submit_money{
+  height: 88rpx;
+  line-height: 88rpx;
+
+}
+.submit_view .submit_money .t{
+  font-size: 24rpx;
+  font-family: PingFang SC-Bold, PingFang SC;
+  font-weight: bold;
+  color: #2E3139;
+}
+.submit_view .submit_money .unit{
+  font-size:22rpx;
+  font-family:PingFangSC-Regular,PingFang SC;
+  font-weight:400;
+  color:rgba(255,88,79,1);
+}
+.submit_view .submit_money .price{
+  font-size: 40rpx;
+  font-family: DINPro-Bold, DINPro;
+  font-weight: bold;
+  color: #F43139;
+
+}
+.submit_view .submit_money .price0{
+  font-size:30rpx;
+  font-family:PingFangSC-Regular,PingFang SC;
+  font-weight:400;
+  color:rgba(255,88,79,1);
+}
+
+
+
+.bottom .active {
+  /* background-color: rgba(0,172,144,1); */
+  background-color: linear-gradient(90deg, rgba(255, 129, 85, 1) 0%, rgba(255, 72, 77, 1) 100%);
+  opacity: 1;
+}
+
+.bottom .active:active {
+  /* background-color: #03a68c; */
+  background-color: #FF584F;
+}
+
+/* 弹出层 */
+
+.shadow1 {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 9;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .5);
+  /* opacity: 0;
+    display: none; */
+}
+
+/* 赠送意外保障、支付宝免密支付说明、支付宝资金授权 */
+
+.shadow1 .module {
+  display: none;
+}
+
+.shadow1 .module .des {
+  width: 72%;
+  height: 290rpx;
+  padding: 59rpx 60rpx 0;
+  background-color: #fff;
+  border-radius: 20rpx;
+  margin: 0 auto;
+  margin-top: 40%;
+  box-sizing: border-box;
+}
+
+.shadow1 .module .title {
+  font-size: 32rpx;
+  color: #000;
+  line-height: 1;
+  text-align: center;
+  margin-bottom: 20rpx;
+}
+
+.shadow1 .module .content {
+  font-size: 26rpx;
+  color: #666;
+  line-height: 40rpx;
+}
+
+.shadow1 .close {
+  padding-top: 40rpx;
+  text-align: center;
+}
+
+.shadow1 .close image {
+  width: 64rpx;
+  height: 64rpx;
+}
+
+/* 取消订单 */
+
+.shadow1 .cancel-order {
+  width: 72%;
+  /* height: 530rpx; */
+  padding-top: 50rpx;
+  background-color: #fff;
+  border-radius: 20rpx;
+  margin: 0 auto;
+  margin-top: 36.4%;
+  box-sizing: border-box;
+  overflow: hidden;
+  display: none;
+}
+
+.shadow1 .cancel-order .title {
+  font-size: 32rpx;
+  color: #000;
+  line-height: 1;
+  text-align: center;
+}
+
+.shadow1 .cancel-order .reason {
+  width: 100%;
+  padding: 0 60rpx 28rpx;
+  box-sizing: border-box;
+}
+
+.shadow1 .cancel-order .reason .list {
+  display: flex;
+  flex-flow: row nowrap;
+  width: 100%;
+  height: 44rpx;
+  font-size: 28rpx;
+  color: #666;
+  line-height: 44rpx;
+  margin-top: 20rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.shadow1 .cancel-order .reason .list .value {
+  max-width: 84%;
+}
+
+.shadow1 .cancel-order .reason .list image {
+  width: 44rpx;
+  height: 44rpx;
+  margin-right: 20rpx;
+}
+
+.shadow1 .cancel-order .btn {
+  position: relative;
+  width: 100%;
+  height: 100rpx;
+}
+
+.shadow1 .cancel-order .line1 {
+  width: 200%;
+  height: 1px;
+  background-color: #e5e5e5;
+  transform: scale(.5);
+  margin-left: -50%;
+}
+
+.shadow1 .cancel-order .btn .line2 {
+  position: absolute;
+  left: 50%;
+  top: -50rpx;
+  width: 1px;
+  height: 200%;
+  background-color: #e5e5e5;
+  transform: scale(.5);
+}
+
+.shadow1 .cancel-order .wrap {
+  display: flex;
+  flex-flow: row nowrap;
+  width: 100%;
+  height: 100%;
+}
+
+.shadow1 .cancel-order .btn .no, .shadow1 .cancel-order .btn .yes {
+  width: 50%;
+  font-size: 34rpx;
+  color: #333;
+  line-height: 100rpx;
+  text-align: center;
+}
+
+.shadow1 .cancel-order .btn .yes {
+  color: #00ac91;
+}
+
+.shadow1 .cancel-order .btn .no:active, .shadow1 .cancel-order .btn .yes:active {
+  background-color: #e5e5e5;
+}
+
+/* 弹出层 */
+
+.cover {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 9;
+  width: 100%;
+  height: 100%;
+}
+
+.cover .shadow {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .5);
+  opacity: 0;
+}
+
+.cover .panel {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 11;
+  width: 100%;
+  background-color: #fff;
+  transform: translateY(100%);
+  transform: translateZ(100);
+  border-radius: 30rpx 30rpx 0rpx 0rpx;
+  /* height:calc(100% - 180rpx); */
+}
+
+.cover .layer {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 11;
+  width: 100%;
+  transform: scale(.8);
+  transform: translateZ(100);
+  opacity: 0;
+}
+
+/* 优惠券 */
+
+.cover .panel .voucher-panel {
+  width: 100%;
+  padding: 40rpx 30rpx 0;
+  box-sizing: border-box;
+  height:calc(100% - 180rpx);
+}
+
+.cover .panel .voucher-panel .content {
+  max-height: 590rpx;
+  padding-bottom: 70rpx;
+  box-sizing: border-box;
+  overflow-y: scroll;
+}
+
+.voucher-panel .title {
+  width: 100%;
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #333;
+  line-height: 1;
+  text-align: center;
+  padding-bottom: 20rpx;
+}
+
+.voucher-panel .list, .voucher-panel .notUse {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  padding: 40rpx 0;
+  box-sizing: border-box;
+}
+
+.voucher-panel .list image, .voucher-panel .notUse image {
+  width: 44rpx;
+  height: 44rpx;
+  margin-right: 20rpx;
+}
+
+.voucher-panel .list text, .voucher-panel .notUse text {
+  font-size: 28rpx;
+  color: #333;
+  line-height: 1;
+}
+
+.voucher-panel .list .under-line {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #ddd;
+}
+
+
+.voucher-panel .noVoucher {
+  width: 100%;
+  font-size: 28rpx;
+  color: #999;
+  line-height: 1;
+  padding: 20rpx 0 70rpx;
+  box-sizing: border-box;
+}
+/* 赠送意外保障、支付宝免密支付说明、支付宝资金授权 */
+
+.layer .module .des {
+  width: 72%;
+  height: 290rpx;
+  padding: 59rpx 60rpx 0;
+  background-color: #fff;
+  border-radius: 20rpx;
+  margin: 0 auto;
+  margin-top: 40%;
+  box-sizing: border-box;
+}
+
+.layer .module .title {
+  font-size: 32rpx;
+  color: #000;
+  line-height: 1;
+  text-align: center;
+  margin-bottom: 20rpx;
+}
+
+.layer .module .content {
+  font-size: 26rpx;
+  color: #666;
+  line-height: 40rpx;
+}
+
+.layer .close {
+  padding-top: 40rpx;
+  text-align: center;
+}
+
+.layer .close image {
+  width: 64rpx;
+  height: 64rpx;
+}
+
+.emailview {
+  width: calc(100% - 120rpx);
+}
+
+.emailview input {
+  width: 508rpx;
+  background-color: #fbfbfb;
+  border-radius: 6rpx;
+  margin-left: 20rpx;
+}
+
+.emailview .emailengine_view {
+  position: absolute;
+  width: 524rpx;
+  height: 240rpx;
+  margin-left: 21rpx;
+  border: 1px solid #f0f0f0;
+  border-bottom-left-radius: 6rpx;
+  border-bottom-right-radius: 6rpx;
+  background-color: white;
+  margin-top: -13rpx;
+  z-index: 2;
+  overflow: auto;
+}
+
+.emailview .emailengine_item {
+  border-bottom: 2rpx solid #f0f0f0;
+  padding: 6rpx 10rpx;
+}
+
+.emailview .emailengine_item:hover {
+  background-color: #f0f0f0;
+}
+
+.emailcontact {
+  display: flex;
+  flex-flow: row nowrap;
+  width: 100%;
+  height: 56rpx;
+  padding: 0 30rpx;
+  font-size: 32rpx;
+  line-height: 36rpx;
+  margin-bottom: 8rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  box-sizing: border-box;
+  margin-top: 40rpx;
+  line-height: 56rpx;
+}
+
+.coupon_itemno {
+  opacity: 0.5;
+}
+
+.coupon_iteminfo {
+  width: 593rpx;
+  height: 134rpx;
+  /* background: url("/image/coupontrue.png") no-repeat; */
+  background-size: 100%;
+}
+
+.coupon_iteminfoZhe {
+  width: 593rpx;
+  height: 134rpx;
+  /* background: url("/image/zhecoupontrue.png") no-repeat; */
+  background-size: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.coupon_iteminfoZhe .zheTitle {
+  color: #FFFFFF;
+  font-size: 36rpx;
+}
+
+.coupon_iteminfoZhe .vice_title {
+  color: #851615;
+  font-size: 19rpx;
+  text-align: center;
+}
+
+.zheinfoleftview {
+  margin-top: -5rpx;
+}
+
+
+.coupon_iteminfoJian {
+  width: 593rpx;
+  height: 134rpx;
+  /* background: url("/image/jiancoupontrue.png") no-repeat; */
+  background-size: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.coupon_iteminfoJian .vice_title {
+  color: #851615;
+  font-size: 19rpx;
+  text-align: center;
+}
+
+.item_left_top {
+  display: flex;
+  justify-content: center;
+}
+
+.jianitem_left .money {
+  font-size: 70rpx;
+  margin-top: -8rpx;
+  color: #FFFFFF;
+}
+
+.item_left_top .str {
+  display: block;
+  font-size: 22rpx;
+  color: #FFFFFF;
+}
+
+.item_left_top .unit {
+  font-size: 26rpx;
+  color: #FFFFFF;
+}
+
+.remarke_placeholder {
+  font-size: 28rpx;
+}
+
+textarea {
+  font-size: 28rpx !important;
+  padding: 2px 15px !important;
+  margin-top: 10rpx;
+  margin-bottom: 10rpx;
+}
+.remarks{
+  background-color: white;
+
+  margin-bottom: 20rpx;
+  padding: 10rpx 0rpx;
+}
+/* 押金提交 */
+
+.cash-bottom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10rpx 30rpx;
+  border-top: 1px solid #ddd;
+  background-color: #fff;
+}
+
+.cash-submit-money {
+  color: #FF584F;
+  font-size: 22rpx;
+  margin-right: 20rpx;
+}
+
+.cash-submit-money text {
+  font-size: 42rpx;
+  margin-left: 5rpx;
+}
+
+.grey {
+  color: #999;
+  font-size: 24rpx;
+}
+
+.cashSub {
+  width: 345rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  color: #fff;
+  font-size: 36rpx;
+  text-align: center;
+  background: linear-gradient(270deg, #FF484D 0%, #FF8155 100%);
+  border-radius: 44px;
+}
+
+.frozenModel image {
+  width: 430rpx;
+  height: 60rpx;
+}
+.eme_picker {
+  flex: 1;
+  text-align: right;
+}

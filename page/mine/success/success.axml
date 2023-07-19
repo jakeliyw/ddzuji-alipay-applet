@@ -1,0 +1,12 @@
+<view class="container">
+  <view class="state-icon">
+    <image src="/image/order-success.png" />
+  </view>
+  <view class="des">
+    <text class="text_title">{{types[typesIndex].title_name}}</text>
+    <text class="text_ms">{{types[typesIndex].ms_name}}</text>
+  </view>
+</view>
+<view class="botton_view">
+  <button class="btn" onTap="goBack">确定</button>
+</view>

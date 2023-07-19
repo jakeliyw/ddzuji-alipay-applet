@@ -1,0 +1,162 @@
+.page {
+  width: 100%;
+  background-size: 100%;
+  /* border-radius: 100px 0; */
+  /* -webkit-transform: rotate(45deg);
+		-ms-transform: rotate(45deg);
+		-o-transform: rotate(45deg);
+		transform: rotate(45deg); */
+}
+
+.kong {
+  height: 50rpx;
+}
+
+.couponlist {
+  width: 100%;
+  height: 1000rpx;
+  background-size: 100% 100%;
+  text-align: center;
+}
+
+.couponlist_item {
+  width: 559rpx;
+  height: 145rpx;
+  background: url("/image/coupon_item.png") no-repeat;
+  background-size: 100% 100%;
+  margin: 20rpx auto auto;
+}
+
+.title {
+  font-size: 60rpx;
+  color: #FC5368;
+  padding-top: 130rpx;
+  font-weight: bold;
+  margin-bottom: 50rpx;
+}
+
+.item_left {
+  width: 60%;
+  height: 100%;
+  height: 145rpx;
+  float: left;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.item_leftzhe {
+  width: 60%;
+  height: 145rpx;
+ 
+  vertical-align: middle;
+  float: left;
+  color: #FFFFFF;
+
+   display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.item_right {
+  width: 40%;
+  float: right;
+  height: 145rpx;
+  line-height: 145rpx;
+}
+
+.item_right .label {
+  background-color: #FFFFFF;
+  border-radius: 20rpx;
+  width: 190rpx;
+  height: 83rpx;
+  color: #FF554E;
+  font-size: 46rpx;
+  line-height: 83rpx;
+  margin: 30rpx auto auto;
+}
+
+.item_price {
+  color: white;
+}
+
+.item_price .top_left {
+  font-size: 80rpx;
+}
+
+.item_price .bottom_left {
+  font-size: 22rpx;
+  color: #AE2C26;
+}
+
+.item_price .top_left_text {
+  font-size: 40rpx;
+}
+
+.item_leftzhe .zhe_top {
+  font-size: 50rpx;
+
+}
+
+.item_leftzhe .bottom_left {
+  font-size: 22rpx;
+  padding: 0rpx 20rpx;
+  color: #AE2C26;
+}
+
+.item_left_right {
+  height: 100rpx;
+  display: flex;
+  flex-direction: column;
+  margin-top: -15rpx;
+}
+
+.item_left_unit {
+  font-size: 43rpx;
+  color: white;
+  height: 60rpx;
+}
+
+.item_left_text {
+  font-size: 26rpx;
+  color: white;
+  height: 40rpx;
+}
+
+.nolabel {
+  color: #AE2C26;
+  font-size: 40rpx;
+}
+
+.nolabel image {
+  width: 32rpx;
+  height: 32rpx;
+}
+
+.bottom_view {
+  padding: 0rpx 60rpx;
+  width: 100%;
+  position: absolute;
+  bottom: 50rpx;
+}
+
+.bottom_red {
+  width: 100%;
+  height: 80rpx;
+  font-size: 36rpx;
+  color: #FFFFFF;
+  line-height: 80rpx;
+  text-align: center;
+  border: 0px solid #FF584F;
+  border-radius: 44rpx;
+  margin-top: 0rpx;
+  margin-right: 30rpx;
+  background: linear-gradient(90deg, rgb(255, 129, 85) 0%, rgb(255, 72, 77) 100%);
+}
+.yhh .top_left{
+  font-size: 40rpx;
+}
+.yhh .bottom_left{
+  padding:4rpx 20rpx;
+}
+

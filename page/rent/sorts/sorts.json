@@ -1,0 +1,10 @@
+{
+  "defaultTitle": "分类",
+  "pullRefresh": false,
+  "usingComponents": {
+		"grid": "antd-mini/es/Grid/index",
+    "to-top": "/components/to_top/to_top",
+    "fixed-top": "/components/fixed_top/fixed_top",
+    "goods-list": "../../../components/goods_list/goods_list"
+  }
+}

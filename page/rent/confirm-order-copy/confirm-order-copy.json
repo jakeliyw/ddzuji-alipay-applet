@@ -1,0 +1,7 @@
+{
+  "defaultTitle": "确认订单",
+  "usingComponents": {
+    "picker": "antd-mini/es/Picker/index",
+    "dialog": "antd-mini/es/Dialog/index"
+  }
+}

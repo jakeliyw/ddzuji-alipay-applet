@@ -1,0 +1,192 @@
+.mer_top{
+    padding:30rpx 0rpx 0rpx 30rpx;
+     background-color: #FFFFFF;
+}
+.mer_top .recommend_item{
+    width:420rpx;
+    height:583rpx;
+    margin-right: 20rpx;
+}
+.mer_top .recommend_item image{
+    width:420rpx;
+    height:583rpx;
+}
+.blank{
+    width: 10rpx;
+}
+
+
+.active_title .good_mer_move {
+  height: 50rpx;
+  font-size: 26rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: rgba(153, 153, 153, 1);
+  line-height: 50rpx;
+  float: right;
+  margin-right: 30rpx;
+}
+
+.mer_good {
+  padding: 54rpx 0rpx 0rpx 30rpx;
+  background: #FFFFFF;
+}
+
+.mer_card {
+
+  margin-top: 24rpx;
+  background-color: #FFFFFF;
+  padding-bottom: 40rpx;
+}
+
+.mer_card .scroll-view_H {
+  height: 357rpx;
+}
+
+.mer_card .mer_card_item:nth-of-type(odd) {
+  width: 690rpx;
+  height: 357rpx;
+  background-image: url(/image/mer_card1.png);
+  background-size: 100% 100%;
+  margin-right: 20rpx;
+  padding: 28rpx;
+  position: relative;
+  margin-top: 58rpx;
+}
+.mer_card .mer_card_item:nth-of-type(even) {
+  width: 690rpx;
+  height: 357rpx;
+  background-image: url(/image/mer_card2.png);
+  background-size: 100% 100%;
+  margin-right: 20rpx;
+  padding: 28rpx;
+  position: relative;
+  margin-top: 58rpx;
+}
+
+
+.mer_card .blank {
+  width: 10rpx;
+}
+.order_num{
+    height: 42rpx;
+    background:rgba(0,0,0,0.5);
+    border-radius:21rpx 0px 0px 21rpx;
+    font-size:22rpx;
+    font-family:PingFang SC;
+    font-weight:400;
+    color:#FFFFFF;
+    line-height: 42rpx;
+    float: right;
+    padding: 0rpx 30rpx;
+    margin-right: -28rpx;
+}
+.image_logo{
+    width: 80rpx;
+  height: 80rpx;
+  border-radius: 40rpx;
+  background-color: #FFFFFF;
+    position: absolute;
+  top: -25rpx;
+}
+.image_logo image {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 40rpx;
+
+  border: 3rpx solid #FFFFFF;
+}
+
+.mer_card .card_item_top {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+  clear: both;
+  margin-top: 47rpx;
+}
+
+.mer_card .item_top_center {
+  height: 80rpx;
+  width: 361rpx;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  align-items: center;
+}
+
+.mer_card .item_top_center .mer_name {
+  height: 29rpx;
+  font-size: 30rpx;
+  line-height: 29rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 100%;
+}
+
+.mer_card .item_top_center .mer_text {
+  height: 22rpx;
+  font-size: 22rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: rgba(229, 229, 229, 1);
+  display: flex;
+  align-content: center;
+  align-items: center;
+  margin-top: 10rpx;
+}
+
+.mer_card .item_top_center .mer_text image {
+  width: 18rpx;
+  height: 18rpx;
+  margin-right: 8rpx;
+}
+
+.active_title{
+  font-size:36rpx;
+  font-family:PingFang SC;
+  font-weight:600;
+  color:rgba(51,51,51,1);
+}
+.mer_card .card_item_top .go_mer {
+  height: 48rpx;
+  line-height: 48rpx;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 28rpx;
+  font-size: 26rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 1);
+  padding: 0rpx 18rpx;
+  display: flex;
+  align-content: center;
+  align-items: center;
+}
+
+.mer_card .card_item_top .go_mer image {
+  width: 11rpx;
+  height: 20rpx;
+  margin-left: 10rpx;
+}
+
+.card_item_imgs .mer_imgs_item{
+  background-color: #FFFFFF;
+   width: 150rpx;
+  height: 150rpx;
+  border-radius: 10rpx;
+}
+.card_item_imgs .mer_imgs_item image {
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 10rpx;
+}
+
+.card_item_imgs {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20rpx;
+}

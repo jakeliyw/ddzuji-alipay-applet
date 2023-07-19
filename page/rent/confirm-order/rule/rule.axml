@@ -1,0 +1,9 @@
+<view class="container" a:if="{{canUse}}">
+  
+</view>
+
+
+
+<view>
+  <view a:if="{{!canUse}}" class="error">当前客户端版本不支持，更新后再来吧~</view>
+</view>

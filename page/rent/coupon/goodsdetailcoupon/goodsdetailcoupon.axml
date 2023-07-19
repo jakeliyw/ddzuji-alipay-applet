@@ -1,0 +1,50 @@
+<view class="page">
+  <view class="kong"></view>
+  <view class="couponlist">
+    <view class="title">
+      优惠券
+    </view>
+    <view a:for="{{couponlist}}" class="couponlist_item">
+      <view class="item_leftzhe" a:if="{{item.cou_type==1 && is_nice!=1}}">
+        <view>
+          <view class="zhe_top">{{item.cou_desc}}</view>
+          <view class="bottom_left">{{item.cou_subtitle}}</view>
+        </view>
+      </view>
+      <view class="item_leftzhe" a:if="{{item.cou_type==2}}">
+        <view>
+          <view class="zhe_top">{{item.cou_desc}}</view>
+          <view class="bottom_left">{{item.cou_subtitle}}</view>
+        </view>
+      </view>
+      <view class="item_left" a:if="{{item.cou_type==0}}">
+        <view class="item_price">
+          <view class="top_left">
+            <text class="top_left_text">¥</text>
+            {{item.cou_price}}
+          </view>
+          <view class="bottom_left">
+           {{item.cou_describe}} {{item.cou_effect}}
+          </view>
+        </view>
+      </view>
+      <view class="item_left yhh" a:if="{{is_nice==1}}">
+        <view class="item_price">
+          <view class="top_left">
+
+           {{item.cou_effect}}
+          </view>
+          <view class="bottom_left">
+           {{item.cou_describe}}
+          </view>
+        </view>
+      </view>
+      <view class="item_right" onTap="{{item.cou_price}}">
+        <view class="label"  data-cou_id="{{item.cou_id}}" data-cou_kind="{{item.cou_kind}}" data-j_url="{{item.j_url}}" data-templateid="{{item.tem_id}}" onTap="receive">领取</view>
+      </view>
+    </view>
+  </view>
+  <view class="bottom_view">
+    <button class="bottom_red" onTap="toHome" type="defatlt">立即使用</button>
+  </view>
+</view>

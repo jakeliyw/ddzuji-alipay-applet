@@ -1,0 +1,27 @@
+page{
+    background: #fff;
+}
+.help{
+    width: 100%;
+    padding: 0 40rpx;
+    box-sizing: border-box;
+}
+.help .help-title{
+    padding-top: 40rpx;
+    text-align: center;
+    font-size: 32rpx;
+    line-height: 32rpx;
+    color: #333333;
+    box-sizing: border-box;
+}
+.help .helptop{
+    margin: 40rpx 0 14rpx;
+    font-size: 28rpx;
+    line-height: 1;
+    color: #333333;
+}
+.help .helpcontent{
+    color: #999999;
+    font-size: 24rpx;
+    line-height: 36rpx;
+}

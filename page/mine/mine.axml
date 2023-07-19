@@ -1,0 +1,134 @@
+<view class="container">
+  <view class="header">
+    <!--<button class="authorize" open-type="getAuthorize" onGetAuthorize="onGetAuthorize" onError="onAuthError" scope='userInfo'></button> -->
+
+    <image src="{{avatar_image}}" class="avatar" />
+    <view class="header-con">
+      <view class="tit">{{user_phone}}</view>
+      <view class="subtit">开始挑选心仪的商品吧～</view>
+    </view>
+    <view class="ziliao_upload" a:if="{{is_getOrder}}">
+      <view class="ziliao_animation" animation="{{animation}}">
+        <image onTap="uploadCodeImg" src="{{is_certification?'../../image/realName.png':'../../image/noRealName.png'}}" class="header-upload" />
+      </view>
+    </view>
+  </view>
+  <view class="body">
+    <!--<view class="order-btns-wrap"><view class="order-btns"><button class="{{ order_flag == 1 ? 'active' : '' }}" type="primary" onTap="switchOrder" data-flag="1">
+        租机订单</button><button class="{{ order_flag == 2 ? 'active' : '' }}" type="primary" onTap="switchOrder" data-flag="2">
+        商城订单</button></view></view> -->
+    <view class="tit-tag">
+      <view class="fl">
+        <view class="fl_t">{{order_flag==1?'租赁订单':'商城订单'}}</view>
+      </view>
+      <view class="fr" onTap="toAllList">
+        <view class="fr_t">查看全部订单</view>
+        <image src="../../image/arrow.png" />
+      </view>
+    </view>
+    <view class="order-grid {{ order_flag == 1 ? 'show-order' : 'hide-order' }}">
+      <view class="grid-item" a:for="{{order_datas}}" a:key="this" data-id="{{item.id}}" data-status="{{item.status}}" onTap="toOrderList">
+        <image a:if="{{false}}" class="news_image" mode="scaleToFill" src="../../image/newsleft.png" />
+        <badge a:if="{{item.tag}}" text="{{item.tag}}">
+          <image src="{{item.img}}" />
+        </badge>
+        <image a:if="{{!item.tag}}" src="{{item.img}}" />
+        <view>{{item.txt}}</view>
+      </view>
+    </view>
+    <view class="order-grid {{ order_flag == 2 ? 'show-order' : 'hide-order' }}">
+      <view class="grid-item" a:for="{{mall_datas}}" a:key="this" data-status="{{item.status}}" onTap="toHiddenOrderList">
+        <image a:if="{{false}}" class="news_image" mode="scaleToFill" src="../../image/newsleft.png" />
+        <badge a:if="{{item.tag}}" text="{{item.tag}}">
+          <image src="{{item.img}}" />
+        </badge>
+        <image a:if="{{!item.tag}}" src="{{item.img}}" />
+        <view>{{item.txt}}</view>
+      </view>
+    </view>
+    <ad unit-id="ad_tiny_2021002129611863_202302202200045865" onLoad="onRenderSuccess" onError="onRenderFail" />
+    <!-- 服务 -->
+    <view class="server">
+      <view class="server-item {{item.id == 'kefu'?'shextx':''}}" a:for="{{server_data}}" key="servedata{{index}}">
+        <view class="contact-button-view" a:if="{{item.id=='kefu'}}" onTap="showkefu">
+          <image slot="inner" src="{{item.img}}" style="margin-left:32pt" />
+          <text class="txt1">{{item.txt}}</text>
+        </view>
+        <view a:if="{{item.id!='kefu'}}" data-id="{{item.id}}" data-url="{{item.page}}" onTap="toServer">
+          <badge a:if="{{item.tag}}" text="{{item.tag}}">
+            <image slot="inner" src="{{item.img}}" style="margin-left:32pt" />
+          </badge>
+          <image a:if="{{!item.tag && item.id!='kefu'}}" src="{{item.img}}" style="margin-left:32pt" />
+          <text class="txt">{{item.txt}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 热门推荐 -->
+  <recommend type="0" recomend_list="{{recomend_list}}" scroll={{scroll}} loadText={{loadText}}></recommend>
+</view>
+<view a:if="{{kefuisShow}}" class="cover">
+  <view class="shadow"></view>
+  <view class="layer">
+    <view class="free-payment module">
+      <view class="des kefu">
+        <view class="content_text">客服在线时间：{{appInfo.globalData.goodDetail.kf.time}}</view>
+        <view class="content" onTap="pingTaiPhone">
+          <image class="kf_itemimg" mode="scaleToFill" src="/image/complaint.png"></image>
+          <view class="ms_view">
+            <view class="title_text">电话客服
+              <image mode="scaleToFill" src="/image/arrow.png"></image></view>
+            <view class="mss_text">{{appInfo.globalData.goodDetail.kf.phoneTitle}}</view>
+            <view class="line_img">
+              <image mode="widthFix" src="/image/kefuline.png" />
+            </view>
+          </view>
+        </view>
+        <view class="content">
+          <contact-button tnt-inst-id="{{appInfo.globalData.goodDetail.kf.tntInstId}}" scene="{{appInfo.globalData.goodDetail.kf.scene}}" 
+            color="#fff" size="48"></contact-button>
+          <image class="kf_itemimg" mode="scaleToFill" src="/image/bajiephone.png"></image>
+          <view class="ms_view">
+            <view class="title_text">在线客服
+              <image mode="scaleToFill" src="/image/arrow.png"></image></view>
+            <view class=" mss_text">在线客服实时与您沟通</view>
+          </view>
+        </view>
+      </view>
+      <view class="close">
+        <image onTap="closekefu" src="/image/close-btn.png" mode="aspectFit"></image>
+      </view>
+    </view>
+  </view>
+</view>
+<view a:if="{{complaintisShow}}" class="cover">
+  <view class="shadow"></view>
+  <view class="layer">
+    <view class="free-payment module">
+      <view class="des kefu tousu">
+        <view class="content tousu_content" onTap="pre_sale_phone">
+          <image class="kf_itemimg" mode="scaleToFill" src="/image/complaint.png"></image>
+          <view class="ms_view">
+            <view class="title_text">电话投诉反馈
+              <image mode="scaleToFill" src="/image/arrow.png"></image></view>
+            <view class="mss_text">工作时间：{{appInfo.globalData.goodDetail.kf.time}}</view>
+            <view class="line_img">
+              <image mode="widthFix" src="/image/kefuline.png" />
+            </view>
+          </view>
+        </view>
+        <view class="content" onTap="tocomplaint">
+          <image class="kf_itemimg" mode="scaleToFill" src="/image/bajiephone.png"></image>
+          <view class="ms_view">
+            <view class="title_text">留言投诉反馈
+              <image mode="scaleToFill" src="/image/arrow.png"></image></view>
+            <view class=" mss_text">向平台留言反馈遇到的问题</view>
+          </view>
+        </view>
+      </view>
+      <view class="close">
+        <image onTap="closecomplaint" src="/image/close-btn.png" mode="aspectFit"></image>
+      </view>
+    </view>
+  </view>
+</view>

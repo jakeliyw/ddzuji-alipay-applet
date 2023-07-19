@@ -1,0 +1,13 @@
+{
+  "defaultTitle": "商品详情",
+  "pullRefresh": false,
+  "usingComponents": {
+    "to-top": "/components/to_top/to_top",
+    "notice": "antd-mini/es/NoticeBar/index",
+    "list": "antd-mini/es/List/index",
+    "list-item": "antd-mini/es/List/ListItem/index",
+    "radio-group": "antd-mini/es/RadioGroup/index",
+    "radio-item": "antd-mini/es/RadioGroup/RadioItem/index",
+    "popup": "antd-mini/es/Popup/index"
+  }
+}

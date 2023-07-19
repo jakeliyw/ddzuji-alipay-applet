@@ -1,0 +1,63 @@
+page{
+    background-color: rgb(247,247,247);
+    box-sizing: border-box;
+}
+.state-mess{
+    width: 100%;
+    padding-top: 84rpx;
+    box-sizing: border-box;
+}
+.state-mess .state-icon{
+    width: 100%;
+    text-align: center;
+}
+.state-mess .state-icon image{
+    width: 120rpx;
+    height: 120rpx;
+}
+.state-mess .des{
+    width: 100%;
+    padding: 0 30rpx;
+    font-size: 30rpx;
+    color: #888;
+    line-height: 40rpx;
+    text-align: center;
+    margin-top: 20rpx;
+    box-sizing: border-box;
+}
+.operate-btn{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: 100%;
+    margin-top: 170rpx;
+    box-sizing: border-box;
+}
+.operate-btn .check-order,
+.operate-btn .back-to-origin{
+    width: 44%;
+    height: 88rpx;
+    outline: 0;
+    border: 0;
+    border-radius: 44rpx;
+    font-size: 36rpx;
+    line-height: 88rpx;
+    margin-left: 4%;
+}
+.operate-btn .check-order{
+    background-color: transparent;
+    color: #FF584F;
+    border: 1rpx solid #FF584F;
+}
+.operate-btn .check-order:active{
+    opacity: .85;
+}
+.operate-btn .back-to-origin{
+    background-color: #FF584F;
+    color: #fff;
+}
+.operate-btn .back-to-origin:active{
+    background-color: #FF584F;
+}
+
+

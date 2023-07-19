@@ -1,0 +1,60 @@
+.form-view, .form-view .input {
+  font-size: 30rpx;
+}
+
+.form-row {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  padding: 38rpx 31rpx;
+  background-color: white;
+  margin-bottom: 2rpx;
+}
+
+.form-row-label {
+  width: 150rpx;
+  font-weight: bold;
+}
+
+.form-textarea {
+  align-items: initial;
+}
+
+.form-textarea .form-row-label {
+  padding-top: 8rpx;
+}
+
+.form-textarea .input {
+  width: 530rpx;
+}
+
+.input-address {
+  padding: 2px 5px;
+}
+
+/* 设置默认地址 */
+
+.switch-item, .delete {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 38rpx 31rpx;
+  margin: 20rpx 0;
+  background-color: white;
+}
+
+.delete {
+  color: #FF584F
+}
+
+.submit {
+  width: 690rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  text-align: center;
+  color: white;
+  font-size: 36rpx;
+  background: linear-gradient(270deg, rgba(255, 72, 77, 1) 0%, rgba(255, 129, 85, 1) 100%);
+  margin: 80rpx 31rpx;
+  border-radius: 44rpx;
+}

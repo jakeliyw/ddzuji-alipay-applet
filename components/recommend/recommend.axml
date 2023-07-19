@@ -1,0 +1,6 @@
+<view class="footer">
+  <!-- <view class="footer-header"></view> -->
+  <goods-list goods_list="{{recomend_list}}" type="{{type}}" />
+  <view class="loadText">
+    <text a:if="{{scroll}}">{{loadText}}</text></view>
+</view>

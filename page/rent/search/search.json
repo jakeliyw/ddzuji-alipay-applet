@@ -1,0 +1,11 @@
+{
+    "defaultTitle": "搜索",
+		"pullRefresh": false,
+    	"usingComponents": {
+		"to-top": "/components/to_top/to_top",
+		"fixed-top": "/components/fixed_top/fixed_top",
+		"tabs": "antd-mini/es/Tabs/index",
+    "tab-content": "antd-mini/es/Tabs/TabItem/index",
+		"goods-list": "/components/goods_list/goods_list"
+	}
+}

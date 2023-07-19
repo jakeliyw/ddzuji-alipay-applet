@@ -1,0 +1,73 @@
+<view class="tab-content">
+  <view class="order-item">
+    <view class="goods-des" data-goods_id="{{goodsInfo.goods_id}}"  onTap="toGoodsDetail">
+      <view class="goods-img">
+        <image class="pic" src="{{imgUrl+goodsInfo.goods_order_thumbnail}}"   mode="aspectFit" />
+      </view>
+      <view class="content">
+        <view class="goods-name">{{goodsInfo.goods_name}}</view>
+        <view class="other-pay">规格：{{goodsInfo.goods_order_attr}}</view>
+        <view class="total-price">
+          <text class="total-pay-name">总租金：</text>
+          <text class="rmb">￥</text>
+          <text class="total-pay-value numStyle">{{goodsInfo.order_gross_rent}}</text>
+        </view>
+        <image class="zhima" src="/image/zhima-mind.png" mode="scaleToFill" />
+      </view>
+    </view>
+  </view>
+  <view class="address_view">
+    <view class="title_view">
+      <text>商家地址</text>
+      <button onTap="copyAddress" >复制地址</button>
+    </view>
+    <view class="address_infoview">
+      <text class="address_name">{{goodsInfo.consignee_name}} {{goodsInfo.consignee_phone}}</text>
+      <text class="address_info">{{goodsInfo.consignee_address}}{{goodsInfo.consignee_address_detail}}</text>
+    </view>
+  </view>
+  <view class="express_view">
+    <view class="page-section">
+      <view class="form-row">
+        <view class="form-row-label">
+          <label for="controlled">快递公司:</label></view>
+        <view class="form-row-content shunfeng {{ismessage?'hidemes':showms}}">
+          <text>顺丰</text>
+          <view  a:if="{{!isGuiHuan}}" class="message_view ">
+            <image src="/image/kdmessage.png" mode="scaleToFill" />
+          </view>
+          <view a:if="{{!isGuiHuan}}" class="message_view1 {{isShowyinying?'':'right_hidemes'}}">
+            <image src="/image/jianbian.png" mode="scaleToFill" />
+          </view>
+        </view>
+      </view>
+      <view class="border_line"></view>
+      <view class="form-row">
+        <view class="form-row-label">
+          <label for="controlled">快递单号:</label></view>
+        <view class="form-row-content">
+          <input class="input" disabled="{{isGuiHuan}}" value="{{express_no}}" onBlur="bindNumbersInput" placeholder-class="placeholder_font" placeholder="请输入快递单号" />
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="mianZe_view">
+    <view class="mianZe_title">
+      <image mode="scaleToFill" src="/image/group.png"/>
+      <text>免责声明</text>
+    </view>
+    <view class="mianZe_content">
+      <view>1.归还设备时，请选择顺丰物流保价，不支持到付。未保价商品造成的损坏、丢失，由寄件方承担（商家免责）。</view>
+      <view>2.租期结束（包含延期3日）当天寄出即截止计算租期，若延期寄出，商家有权收取延期费用；若提前归还设备，商家有权按原定租期收取全额租金，特殊情况可与归还地址处商家电话协商。</view>
+      <view>3.请以原包装归还设备，未按原包装归还的，商家有权扣取相应包装费用。</view>
+    </view>
+  </view>
+</view>
+<view class="bottom" a:if="{{!isGuiHuan}}">
+  <view class="line"></view>
+  <view class="wrapper">
+    <form report-submit="{{false}}" data-id="panelClose" onSubmit="returnSbumit">
+      <button formType="submit" class="red" type="defatlt">确定归还</button>
+    </form>
+  </view>
+</view>

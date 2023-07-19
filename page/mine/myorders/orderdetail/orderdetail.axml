@@ -1,0 +1,302 @@
+<view class="nolist_img" a:if="{{!orderDetail.order_id}}">
+  <image mode="aspectFit" src="/image/nolist.png" />
+  <view class="nolist_view">暂无订单信息</view>
+</view>
+<view class="container" a:if="{{orderDetail.order_id}}">
+  <!-- 订单状态 -->
+  <view class="order-state">
+    <view class="content">
+      <view class="title">
+        <!--<image src="{{orderDetail.status_img?imgUrl+orderDetail.status_img:''}}" mode="aspectFit" /> -->
+        <text>{{orderDetail.status_name}}</text>
+      </view>
+      <view class="mess">{{statusDes}}</view>
+      <view class="date numStyle">{{orderDetail.order_create_time}}</view>
+    </view>
+    <view class="icon">
+      <view class="copyNum" a:if="{{orderDetail.order_status==3&&orderDetail.exp_number&&orderDetail.exp_number!=''}}" data-delivery="{{orderDetail.exp_number}}" 
+        onTap="goExpress">
+        <text>查看物流</text>
+      </view>
+    </view>
+  </view>
+  <!-- 地址 -->
+  <view class="my-address">
+    <view class="contact">
+      <text class="username">{{orderDetail.receiver_name}}</text>
+      <text class="phone numStyle">{{phone_secret}}</text>
+    </view>
+    <view class="address">
+      <view class="icon">
+        <image src="/image/confirm-order-address.png" mode="aspectFit" />
+      </view>
+      <view class="area">{{orderDetail.user_address}}</view>
+    </view>
+    <image class="line" src="/image/confirm-order-line.png" mode="aspectFill" />
+  </view>
+  <!-- 商品信息 -->
+  <view class="goods-des" data-goods_id="{{orderDetail.goods_id}}" onTap="toGoodsDetail">
+    <image class="goods-pic" src="{{imgUrl+orderDetail.goods_order_thumbnail}}" mode="aspectFit" />
+    <view class="content">
+      <view class="goods-name">{{orderDetail.goods_name}}</view>
+      <view class="goods-attr">{{orderDetail.goods_order_attr}}</view>
+      <view class="enjoy" a:if="{{orderDetail.order_goods_insurance!='0.00'}}">
+        <text>意外保障：</text>
+        <text class="rmb">￥</text>
+        <text>{{orderDetail.order_goods_insurance}}</text>
+      </view>
+      <view class="total-price">
+        <text class="total-pay-name">总租金：</text>
+        <text class="rmb">￥</text>
+        <text class="total-pay-value numStyle">{{orderDetail.order_gross_rent}}</text>
+      </view>
+      <image class="zhima" a:if="{{depositState=='0'||depositState=='1'}}" src="/image/zhima-mind.png" mode="scaleToFill" />
+    </view>
+  </view>
+  <!-- 账单信息 -->
+  <view class="bill-info">
+    <view class="pay-detail">
+      <view class="total-pay list">
+        <view class="title">
+          <text>总租金</text></view>
+        <view class="value">
+          <text class="rmb">￥</text>
+          <text class="numStyle">{{orderDetail.order_gross_rent}}</text></view>
+      </view>
+      <view a:if="{{orderDetail.one_yuan}}" class="single-price list">
+        <view class="title">
+          <text>首月租金</text>
+        </view>
+        <view class="value">
+          <text class="credit-amount rmb">-￥</text>
+          <text class="numStyle credit-amount mr-10">{{orderDetail.first_month_credit_amount}}</text>
+          <text class="actual-amount rmb">￥</text>
+          <text class="numStyle actual-amount">{{orderDetail.first_month_actual_amount}}</text>
+        </view>
+      </view>
+
+      <view class="single-price list">
+        <view class="title">
+          <text>月租金</text></view>
+        <view class="value">
+          <text class="rmb">￥</text>
+          <!--<text class="numStyle">{{orderDetail.order_monthly_rent}}</text></view> -->
+          <text class="numStyle" style="{{orderDetail.after_voucher_month_rent!==''?'text-decoration:line-through':''}}">{{orderDetail.order_monthly_rent}}</text></view>
+      </view>
+      <view class="single-price list" a:if="{{buyOutMsg.buy_money==undefined&&orderDetail.after_voucher_month_rent!==''}}">
+        <view class="title">
+          <text>优惠后月租金</text></view>
+        <view class="value" style="color:#FF4A0C">
+          <text class="rmb">￥</text>
+          <text class="numStyle">{{orderDetail.after_voucher_month_rent}}</text></view>
+      </view>
+      <view class="total-pay list" a:if="{{ is_exclusive_discounts }}">
+        <view class="title">
+          专享优惠
+        </view>
+        <view class="value" style="color:#FF4A0C">
+          <text class="rmb">–￥</text>
+          <text class="numStyle">{{ sesame_exclusive_discount_amount }}</text>
+        </view>
+      </view>
+      <view class="month list" a:if="{{orderDetail.total_voucher_amount}}">
+        <view class="title">
+          <text>优惠券</text></view>
+        <view class="value" style="display:flex;align-items:center">
+          <text class="numStyle" style="{{!orderDetail.total_voucher_amount?'color:#999':'color:#FF4A0C'}}">{{!orderDetail.total_voucher_amount?'请选择':'–￥'+orderDetail.total_voucher_amount}}</text>
+        </view>
+      </view>
+      <view a:if="{{orderDetail.buy_money!='0.00'}}" class="month list">
+        <view class="title">
+          <text>到期买断金</text></view>
+        <view class="value">
+          <text>￥</text>
+          <text class="numStyle">{{orderDetail.buy_money}}</text></view>
+      </view>
+      <!--<view class="month list"><view class="title"><text>已优惠</text></view><view class="value redyouhui"><text>-￥</text><text class="numStyle">{{orderDetail.discount_amount}}</text></view></view> -->
+      <view class="month list">
+        <view class="title">
+          <text>租用天数</text></view>
+        <view class="value">
+          <text>共
+            <text class="numStyle">{{orderDetail.order_day_rent}}</text>天</text></view>
+      </view>
+      <!--<view class="pay-way list"><view class="title"><text>租金付款方式</text></view><view class="value"><text>支付宝免密支付</text><image class="ques" data-origin="freePayment" onTap="showPanel" src="/image/confirm-order-ques.png" mode="aspectFit" /></view></view> -->
+    </view>
+    <view class="devide-line"></view>
+    <view class="deposit">
+      <view class="total-deposit list">
+        <view class="title">
+          <text>总押金</text></view>
+        <view class="value">
+          <text class="rmb">￥</text>
+          <text class="numStyle">{{orderDetail.order_gross_credit_rent}}</text></view>
+      </view>
+      <view class="free-deposit list">
+        <view class="title">
+          <text>芝麻信用免押金</text></view>
+        <view class="value"></text class="cut">-</text>
+          <text class="rmb">￥</text>
+          <text class="numStyle">{{orderDetail.zm_credit_amount}}</text></view>
+      </view>
+      <view class="freeze-deposit list">
+        <view class="title">
+          <text>已冻结押金</text></view>
+        <view class="value"></text class="cut"></text>
+          <text class="rm1b">￥</text>
+          <text class="numStyle">{{orderDetail.deposit_paid}}</text></view>
+      </view>
+      <view class="frozenModel" a:if="{{orderDetail.deposit_paid!='0.00'}}">
+        <image mode="scaleToFill" data-origin="frozen" onTap="showPanel" src="/image/frozen.png" />
+      </view>
+      <view class="guarantee-way list">
+        <view class="title">
+          <text>押金冻结方式</text></view>
+        <view class="value">
+          <text>支付宝资金授权</text>
+          <image class="ques" data-origin="authorized" onTap="showPanel" src="/image/confirm-order-ques.png" mode="aspectFit" />
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 订单信息 -->
+  <view class="order-mess">
+    <view class="list">
+      <text class="order-num">订单编号</text>
+      <text class="value numStyle">{{orderDetail.order_id}}</text>
+    </view>
+    <view class="list">
+      <text class="creat-time">下单时间</text>
+      <text class="value numStyle">{{orderDetail.order_create_time}}</text>
+    </view>
+    <view a:if="{{orderDetail.order_status!='6'}}" class="list">
+      <text class="creat-time">归还时间</text>
+      <text class="value numStyle">{{orderDetail.order_last_overdue}}</text>
+    </view>
+  </view>
+  <!-- 底部 -->
+  <view class="bottom">
+    <view class="line"></view>
+    <view class="wrapper">
+      <view a:if="{{item.ghxx==1||item.zzgh==1}}" class="popover_view">
+        <button catchTap="onItemYiGuiHuan" hover-class="none" class="check-move fr">{{orderDetail.ghxx==1?"归还信息":"正在归还"}}</button>
+      </view>
+      <button a:if="{{orderDetail.electronic_contract_number!=''}}" class="red" type="defatlt" hover-class="none" onTap="contract">租赁合同</button>
+      <button class="red" type="defatlt" hover-class="none" onTap="showkefu">联系客服</button>
+      <form a:if="{{orderDetail.order_status===1}}" report-submit="{{false}}" hover-class="none" data-origin="cancelOrder" 
+        onSubmit="showPanel">
+        <button class="red" formType="submit" hover-class="none">取消订单</button>
+      </form>
+      <view a:if="{{item.xz==1&&item.gh==1}}" class="popover_view">
+        <popover position="topRight" show="{{ismoveMenuBtn}}" showMask="{{false}}" onMaskClick="onMaskClick">
+          <button catchTap="moveMenu" hover-class="none" class="check-move fr">
+            更多
+            <view class="img_view" animation="{{animation}}">
+              <image mode="scaleToFill" src="/image/chevron.png" />
+            </view>
+          </button>
+          <view slot="items" catchTap="tapname">
+            <popover-item onItemClick="onItemXuZu">
+              <text>续租</text>
+            </popover-item>
+            <popover-item onItemClick="onItemGuiHuan">
+              <text>归还</text>
+            </popover-item>
+          </view>
+        </popover>
+      </view>
+      <button type="default" a:if="{{orderDetail.order_status===0}}" data-orderId="{{orderDetail.order_id}}" data-userIdCard="{{orderDetail.user_id_number}}" 
+        data-userName="{{orderDetail.user_name}}" onTap="payment" hover-class="none" class="red">继续下单</button>
+      <button type="default" a:if="{{item.md==1}}" data-orderId="{{orderDetail.order_id}}" onTap="md" hover-class="none" 
+        class="red">买断</button>
+      <button a:if="{{orderDetail.is_stages=='1' && orderDetail.order_status != 6}}" class="red" type="defatlt" hover-class="none" onTap="toBill">查看账单</button>
+    </view>
+  </view>
+</view>
+<!-- 弹出层 -->
+<view class="cover" a:if="{{!freePaymentHidden || !authorizedHidden || !cancelOrderHidden||!frozenHidden}}">
+  <view class="shadow" animation="{{shadowAnimation}}"></view>
+  <view class="layer" animation="{{layerAnimation}}">
+    <!-- 冻结押金 -->
+    <view class="authorized module" a:if="{{!frozenHidden}}">
+      <view class="des">
+        <view class="title">冻结押金说明</view>
+        <view class="content">支付金额冻结在支付宝原支付账户内，订单取消或订单完结，冻结部分即刻释放，请留意支付宝消息通知。</view>
+        <view class="content">1.如支付时使用储蓄卡，支付金额冻结在支付宝内，详询支付宝客服；</view>
+        <view class="content">2.如支付时使用花呗、信用卡、余额宝等产品，冻结部分在原账户内，但不可使用，不产生任何利息；</view>
+        <view class="content">3.如有疑问详询{{appInfo.globalData.title}}客服</view>
+      </view>
+      <view class="close">
+        <image onTap="hidePanel" src="/image/close-btn.png" mode="aspectFit" />
+      </view>
+    </view>
+    <!-- 资金授权 -->
+    <view class="authorized module" a:if="{{!authorizedHidden}}">
+      <view class="des">
+        <view class="title">支付宝资金授权</view>
+        <view class="content">用户使用服务时，通过支付宝账户资金渠道做相应金额的授权，并不产生实际消费</view>
+      </view>
+      <view class="close">
+        <image onTap="hidePanel" src="/image/close-btn.png" mode="aspectFit" />
+      </view>
+    </view>
+    <!-- 取消订单 -->
+    <view class="cancelOrder" a:if="{{!cancelOrderHidden}}">
+      <view class="title">取消订单</view>
+      <view class="des">取消原因</view>
+      <view class="reason">
+        <view class="lists" a:for={{cancelReason}} key="cancel{{index}}">
+          <view class="list">
+            <image onTap="choCancelReason" data-index="{{index}}" src="/image/confirm-order-circle{{clickindex==index?'-active':''}}.png" 
+              mode="aspectFit" />
+            <view class="value" style="color:'#00ac91';">{{item.value}}</view>
+          </view>
+        </view>
+      </view>
+      <view class="btn">
+        <view class="line1"></view>
+        <view class="line2"></view>
+        <view class="wrap">
+          <view class="no" onTap="closeCancelReason">再考虑下</view>
+          <view class="yes" onTap="sureToCancel">取消订单</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="cover1" a:if="{{kefuisShow}}">
+  <view class="shadow"></view>
+  <view class="layer">
+    <view class="free-payment module">
+      <view class="des kefu">
+        <view class="content_text">客服在线时间：{{appInfo.globalData.goodDetail.kf.time}}</view>
+        <view class="content" onTap="shangJiaPhone">
+          <image class="kf_itemimg" mode="scaleToFill" src="/image/merphone.png"></image>
+          <view class="ms_view">
+            <view class="title_text">商家客服
+              <image mode="scaleToFill" src="/image/arrow.png"></image></view>
+            <view class="ms_text">
+              <text>产品配置 发货、续租、买断、</text>
+              <text>归还、售后、还款等咨询</text>
+            </view>
+            <view class="line_img">
+              <image mode="widthFix" src="/image/kefuline.png" />
+            </view>
+          </view>
+        </view>
+        <view class="content" onTap="pingTaiPhone">
+          <image class="kf_itemimg" mode="scaleToFill" src="/image/complaint.png"></image>
+          <view class="ms_view ">
+            <view class="title_text mss_view">投诉反馈
+              <image mode="scaleToFill" src="/image/arrow.png"></image></view>
+            <view class="mss_text">投诉建议反馈</view>
+          </view>
+        </view>
+      </view>
+      <view class="close">
+        <image onTap="closekefu" src="/image/close-btn.png" mode="aspectFit" />
+      </view>
+    </view>
+  </view>
+</view>

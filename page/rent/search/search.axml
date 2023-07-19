@@ -1,0 +1,111 @@
+<view>
+  <!-- <tabs tabs="{{tabs}}" showPlus="{{false}}" onTabClick="handleTabClick" activeTab="{{activeTab}}" swipeable="{{false}}"> -->
+    <!-- <block a:for="{{tabs}}"> -->
+      <view   >
+        <!-- 搜索 -->
+        <view class="search">
+          <view class="wrap">
+            <image class="searchIcon" src="/image/search.png" mode="aspectFit" />
+            <input type="text" data-type="goods" placeholder="搜索" placeholder-style="placeholder" value="{{curSearchKey}}" onInput="inputText" confirm-type="search" onConfirm="getSearchKey"/>
+            <image class="del" src="/image/search-del.png" mode="aspectFit" a:if="{{curSearchKey!=''}}" onTap="delSearchKey"/>
+          </view>
+        </view>
+        <!-- 历史搜索词条 -->
+        <view class="hotSearch" a:if="{{!isSearch&&history.length>0}}">
+          <view class="title">历史搜索
+            <text class="remove" catchTap="remove_history">清除</text></view>
+          <view class="items">
+            <view class="option" a:for="{{history}}" key="history{{index}}">
+              <view class="text">
+                <text>{{item}}</text>
+              </view>
+              <view class="border" data-name="{{item}}" onTap="setSearchKey"></view>
+              <image src="/image/order-fail.png" data-name="{{item}}" onTap="remove_historyone" mode="widthFix" />
+            </view>
+          </view>
+        </view>
+        <!-- 热门搜索词条 -->
+        <view class="hotSearch" a:if="{{!isSearch && hotSearch!=''}}">
+          <view class="title">热门搜索</view>
+          <view class="items">
+            <view class="option" a:for="{{hotSearch}}" key="hotsearch{{index}}" data-name="{{item}}" onTap="setSearchKey">
+              <view class="text">
+                <text>{{item}}</text>
+              </view>
+              <view class="border"></view>
+            </view>
+          </view>
+        </view>
+        <scroll-view class="searchscroll-view" scroll-y="{{true}}" style="height:{{scrollviewheight}}px;" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+          <!-- 商品列表 -->
+          <view class="searchResult" a:if="{{isSearch}}">
+              <goods-list type="1" goods_list="{{goodsList}}" />
+            <!-- <view class="goodsList" a:if="{{goodsList!=''}}">
+              <view class="item" a:for="{{goodsList}}" data-id="{{item.id}}" onTap="toDetail">
+                <view class="img por">
+                  <image class="activityicon" a:if="{{item.activity_icon!=null}}" src="{{item.activity_icon!=''?imgUrl+item.activity_icon:''}}" mode="widthFix"/>
+                  <image src="{{item.goods_img!=''?imgUrl+item.goods_img:''}}" mode="scaleToFill" />
+                </view>
+                <label class="oneredlabel {{item.goods_label=='全新'?'redlabel':'bluelabel'}}">{{item.goods_label}}</label>
+                <label a:if="{{item.send_address}}" class="bluelabel">{{item.send_address}}</label>
+                <view class="goods-name">
+                    {{item.goods_name}}
+                </view>
+                <view class="goods-price">
+                  <view class="rmb">￥</view>
+                  <view class="price-num numStyle">{{item.rent}}/天
+                    <text class="small_qi">起</text>
+                    <label>{{item.qzday}}天起租</label>
+                  </view>
+                </view>
+              </view>
+            </view> -->
+          </view>
+          <view class="noList" a:if="{{isSearch&&(goodsList.length< 1)}}">
+            <image src="/image/nolist.png" mode="aspectFit" />
+            <view class="content">搜索的商品暂未上架哦～</view>
+          </view>
+        </scroll-view>
+      </view>
+      <view a:if="{{activeTab==1}}">
+        <!-- 搜索 -->
+        <view class="search">
+          <view class="wrap">
+            <image class="searchIcon" src="/image/search.png" mode="aspectFit" />
+            <input type="text" data-type="mers" placeholder="搜索" placeholder-style="placeholder" value="{{curSearchKey}}" onInput="inputText1" confirm-type="search" onConfirm="getSearchKey"/>
+            <image class="del" src="/image/search-del.png" mode="aspectFit" a:if="{{curSearchKey!=''}}" onTap="delSearchKey"/>
+          </view>
+        </view>
+        <scroll-view class="searchscroll-view" scroll-y="{{true}}" style="height:{{scrollviewheight}}px;">
+          <view a:for="{{merList}}" key="merlist{{index}}">
+            <view class="store_view" data-id="{{item.id}}" onTap="tomer">
+              <view class="store_image">
+                <image mode="scaleToFill" src="{{item.mer_logo!=''?imgUrl+item.mer_logo:''}}" />
+              </view>
+              <view class="store_info  {{item.shop_name.length< 13?'store_infomargin':''}}">
+                <text class="store_title">{{item.shop_name}}</text>
+                <view class="score_view">
+                  <image a:for="{{item.two}}" a:for-index="j" key="two{{j}}" src="/image/star_2.png" mode="widthFix"></image>
+                  <image a:for="{{item.one}}" a:for-index="j" key="one{{j}}" src="/image/star_1.png" mode="widthFix"></image>
+                  <image a:for="{{item.zero}}" a:for-index="j" key="zero{{j}}" src="/image/star_0.png" mode="widthFix"></image>
+                </view>
+                <view class="store_content">
+                  <text>在租商品
+                    <text class="zaizu_text">{{item.renting}}</text>个</text>
+                  <view class="store_line"></view>
+                  <text>订单数量{{item.total}}单</text>
+                </view>
+              </view>
+              <view class="store_btn">
+                <button size="default" type="primary">进店逛逛</button>
+              </view>
+            </view>
+          </view>
+          <view class="tishi" a:if="{{merList.length< 1}}">
+              暂无商户信息哦~
+          </view>
+        </scroll-view>
+      </view>
+    <!-- </block> -->
+  <!-- </tabs> -->
+</view>

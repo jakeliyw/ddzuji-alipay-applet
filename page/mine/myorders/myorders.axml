@@ -1,0 +1,84 @@
+<view class="order" style="padding-top: 90rpx;">
+  <view class="page-section-demo">
+    <scroll-view class="scroll-view_H" scroll-left="{{tabscroll_left}}" scroll-x="{{true}}">
+      <view class="scroll-view-item_H {{item.checked}}" a:for="{{tabs}}" key="tabs{{index}}" onTap="clickTabs" data-id="{{index}}">
+				{{item.cate_name}}
+        <view a:if="{{item.checked != ''}}" class="line"></view>
+      </view>
+    </scroll-view>
+  </view>
+  <!-- tab栏切换的内容 -->
+  <view>
+    <view class="tab-content">
+      <view class="nolist_img" a:if="{{order_data.length<=0}}">
+        <image mode="aspectFit" src="/image/nolist.png" />
+        <view class="nolist_view">
+            亲，没有订单哦。
+        </view>
+      </view>
+      <block a:for="{{order_data}}">
+        <view class="order-item">
+          <view class="title-bar">
+            <text class="create-time numStyle">
+								{{item.order_create_time}}
+              <text class="creatw-houer numStyle" style="margin-left:15rpx">{{item.time}}</text>
+            </text>
+            <text class="state">{{item.status_name}}</text>
+            <view class="line"></view>
+          </view>
+          <view class="goods-des">
+            <view class="goods-img" data-goods_id="{{item.goods_id}}" data-orderId="{{item.order_id}}" onTap="toGoodsDetail">
+              <image class="pic" src="{{imgUrl+item.goods_order_thumbnail}}" mode="aspectFit" />
+            </view>
+            <view class="content" data-id="{{item.id}}" data-orderId="{{item.order_id}}" onTap="toDetail">
+              <view class="goods-name">{{item.goods_name}}</view>
+              <view class="other-pay">{{item.goods_order_attr}}</view>
+              <view class="total-price">
+                <text class="total-pay-name">总租金：</text>
+                <text class="rmb">￥</text>
+                <text class="total-pay-value numStyle">{{item.order_gross_rent}}</text>
+              </view>
+              <image class="zhima" src="/image/zhima-mind.png" mode="scaleToFill" />
+            </view>
+          </view>
+          <view class="operation">
+            <view a:if="{{item.xz==1||item.gh==1||((item.ghxx==1||item.zzgh==1)&&item.md==1&&(order_status==5||order_status==4||order_status==''))}}" class="popover_view">
+              <popover position="topRight" show="{{ismoveMenuBtn&&item.id==movegoodid}}" showMask="{{false}}" onMaskClick="onMaskClick">
+                <button catchTap="moveMenu" data-id="{{item.id}}" data-orderId="{{item.order_id}}" hover-class="none" class="check-move fr">
+                    更多
+                  <view a:if="{{item.id==movegoodid}}" class="img_view" animation="{{animation}}">
+                    <image mode="scaleToFill" src="/image/chevron.png"/>
+                  </view>
+                  <view a:if="{{item.id!=movegoodid}}" class="img_view">
+                    <image mode="scaleToFill" src="/image/chevron.png"/>
+                  </view>
+                </button>
+                <view slot="items" catchTap="tapname">
+                  <popover-item a:if="{{item.xz==1}}" data-orderId="{{item.order_id}}" onItemClick="onItemXuZu">
+                    <text>续租</text>
+                  </popover-item>
+                  <popover-item a:if="{{item.gh==1}}" data-orderId="{{item.order_id}}" onItemClick="onItemGuiHuan">
+                    <text>归还</text>
+                  </popover-item>
+                  <popover-item a:if="{{(item.ghxx==1||item.zzgh==1)&&item.md==1}}" data-orderId="{{item.order_id}}" onItemClick="md">
+                    <text>买断</text>
+                  </popover-item>
+                </view>
+              </popover>
+            </view>
+            <view a:if="{{(item.ghxx==1||item.zzgh==1)}}" class="popover_view">
+              <button catchTap="onItemYiGuiHuan"  data-orderId="{{item.order_id}}" hover-class="none" class="check-move fr">{{item.ghxx==1?"归还信息":"正在归还"}}</button>
+            </view>
+            <button type="default" a:if="{{item.order_status==0}}" data-userIdCard="{{item.user_id_number}}" data-userName="{{item.user_name}}"  data-orderId="{{item.order_id}}" data-is_skip_face_auth="{{item.is_skip_face_auth}}" onTap="payment" hover-class="none" class="check-order fr">继续下单</button>
+            <button type="default" a:if="{{((item.ghxx !=1 && item.zzgh != 1)|| (order_status !=5 && order_status!=4 && order_status!='')) && item.md==1}}" data-orderId="{{item.order_id}}" onTap="md" hover-class="none" class="check-order fr">买断</button>
+            <button type="default"  data-orderId="{{item.order_id}}" onTap="toDetail" hover-class="none" class="check-order fr">查看订单</button>
+            <button type="default" a:if="{{item.ckwl==1}}"  data-orderId="{{item.order_id}}" onTap="goExpress" hover-class="none" class="check-order fr">查看物流</button>
+            
+          </view>
+        </view>
+      </block>
+      <view class="loadText {{ showText ? '' : 'noLoading'}}">
+        <text>{{loadText}}</text></view>
+    </view>
+  </view>
+</view>

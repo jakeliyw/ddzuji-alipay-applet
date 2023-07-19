@@ -1,0 +1,42 @@
+<view class="layout">
+  <view class="header">
+    手机碎屏险
+  </view>
+  <image mode="scaleToFill" src="/image/goodsdetail/screen_breakage_risk.png" class="screen_breakage_risk_img"/>
+  <view class="content">
+    <view class="title">
+      保障服务范围:
+    </view>
+    <view class="phone">
+      <text class="product_key">
+        手机类商品:
+      </text>
+      <text class="product_value">
+        租赁物因非人为意外造成的显示屏外屏碎屏。(租赁物需正常开机使用、液晶无漏液、触摸功能正常，外壳无弯曲开裂)
+      </text>
+    </view>
+    <view class="computer">
+      <text class="product_key">
+        电脑类商品:
+      </text>
+      <text class="product_value">
+        1.台式机/一体机:提供软件技服务。2.平板电脑:租赁物因非人为意外造成的显示屏外屏碎屏。(租赁物需正常开机使用、液晶无漏液、触摸功能正常，外壳无弯曲开裂)3.笔记本:租赁物主体意外遭受液体泼溅导致键盘无法正常使用可更换键盘一次。
+      </text>
+    </view>
+    <view class="travel_wear">
+      <text class="product_key">
+        出行穿戴类商品:
+      </text>
+      <text class="product_value">
+        1.智能手表:租赁物因非人为意外造成的显示屏碎屏和功能性故障。(租赁物需正常开机，正常显示)。2.电子飞行器:租赁物因非人为意外造成的电子飞行器主机损坏及功能性故障，用户只需承担30%的维修费用。3.数码/运动相机:租赁物因非人为意外造成的数码/运动相机主机损坏及功能性故障，用户只需承担30%的维修费用。
+      </text>
+    </view>
+    <view class="games_console">
+      <text class="product_key">
+        游戏机类商品:
+      </text>
+      <text class="product_value">
+        1.游戏卡非人为、意外造成外壳、金手指损坏，游戏卡2道以内划痕 2.游戏主机设备外壳划痕4道以内，长度不超过1厘米;磕碰超过3处，深度1毫米以内的损坏。启用保障服务说明:保障服务费需与首付租金一起支付，未支付保障服务的订单不享受保障服务。不属于本协议意外保保修范围:按键;租赁物显示屏内屏,外壳及背板组件;日常使用造成的外观磨损或损坏;租赁物丢失;随机配件;已私修过租赁物等或其他人为损坏的等。      </text>
+    </view>
+  </view>
+</view>

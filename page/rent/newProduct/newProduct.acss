@@ -1,0 +1,24 @@
+.layout {
+  position: relative;
+  height: 2030rpx;
+}
+
+.product_tips_header_img{
+  width: 750rpx;
+  height: 565rpx;
+}
+
+
+.product_tips_content_img{
+  width: 726rpx;
+  height: 1158rpx;
+  position: absolute;
+  top: 400rpx;
+}
+
+.product_tips_bottom_img {
+  width: 100%;
+  height: 443rpx;
+  position: absolute;
+  bottom: 0;
+}

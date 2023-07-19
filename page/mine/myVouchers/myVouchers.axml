@@ -1,0 +1,63 @@
+<view class="order" onTouchStart="onTouchStart" onTouchEnd="onTouchEnd">
+  <!-- 优惠券 -->
+  <tabs tabs="{{tabs}}" showPlus="{{false}}" tag_index="1" tag="{{(expiring_count>0)?expiring_count:false}}" data-id="{{item.id}}" onTabClick="handleTabClick" onChange="handleTabChange" activeTab="{{activeTab}}" swipeable="{{false}}">
+    <block a:for="{{tabs}}">
+      <tab-content class="tab-content3" key="{{index}}" data-index="{{index}}">
+        <view class="tab-content" style="height:{{con_height}}px;margin-top: 42px;">
+          <view class="nolist_img" a:if="{{nousefilter.length<=0}}">
+            <image mode="aspectFit" src="/image/nolist.png" />
+            <view class="nolist_view">
+                亲，您还没有优惠券
+            </view>
+          </view>
+          <view class="coupon_view">
+            <view class="c_view" a:for="{{nousefilter}}" a:key="{{this}}">
+              <view class="coupon_item {{tap_role_index==index?'move_rule':''}}">
+                <image a:if="{{voucher_status==3}}" class="usd_img" mode="scaleToFill" src="/image/usd.png" />
+                <view class="coupon_item_left ">
+                  <view class="coupon_type1" a:if="{{item.cou_type==3}}">
+                    <text class="unit">¥</text>
+                    <text class="num">{{item.cou_price}}</text>
+                  </view>
+                  <view class="coupon_type2" a:if="{{item.cou_type==1}}">
+                    <text class="unit">{{item.cou_sum_price*10}}</text>
+                    <text class="num">折</text>
+                  </view>
+                  <view class="coupon_type3" a:if="{{item.cou_type==6||item.cou_type==5||item.cou_type==4}}">
+                    <text class="unit">免</text>
+                  </view>
+                  <view class="coupon_type4" a:if="{{item.cou_type==11}}">
+                    <text class="first">首月</text>
+                    <text class="unit">1</text>
+                    <text class="num">元</text>
+                  </view>
+                </view>
+                <view class="coupon_item_center">
+                  <view class="item_center_top">{{item.cou_effect}}</view>
+                  <view class="item_center_center">{{item.receive_time.split(" ")[0].replace(/-/g,'.')}} - {{item.expire_time.split(" ")[0].replace(/-/g,'.')}}</view>
+                  <view class="item_center_bottom" data-tap_index="{{index}}" onTap="rule_explain">
+                    <view class="text">使用规则说明</view>
+                    <image src="/image/rule1.png"></image>
+                  </view>
+                </view>
+                <view class="coupon_item_right" data-style="panel" data-jump_type="{{item.cou_kind}}" data-app_id="{{item.app_id}}" data-content_url="{{item.j_url}}" data-telmp_id="{{item.tem_id}}">
+                </view>
+              </view>
+              <view class="coupon_explain" a:if="{{tap_role_index==index}}">
+                {{item.cou_describe}}
+              </view>
+            </view>
+          </view>
+        </view>
+      </tab-content>
+    </block>
+  </tabs>
+  <!-- 优惠券领取按钮 start -->
+  <view class="receive_view">
+    <view class="receive_btn" onTap="goReceive">
+          您有优惠券待领取，速领
+      <image mode="scaleToFill" src="/image/white_right.png"/>
+    </view>
+  </view>
+  <!-- 优惠券领取按钮 end -->
+</view>

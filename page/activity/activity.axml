@@ -1,0 +1,6 @@
+<view>
+	<web-view a:if="{{canUse}}" id="webView" src="{{appInfo.globalData.testUrl}}/h5/{{showWhat}}.html" onMessage="onMessage"></web-view>
+	<web-view a:if="{{canUse && is_skip}}" id="webView" src="{{skip_url}}" onMessage="onMessage"></web-view>
+	<!-- 低版本不支持web-view -->
+	<view a:if="{{!canUse}}" class="error">当前客户端版本不支持，更新后再来吧~</view>
+</view>

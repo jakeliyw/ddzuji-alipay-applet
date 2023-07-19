@@ -1,0 +1,52 @@
+<view class="exclusive {{background}}">
+  <view class="exclusive-head active_title">为你推荐</view>
+  <view a:if="{{exclusive_list.length==3}}">
+    <view class="content-list">
+      <view a:for="{{exclusive_list}}" data-id="{{item.id}}" onTap="to_goods" key="{{index}}" class="content-item">
+        <view class="img por">
+          <view a:if="{{item.is_look==1}}" class="recently_r">
+            <view class="text">最近看过</view>
+          </view>
+          <image a:if="{{item.activity_icon!=null}}" class="activityicon" src="{{(item.activity_icon!=''&&item.activity_icon)?imgUrl+item.activity_icon:''}}" lazy-load="true" mode="widthFix"></image>
+          <image class="item-img" src="{{(item.goods_img!=''&&item.goods_img)?imgUrl+item.goods_img:''}}" mode="widthFix"></image>
+        </view>
+        <view class="goods-name">
+          <view class="goods_text">{{item.goods_name}}</view>
+        </view>
+        <view class="goods-price">
+          <view class="unit">￥</view>
+          <view class="price">{{item.rent}}</view>
+          <view class="text">/天</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="title-view" a:if="{{exclusive_list.length==4}}">
+    <view a:for="{{exclusive_list}}" key="{{index}}" class="title {{index === currentIndex?'title-hover':''}}" data-index="{{index}}" onTap="checkTitle">
+      {{item.title}}
+    </view>
+  </view>
+  <swiper onChange="swiperChange" current="{{currentIndex}}" a:if="{{exclusive_list.length==4}}">
+    <block a:for="{{exclusive_list}}">
+      <swiper-item>
+        <view class="goods-view" style="background-image:url('{{imgUrl+bcPic[index]}}')">
+          <view class="goods-head">{{item.desc}}</view>
+          <view class="goods-group">
+            <view class="goods-list" a:for="{{item.goods_list}}" a:for-item="item_goods" data-id="{{item_goods.id}}" onTap="to_goods" key="{{index}}">
+              <view a:if="{{item_goods.is_look==1}}" class="recently_e">
+                <view class="text">最近看过</view>
+              </view>
+              <view class="goods-img">
+                <image src="{{imgUrl+item_goods.goods_img}}" mode="aspectFit"/></view>
+              <view class="goods-name">
+                {{item_goods.goods_name}}
+              </view>
+              <view class="price">￥
+                <text class="price-big">{{item_goods.rent}}</text>/天</view>
+            </view>
+          </view>
+        </view>
+      </swiper-item>
+    </block>
+  </swiper>
+</view>

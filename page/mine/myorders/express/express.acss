@@ -1,0 +1,162 @@
+/* 头部 */
+
+.title_view {
+  width: 100%;
+  height: 140rpx;
+  background-color: white;
+  margin-top: 2rpx;
+  padding: 30rpx;
+  display: flex;
+  justify-content: space-between;
+}
+
+.title_view image {
+  width: 80rpx;
+  height: 80rpx;
+}
+
+.title_left {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.nbsp {
+  height: 16rpx;
+}
+
+.title_text_view {
+  font-size: 28rpx;
+  padding-left: 20rpx;
+  color: #222222;
+}
+
+.text_name {
+  color: #666666;
+}
+
+.fuzhi {
+  border: 1px solid rgb(255, 72, 77);
+  color: rgb(255, 72, 77);
+  border-radius: 24rpx;
+  height: 48rpx;
+  line-height: 48rpx;
+  font-size: 24rpx;
+  width: 156rpx;
+  margin-top: 30rpx;
+}
+
+/* 快递信息 */
+
+.express_info_view {
+  background-color: white;
+  padding: 0rpx 40rpx;
+  margin-top: 20rpx;
+}
+
+.express_info_view .info_item {
+  padding: 32rpx 0rpx;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.express_info_view .info_item .item_line {
+  height: 184rpx;
+  width: 2rpx;
+  border-right: #EEEEEE 2rpx solid;
+  position: absolute;
+  margin-left: 155rpx;
+}
+
+.express_info_view .info_item:last-child .item_line {
+  height: 87rpx !important;
+  margin-top: -45rpx;
+}
+
+.express_info_view .info_item:first-child .item_line {
+  margin-top: 15rpx;
+}
+
+.express_info_view .info_item .item_spot {
+  margin-right: 40rpx;
+}
+
+.express_info_view .info_item .item_spot .item_spot_label {
+  background-color: #EEEEEE;
+  border-radius: 50%;
+  width: 14rpx;
+  height: 14rpx;
+  position: absolute;
+  margin-top: -7rpx;
+}
+
+.express_info_view .info_item .time_view {
+  width: 124rpx;
+  margin-right: 26rpx;
+  text-align: right;
+}
+
+.express_info_view .info_item .time_view .time_minute {
+  font-size: 28rpx;
+  width: 124rpx;
+  color: #999999;
+  display: block;
+}
+
+.express_info_view .info_item .info_mes {
+  font-size: 26rpx;
+  color: #999999;
+  line-height: 40rpx;
+}
+
+.express_info_view .info_item .time_view .time_date {
+  color: #999999;
+  width: 124rpx;
+  font-size: 22rpx;
+  margin-top: 8rpx;
+  display: block;
+}
+
+.position_white {
+  width: 100%;
+  height: 32rpx;
+  background-color: white;
+  position: absolute;
+  z-index: 2;
+  left: 0;
+}
+
+.current .time_view .time_minute {
+  font-size: 32rpx !important;
+  color: #666666 !important;
+}
+
+.current .time_view .time_date {
+  font-size: 24rpx !important;
+  color: #666666 !important;
+}
+
+.current .info_mes {
+  color: #222222 !important;
+  font-size: 28rpx !important;
+}
+
+.current .item_spot .item_spot_label {
+  width: 22rpx !important;
+  height: 22rpx !important;
+  background-color: #FF584F !important;
+  margin-left: -4rpx;
+}
+
+.prompt {
+  height: 180rpx;
+  line-height: 180rpx;
+  background-color: white;
+  width: 100%;
+  text-align: center;
+  margin-top: 20rpx;
+}
+
+.phonetext {
+  color: #157EFB;
+}

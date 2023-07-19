@@ -1,0 +1,33 @@
+<view class="title_view">
+  <view class="title_left">
+    <image mode="widthFix" src="/image/express.png"/>
+    <view class="title_text_view">
+      <text class="text_name">快递公司：</text>
+      <text>{{express}}</text>
+      <view class="nbsp"></view>
+      <text class="text_name">快递单号：</text>
+      <text>{{exp_number}}</text>
+    </view>
+  </view>
+  <button class="fuzhi" type="defatlt" hover-class="none" onTap="copyNum">复制单号</button>
+</view>
+<view a:if="{{isexpress_infos}}" class="express_info_view">
+  <view class="position_white"></view>
+  <view a:for="{{express_infos}}" key="expressinfos{{index}}" class="info_item {{index==0?'current':''}}">
+    <view class="time_view">
+      <text class="time_minute">{{item.time_minute}}</text>
+      <text class="time_date">{{ item.time_date}}</text>
+    </view>
+    <view class="item_line"></view>
+    <view class="item_spot">
+      <label class="item_spot_label"></label>
+    </view>
+    <view class="info_mes">
+      <text a:for="{{item.context}}" a:for-index="itemindex" key="context{{index}}-{{itemindex}}" class="{{index==1?'phonetext':''}}" data-phone="{{index==1?item:''}}" onTap="call" >{{item}}</text>
+     
+    </view>
+  </view>
+</view>
+  <view class="prompt" a:if="{{!isexpress_infos}}">
+      订单出库中请耐心等待····
+  </view>

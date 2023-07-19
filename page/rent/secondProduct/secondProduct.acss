@@ -1,0 +1,58 @@
+.layout {
+  width: 750rpx;
+  height: 7030rpx;
+  background: #1777FF;
+  position: relative;
+}
+
+.second_phone_header {
+  width: 100%;
+  height: 544rpx;
+}
+
+.equity_one{
+  height: 831rpx;
+  width: 727rpx;
+  position: absolute;
+  top: 480rpx;
+}
+
+.img_center {
+  display: flex;
+  justify-content: center;
+}
+
+.equity_two {
+  width: 727rpx;
+  height: 383rpx;
+  position: absolute;
+  top: 1330rpx;
+}
+
+.equity_three {
+  width: 727rpx;
+  height: 680rpx;
+  top: 1730rpx;
+  position: absolute;
+}
+
+.color_guide{
+  top: 2430rpx;
+  position: absolute;
+  width: 727rpx;
+  height: 1012rpx;
+}
+
+.exchange_goods_step{
+  position: absolute;
+  width: 727rpx;
+  height: 3107rpx;
+  bottom: 460rpx;
+}
+
+.product_tips_bottom_img {
+  width: 100%;
+  height: 443rpx;
+  position: absolute;
+  bottom: 0rpx;
+}

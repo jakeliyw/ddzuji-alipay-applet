@@ -1,0 +1,116 @@
+<!-- 收货地址信息 -->
+<view class="address-wrap" a:if="{{ order_info.type == 1 }}">
+  <view class="address size28" a:if="{{!address}}" onTap="showAdress">
+    <view>
+      <image class="add-icon" mode="scaleToFill" src="/image/confirm-order-address.png"/>
+      <text>点击选择收货地址</text>
+    </view>
+    <image class="arrow-icon" mode="scaleToFill" src="/image/arrow.png"/>
+  </view>
+  <view class="sel-address" a:if="{{address}}" onTap="showAdress">
+    <view class="address-info">
+      <view class="user-info">
+        <text>{{ ali_address ? address_info.fullname : address_info[0].receiver_name }}</text>
+        <text>{{ ali_address ? address_info.mobilePhone : address_info[0].receiver_phone }}</text>
+      </view>
+      <view class="user-address clearfix">
+         <image class="add-icon" mode="scaleToFill" src="/image/confirm-order-address.png"/>
+         <text class="size28 col888">{{ ali_address ? address_info.prov+address_info.city+address_info.area+address_info.street+address_info.address : address_info[0].receiver_address }}</text>
+      </view>
+    </view>
+    <image class="arrow-icon" mode="scaleToFill" src="/image/arrow.png"/>
+  </view>
+</view>
+<view class="address-line" a:if="{{ order_info.type == 1 }}"></view>
+<!-- 产品型号信息概览 -->
+<view class="model-summary {{ order_info.type == 1 ? '' : 'model-summary1' }}">
+  <image a:if="{{type!==2}}" class="pro-img" mode="scaleToFill" src="{{ order_info.pro_select_img != '' ? imgUrl+order_info.pro_select_img : imgUrl+order_info.placeholder_img }}"/>
+  <image a:else class="pro-img" mode="scaleToFill" src="{{ imgUrl+order_info.placeholder_img }}"/>
+  <view class="summary-list">
+    <view class="pro-description">
+      {{ order_info.good_infomation }}
+    </view>
+    <view class="pro-model {{ order_info.type == 1 ? '' : 'hide' }}">
+      套餐：{{ order_info.pro_select_name }}
+    </view>
+    <view class="pro-price" a:if="{{type!==2}}">
+      ¥<text class="big">{{ order_info.pro_origin_price.split('.')[0] }}</text>.{{order_info.pro_origin_price.split('.')[1] }}
+    </view>
+    <view class="pro-price" a:else>最高得888元话费</view>
+  </view>
+</view>
+<!-- 手机充话费 -->
+<view class="charge" a:if="{{ type==2 }}">
+  <view>
+    充值号码：
+  </view>
+  <view>
+    <input type="number" maxlength="11" placeholder="仅限中国大陆手机号码" placeholder-class="placehilder" onInput="getPhoneNumber" />
+  </view>
+</view>
+<!-- 价格信息 -->
+<view class="price-info-wrap">
+  <view class="info-item">
+    <text>原价</text>
+    <view a:if="{{type!==2}}">
+      <text class="size20">¥</text><text class="size28">{{ order_info.pro_origin_price.split('.')[0] }}</text><text class="size22">.{{ order_info.pro_origin_price.split('.')[1] }}</text>
+    </view>
+    <view a:else>
+      <text class="size20">¥</text><text class="size28">0</text><text class="size22">.10</text>
+    </view>
+  </view>
+  <view class="info-item mt30 mb30" a:if="{{type!==2}}">
+    <text>优惠券</text>
+    <view class="{{ entry > 2 ? '' : 'yel' }}">
+      <text a:if="{{ entry == 1 }}">支付宝积分兑换 省¥{{ save.split('.')[0] }}</text>
+      <text a:elif="{{ entry == 2 }}">优惠 省¥{{ save.split('.')[0] }}</text>
+      <text a:else>无</text>
+      <text class="size22" a:if="{{ entry == 1 || entry == 2 }}">.{{ save.split('.')[1] }}</text>
+    </view>
+  </view>
+  <view class="info-item" a:if="{{ order_info.type == 1 }}">
+    <text>邮费</text>
+    <view a:if="{{order_info.free_post == 1}}">
+      <text class="size20">¥</text><text class="size28">0</text><text class="size22">.00</text>
+    </view>
+    <view a:if="{{order_info.free_post == 2}}">
+      <text class="size20">¥</text><text class="size28">{{ order_info.pay_post.split('.')[0] }}</text><text class="size22">.{{ order_info.pay_post.split('.')[1] }}</text>
+    </view>
+  </view>
+</view>
+<!-- 订单备注 -->
+<view class="charge">
+  <view>
+    订单备注：
+  </view>
+  <view>
+    <input placeholder="请输入备注信息" placeholder-class="placehilder" onInput="getMarkInfo" />
+  </view>
+</view>
+<!-- 温馨提示 -->
+<view class="tip" a:if="{{ entry != 3 }}">
+  <text class="tip-title">温馨提醒：</text>
+  <view>1.积分一经兑换不支持退还，优惠券数量有限，先到先得，兑完为止。</view>
+  <view>2.若享受优惠的交易发生退款，需联系客服退回实际支付金额，优惠资格不再补偿，积分不予退回。 </view>
+  <view>3.暂不支持包邮地区：内蒙古、新疆、西藏、青海、港澳台以及发生疫情等情况的特殊地区。 </view>
+  <view>4.如有疑问可支付宝搜索【{{appInfo.globalData.title}}】小程序首页客服入口联系客服咨询。</view>
+  <view>5.除特殊注明外，本优惠券不与其他优惠同时享受，且仅限领券账号使用，无法转增他人。</view>
+  <view>6.每个支付宝账号兑换次数不限，优惠券会在支付时自动抵扣。 </view>
+  <view>7.快递随机发，签收时，请认真核对是否受损，如有质量问题7天内联系我们客服处理，非质量问题运费自理，超出7天不受理。</view>
+</view>
+<!-- 底部付款 -->
+<view class="pay-bottom size24">
+  <view class="bottom-price">
+    <view>
+      <text class="col999">共1件，</text>
+      <text class="col333">应付：</text>
+    </view>
+    <view class="yel">
+      <text>¥</text>
+      <text class="size42">{{ shouldPay.split('.')[0] }}</text>
+      <text>.{{ shouldPay.split('.')[1] }}</text>
+    </view>
+  </view>
+  <button a:if="{{ order_info.type == 1 }}" type="primary" hover-class="none" onTap="pay">去付款</button>
+  <button a:if="{{ order_info.type == 2 }}" type="primary" hover-class="none" onTap="pay" disabled="{{btn_disabled}}">去付款</button>
+</view>

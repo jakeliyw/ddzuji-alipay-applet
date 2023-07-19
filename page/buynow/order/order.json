@@ -1,0 +1,8 @@
+{
+  "defaultTitle": "确认订单",
+  "pullRefresh": false,
+  "usingComponents": {
+    "to-top": "/components/to_top/to_top",
+    "fixed-top": "/components/fixed_top/fixed_top"
+  }
+}

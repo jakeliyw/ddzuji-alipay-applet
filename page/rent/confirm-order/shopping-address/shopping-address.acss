@@ -1,0 +1,77 @@
+.address-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 29rpx 38rpx 30rpx 31rpx;
+  margin-bottom: 2rpx;
+  background-color: white;
+}
+
+.address-left {
+  width: 544rpx;
+}
+
+.name {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-bottom: 20rpx;
+}
+
+.phone {
+  color: #9A9A9A;
+  font-size: 26rpx;
+  margin: 0 20rpx;
+  font-weight: initial
+}
+
+.default {
+  width: 48rpx;
+  height: 26rpx;
+  line-height: 26rpx;
+  text-align: center;
+  color: white;
+  font-size: 20rpx;
+  border: none;
+  border-radius: 4rpx;
+  font-weight: initial;
+  background: linear-gradient(90deg, rgba(255, 130, 86, 1) 0%, rgba(255, 72, 78, 1) 100%);
+}
+
+.address-text {
+  font-size: 26rpx;
+  color: #343434;
+}
+
+.line {
+  width: 2rpx;
+  height: 38rpx;
+  background-color: #D5D5D5;
+}
+
+.edit {
+  color: #9A9A9A;
+  font-size: 24rpx;
+  padding: 10rpx;
+}
+
+.get-add, .ad-add {
+  width: 690rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  text-align: center;
+  color: white;
+  font-size: 36rpx;
+  background: linear-gradient(90deg, rgba(255, 130, 86, 1) 0%, rgba(255, 72, 78, 1) 100%);
+  margin: 80rpx 30rpx 20rpx 30rpx;
+  border-radius: 44rpx;
+}
+
+.ad-add {
+  background: white;
+  color: #FF5850;
+  border: 1px solid #FF5850;
+  margin-top: 20rpx
+}

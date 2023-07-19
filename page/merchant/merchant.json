@@ -1,0 +1,7 @@
+{
+  "defaultTitle": "店铺",
+  "pullRefresh": false,
+	"usingComponents": {
+    	"goods-list": "/components/goods_list/goods_list"
+  }
+}

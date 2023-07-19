@@ -1,0 +1,7 @@
+{
+  "defaultTitle": "领券中心",
+  "transparentTitle": "auto",
+  "usingComponents": {
+    "get-coupon": "plugin://couponPlugin/get-coupon"
+  }
+}

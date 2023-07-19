@@ -1,0 +1,8 @@
+{
+  "defaultTitle": "订单详情",
+  "pullRefresh": true,
+  "usingComponents": {
+    "popover": "antd-mini/es/Popover/index",
+    "popover-item": "antd-mini/es/Popover/PopoverItem/index"
+  }
+}

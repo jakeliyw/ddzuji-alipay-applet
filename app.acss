@@ -1,0 +1,296 @@
+* {
+  box-sizing: border-box;
+}
+
+page {
+  background-color: #F7F7F7;
+  font-size: 28rpx;
+  font-family: "Ubuntu", -apple-system-font, "Helvetica Neue", "PingFang SC", "Microsoft YaHei", sans-serif;
+  color: #333;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  outline: 0;
+}
+
+/*解决ios上滑动不流畅*/
+
+scroll-view {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* 滚动条整体部分 */
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+.in-block {
+  display: inline-block;
+}
+
+.por {
+  position: relative;
+}
+
+.poa {
+  position: absolute;
+}
+
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+
+.clearfix {
+  *zoom: 1;
+}
+
+.bk {
+  border: 1px solid red;
+}
+
+.bk1 {
+  border: 1px solid green;
+}
+
+.bk2 {
+  border: 4px solid orange;
+}
+
+/* scroll-view样式 */
+
+.page-section {
+  background: #fff;
+  margin-bottom: 32rpx;
+}
+
+.page-section-title {
+  padding: 16rpx 32rpx;
+}
+
+.page-section-demo {
+  padding: 32rpx;
+}
+
+.bc_blue {
+  background-color: #49A9EE;
+}
+
+.bc_red {
+  background-color: #F04134;
+}
+
+.bc_yellow {
+  background-color: #FFBF00;
+}
+
+.bc_green {
+  background-color: #00A854;
+}
+
+.scroll-view_H {
+  white-space: nowrap;
+  display: flex;
+}
+
+.scroll-view-item {
+  height: 200px;
+}
+
+.scroll-view-item_H {
+  flex-shrink: 0;
+  flex-grow: 0;
+  width: 200px;
+  height: 200px;
+}
+
+/* 单行文本溢出隐藏 */
+
+.single_ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* 商品标题 */
+
+.pro_tit_28 {
+  font-size: 28rpx;
+  color: rgba(51, 51, 51, 1);
+  margin-bottom: 10rpx;
+}
+
+.pro_tit_24 {
+  font-size: 24rpx;
+  color: #777;
+  margin-bottom: 10rpx;
+}
+
+.pro_price_28 {
+  font-size: 28rpx;
+  color: #FF584F;
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+.ml_20 {
+  margin-left: 20rpx;
+}
+
+.pl_20 {
+  padding-left: 20rpx;
+}
+
+.pl_30 {
+  padding-left: 30rpx;
+}
+
+.pro_tit_28 {
+  margin-bottom: 25rpx;
+  margin-top: 5rpx;
+}
+
+.d_n {
+  display: none;
+}
+
+.redlabellong {
+  border: 2rpx solid #FF584F;
+  color: #FF584F;
+  border-radius: 8rpx;
+  height: 36rpx;
+  max-width: 370rpx;
+  overflow: hidden;
+  line-height: 36rpx;
+  text-align: center;
+  font-size: 24rpx;
+  margin-right: 10rpx;
+  padding: 0rpx 10rpx;
+  float: left;
+}
+
+.goodsinforedlabel{
+    border: 2rpx solid #FF584F;
+  color: #FF584F;
+  border-radius: 8rpx;
+  height: 36rpx;
+  padding: 0rpx 8rpx;
+  line-height: 36rpx;
+  text-align: center;
+  margin-bottom: -8rpx;
+  font-size: 24rpx;
+  margin-right: 10rpx;
+  float: left;
+}
+.redlabel {
+  border: 2rpx solid #FF584F;
+  color: #FF584F;
+  border-radius: 8rpx;
+  height: 36rpx;
+  padding: 0rpx 8rpx;
+  line-height: 36rpx;
+  text-align: center;
+  margin-bottom: -8rpx;
+  font-size: 24rpx;
+  margin-right: 10rpx;
+  /* float: left; */
+display: inline-block;
+}
+.oneredlabel{
+  margin-left: 20rpx;
+}
+
+.bluelabel {
+  border: 2rpx solid #2A7CEB;
+  color: #2A7CEB;
+  border-radius: 8rpx;
+  height: 36rpx;
+  padding: 0rpx 8rpx;
+  line-height: 36rpx;
+  text-align: center;
+  margin-bottom: -8rpx;
+  font-size: 24rpx;
+  margin-right: 10rpx;
+  /* float: left; */
+  display: inline-block;
+}
+
+.goodsbluelabel {
+  border: 2rpx solid #2A7CEB;
+  color: #2A7CEB;
+  border-radius: 8rpx;
+  height: 36rpx;
+  padding: 0rpx 8rpx;
+  line-height: 36rpx;
+  text-align: center;
+  margin-bottom: -8rpx;
+  font-size: 24rpx;
+  margin-right: 10rpx;
+  float: left;
+ 
+}
+.single_ellipsis {
+  height: 80rpx;
+  line-height: 40rpx;
+  white-space: normal !important;
+}
+
+.pro_price_28 label {
+  font-size: 24rpx;
+  color: #666666;
+  float: right;
+  margin-top: -7rpx;
+  margin-right: 20rpx;
+}
+.small_qi{
+  font-size: 16rpx;
+}
+/* 活动图标样式 */
+.activityicon{
+  width: 100%;
+  position: absolute;
+}
+/* flex布局 */
+.flex{
+  display: flex;
+  align-items: center;
+}
+.flex-row-between{
+  justify-content: space-between;
+}
+.flex-row-around{
+  justify-content: space-around;
+}
+.flex-row-center{
+  justify-content: center;
+}
+.flex-row-center{
+  justify-content: center;
+}
+.flex-start{
+  justify-content: flex-start;
+}
+.flex-end{
+  justify-content: flex-end;
+}

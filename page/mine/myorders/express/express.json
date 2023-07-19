@@ -1,0 +1,8 @@
+{
+    "defaultTitle": "订单跟踪",
+    "pullRefresh": false,
+	"componment":true,
+	"usingComponents":{
+	 
+	}
+}

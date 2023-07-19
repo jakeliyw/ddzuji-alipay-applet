@@ -1,0 +1,90 @@
+.nav-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #1d1b1b;
+  color: #fff;
+}
+
+.user-form {
+  margin: 20rpx;
+  background-color: #fff;
+  padding: 20rpx;
+  border-radius: 20rpx;
+}
+
+.form-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1rpx solid #ccc;
+}
+
+.form-row:nth-child(4) {
+  border-bottom-width: 0;
+}
+
+.form-row-label {
+  font-size: 36rpx;
+  margin: 20rpx 30rpx;
+  min-width: 140rpx;
+}
+
+.form-address {
+  align-items: flex-start;
+}
+
+.form-address > .form-row-label {
+  margin-top: 10rpx;
+}
+
+.form-row-content {
+  text-align: right;
+  font-size: 36rpx;
+  flex: 1;
+}
+
+.input {
+  font-size: 36rpx;
+}
+
+.amd-picker-placeholder,
+.amd-picker-text {
+  font-size: 36rpx !important;
+}
+
+.save-btn-content {
+  margin: 20rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.del-btn {
+  width: 345rpx;
+  height: 110rpx;
+  border-radius: 55px;
+  border: 1px solid #cccccc;
+  background: transparent;
+  font-size: 36rpx;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20rpx;
+}
+.save-btn {
+  outline: 0;
+  border: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 129, 85, 1) 0%,
+    rgba(255, 72, 77, 1) 100%
+  );
+  /* width: 345rpx; */
+  height: 110rpx;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36rpx;
+  border-radius: 55rpx;
+}

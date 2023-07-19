@@ -1,0 +1,71 @@
+<scroll-view class="container" scroll-y="{{true}}" style="height: {{windowHeight}}" onScrollToLower="loadMore" onScroll="scroll" scroll-into-view="{{toView}}">
+  <!-- 搜索 -->
+  <view class="topHeight">
+    <view class="search" id="view-position">
+      <view class="wrap" onTap="toSearch">
+        <image src="/image/search.png" mode="aspectFit" />
+        <input type="text" placeholder="搜索" placeholder-style="placeholder" disabled="true" />
+      </view>
+    </view>
+    <view class="search search_fixed" a:if="{{!searchHidden}}" animation="{{searchAnimation}}">
+      <view class="wrap" onTap="toSearch">
+        <image src="/image/search.png" mode="aspectFit" />
+        <input type="text" placeholder="搜索" placeholder-style="placeholder" disabled="true" />
+      </view>
+    </view>
+    <!-- 1级分类 -->
+    <view class="levelOne">
+      <view class="page-section-demo">
+        <scroll-view class="scroll-view-item_H" scroll-x="{{true}}" style="width: 100%">
+          <view class="item {{pro_item.cate_id==cateOne_id? 'active' : ''}}" a:for="{{level_one_data}}" a:for-item="pro_item" a:for-index="pro_index" a:key="pro_index" data-cateOne_id="{{pro_item.cate_id}}" data-index="{{index}}" data-proIndex="{{pro_index}}" data-cateOne_name="{{pro_item.cate_name}}" catchTap="clickScrollItem">
+            <image src="{{pro_item.cate_pic!=''?imgUrl+pro_item.cate_pic:''}}" />
+            <view class="text">{{pro_item.cate_name}}</view>
+          </view>
+        </scroll-view>
+      </view>
+    </view>
+    <view a:if="{{cover_data.length>0}}" class="{{(cover_data.length< 2&&cover_data[0].length<= 3)?'levelTow1':'levelTow'}}">
+      <swiper onChange="swiperChange" indicator-dots="{{false}}" autoplay="{{false}}" vertical="{{false}}" circular="{{true}}">
+        <block a:for="{{cover_data}}" a:for-item="s">
+          <swiper-item key="swiper-item">
+            <view class="{{selectSublevelid==item.cate_id?'swiper-item_active':'swiper-item'}}" data-cata_id="{{item.cate_id}}" onTap="childOnclick" a:for="{{s}}" key="s{{index}}"> {{item.cate_name}}</view>
+          </swiper-item>
+        </block>
+      </swiper>
+      <view class="swiper_bottom" a:if="{{cover_data.length>1}}">
+        <view class="swiper_ash">
+          <view a:for="{{cover_data}}" key="coverdata{{index}}" style="width:{{100/cover_data.length}}%;" class="{{index==swiper_index?'swiper_selectitem':''}}"></view>
+        </view>
+      </view>
+    </view>
+    <view class="fenge"></view>
+  </view>
+  <!-- tabs -->
+  <view a:if="{{isshowcateTabs}}" class="fixed_top_con fixed_tabs">
+    <view class="page-section-demo">
+      <scroll-view class="scroll-view_H" scroll-x="{{true}}" style="width: 100%">
+        <view class="scroll-view-item_H {{item.cate_id==cateOne_id? 'active' : ''}}" a:for="{{level_one_data}}" key="levelonedata{{index}}" data-cateOne_id="{{item.cate_id}}" onTap="clickScrollItem" data-id="{{index}}">
+					{{item.cate_name}}
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+  <!-- 商品列表 -->
+  <view class="dataList" >
+    <view class="line"></view>
+    <view class="wrapper"  a:if="{{cateList!=''}}">
+      <goods-list type="1" goods_list="{{cateList}}"></goods-list>
+  
+    </view>
+    <!-- 加载中 -->
+    <view class="loadText">
+      <text a:if="{{scroll}}">{{loadText}}</text></view>
+    <!-- 无商品 -->
+    <view class="noList" a:if="{{isLoad&&cateList==''}}">
+      <image src="/image/nolist.png" mode="widthFix" />
+      <view class="text">商品暂未上架哦~</view>
+    </view>
+  </view>
+  <!-- 父组件传值给子组件，子组件调用父组件中的方法 -->
+  <to-top showBtn="{{show_toTop_btn}}" onTopBtn="toTop"></to-top>
+</scroll-view>

@@ -1,0 +1,119 @@
+<view class="goods_list">
+  <view a:for="{{goods_list}}" a:key="{{item}}" class="goods_item">
+    <!-- 秒杀 -->
+    <view a:if="{{item.good_type==4}}" class="pro-item {{index % 2 != 0 ? 'fr' : '' }}">
+      <view class="pro-item  kill_item" data-url="{{item.url}}" onTap="go_kill">
+        <view class="kill_top">
+          <view class="kill_top_top">{{item.data[0]}}</view>
+          <view class="kill_top_center">{{item.data[1]}}</view>
+          <view class="kill_top_bottom">{{item.data[2]}}</view>
+        </view>
+        <view class="ash">
+          <view class="ash_top"></view>
+          <view class="ash_bottom"></view>
+        </view>
+        <view class="content">
+          <swiper style="height:100%;" autoplay="{{true}}" circular="{{true}}" interval="3000" disable-touch="{{true}}" vertical="{{true}}">
+            <block a:for="{{item.ms_img}}" a:for-item="item_img">
+              <swiper-item class="kill_swiper-item">
+                <image class="kill_img" mode="scaleToFill" lazy-load="true" src="{{imgUrl+item_img+imgHandle}}" />
+              </swiper-item>
+            </block>
+          </swiper>
+        </view>
+      </view>
+    </view>
+    <!-- 商品  -->
+    <view class="item_goods" data-id="{{item.id}}" onTap="to_goods">
+      <!-- 商品图 -->
+      <view class="item_image">
+        <!--<view class="recently"><view class="text">最近看过</view></view> -->
+        <image lazy-load="true" src="{{imgUrl+item.goods_img+imgHandle}}" />
+      </view>
+      <!-- 标签、地址 -->
+      <!-- <view class="item_label"> -->
+        <!-- <view class="{{item.goods_label=='全新'?'item_isNew':'item_noNew'}} " style="margin-right:12rpx;">
+          <view class="text">{{item.goods_label}}</view>
+        </view> -->
+      <!-- </view> -->
+      <!-- 商品名 -->
+      <view class="item_label">
+        <view class="{{item.goods_label=='全新'?'item_isNew':'item_noNew'}} " >
+          <view class="text">{{item.goods_label}}</view>
+        </view>
+        <text class="item_goodsName">
+          {{ item.goods_name }}
+        </text>
+      </view>
+      <!-- <image a:if="{{item.is_credit}}" class="sale-icon" src="https://image.ddzuwu.com/file/images/bba9259bb4c6f63145c5bea1fc5312ef.png" /> -->
+      <view a:for="{{[{id:1,tag_name:'人气精选'},{id:2,tag_name:'国行正品'}]}}" a:key="{{item.id}}" class="characteristic_label">
+        <view class="text">{{item.tag_name}}</view>
+      </view>
+      <!-- 价格、起租天数 -->
+      <view class="item_price">
+        <view class="price">
+          <text class="price_unit">到手价:￥</text>
+          <text class="price_text">
+            <text class="big">{{item.after_discount_rent.split('.')[0]}}.{{item.after_discount_rent.split('.')[1]}}</text>
+            /天
+          </text>
+        </view>
+        <view class="item_day">
+          <!-- {{item.qzday}}天起租 -->
+          ￥41.99/天
+        </view>
+      </view>
+    </view>
+    <!-- 好物推荐 -->
+    <view a:if="{{item.good_type==2}}" class="item_recommend  recommend_color{{item.color_type}}" data-id="{{item.id}}" onTap="to_goods">
+      <view class="item_image">
+        <image lazy-load="true" src="{{imgUrl+item.goods_img+imgHandle}}" />
+      </view>
+      <view class="recommend_info">
+        <view class="info_label">
+          <view class="text">好物推荐</view>
+        </view>
+      </view>
+      <view class="info_title">
+        {{item.main_title}}
+      </view>
+      <view class="info_Subtitle">
+        {{item.sub_title}}
+      </view>
+      <view class="info_btn">
+        <view class="text">
+          立即查看
+        </view>
+        <image mode="scaleToFill" src="/image/goods_look3.png" />
+      </view>
+    </view>
+    <!-- 商户推荐 -->
+    <view a:if="{{item.good_type==3}}" class="mer_view" data-id="{{item.id}}" onTap="go_mer">
+      <view class="mer_top">
+        <view class="image_logo">
+          <image src="{{imgUrl+item.mer_logo+imgHandle}}" lazy-load="true" mode="widthFix" />
+        </view>
+        <view class="go_mer">
+          进店
+          <image src="/image/go_right.png" mode="widthFix" />
+        </view>
+      </view>
+      <view class="mer_content">
+        <view class="mer_name">
+          {{item.shop_name}}
+        </view>
+        <view class="mer_text" a:if="{{item.is_security==1}}">
+          <image mode="scaleToFill" src="/image/guarantee.png" />已缴纳保证金
+        </view>
+        <view class="mer_text" a:if="{{item.is_security!=1}}">
+          未缴纳保证金
+        </view>
+      </view>
+      <view class="mer_imgs">
+        <view a:for="{{item.mer_recommend}}" a:key="{{this}}" a:for-item="item_img" class="mer_imgs_item">
+          <image mode="scaleToFill" lazy-load="true" src="{{imgUrl+item_img+imgHandle}}" />
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

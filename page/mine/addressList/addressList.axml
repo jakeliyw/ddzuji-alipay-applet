@@ -1,0 +1,18 @@
+<view class="address-page">
+  <view class="address-list">
+    <view a:for="{{ addressList }}" class="address-item" data-id="{{ item.id }}" onTap="chooseAddress">
+      <view class="address-info">
+        <view class="address-area">
+          {{ item.area }} {{ item.address }}
+        </view>
+        <view class="receiver">
+          {{ item.receiver_name }} {{ item.receiver_phone }}
+        </view>
+      </view>
+      <view class="edit-icon" data-item="{{ item }}" catchTap="edit" />
+    </view>
+  </view>
+  <view class="add-btn-content">
+    <button type="primary" class="add-btn" size="mini" onTap="handleNewAddress">添加新地址</button>
+  </view>
+</view>

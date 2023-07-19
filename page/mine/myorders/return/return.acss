@@ -1,0 +1,193 @@
+.goodsDetail{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    width: 100%;
+    height: 160rpx;
+    padding: 0 30rpx;
+    background-color: #fff;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+.goodsDetail .img{
+    display: flex;
+    width: 14.5%;
+    height: 100%;
+    align-items: center;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+.goodsDetail .img image{
+    width: 80rpx;
+    height: 80rpx;
+}
+.goodsDetail .content{
+    width: 85.5%;
+    height: 100%;
+    padding: 30rpx 0 40rpx;
+    box-sizing: border-box;
+}
+.goodsDetail .content .goods-name{
+    width: 100%;
+    height: 40rpx;
+    font-size: 28rpx;
+    color: #333;
+    line-height: 40rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-bottom: 10rpx;
+    box-sizing: border-box;
+}   
+.goodsDetail .content .other-pay{
+    width: 100%;
+    font-size: 24rpx;
+    color: #999;
+    line-height: 32rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+/* 归还方式 */
+.returnWay{
+    position: relative;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 30rpx;
+    background-color: #fff;
+    margin-top: 20rpx;
+    box-sizing: border-box;
+}
+.returnWay .topLine,
+.returnWay .bottomLine{
+    position: absolute;
+    left: 0;
+    width: 200%;
+    height: 1px;
+    background-color: #ddd;
+    transform: scale(.5);
+    margin-left: -50%;
+}
+.returnWay .topLine{
+    top: 0;
+}
+.returnWay .bottomLine{
+    bottom: 0;
+}
+.returnWay .title{
+    width: 40%;
+    font-size: 32rpx;
+    color: #333;
+    line-height: 90rpx;
+}
+.returnWay .choose{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-end;
+    align-items: center;
+    width: 60%;
+    height: 100%;
+}
+.returnWay .choose .con{
+    font-size: 32rpx;
+    color: #999;
+    line-height: 90rpx;
+}
+.returnWay .choose image{
+    width: 16rpx;
+    height: 26rpx;
+    margin-left: 30rpx;
+}
+
+/* 归还选择项 */
+.returnList{
+    position: relative;
+    width: 100%;
+    background-color: #fff;
+    margin-top: 20rpx;
+}
+.returnList .list{
+    width: 100%;
+    padding-left: 30rpx;
+    box-sizing: border-box;
+}
+.returnList .typeOne{
+    height: 90rpx;
+}
+.returnList .typeTwo{
+    height: 120rpx;
+}
+.returnList .wrap{
+    position: relative;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    padding-right: 30rpx;
+    box-sizing: border-box;
+}
+/* .returnList .left{
+    max-width: 40%;
+} */
+.returnList .title{
+    font-size: 32rpx;
+    color: #333;
+}
+.returnList .choose{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-end;
+    align-items: center;
+    /* max-width: 60%; */
+    height: 100%;
+}
+.returnList .choose .con{
+    font-size: 32rpx;
+    color: #999;
+    line-height: 90rpx;
+}
+.returnList image{
+    width: 16rpx;
+    height: 26rpx;
+    margin-left: 30rpx;
+}
+.returnList .left{
+    /* max-width: 80%; */
+    height: 100%;
+}
+.returnList .left .adress{
+    font-size: 28rpx;
+    color: #999;
+    line-height: 1;
+}
+.returnList .list .wrap .line{
+    position: absolute;
+    left: 0;
+    width: 200%;
+    height: 1px;
+    background-color: #ddd;
+    transform: scale(.5);
+    margin-left: -50%;
+}
+.returnList .list:last-of-type .wrap .line{
+    background-color: transparent;
+}
+.returnList .topLine,
+.returnList .bottomLine{
+    position: absolute;
+    left: 0;
+    width: 200%;
+    height: 1px;
+    background-color: #ddd;
+    transform: scale(.5);
+    margin-left: -50%;
+}
+.returnList .topLine{
+    top: 0;
+}
+.returnList .bottomLine{
+    bottom: 0;
+}
